@@ -1,0 +1,29 @@
+.fundo{
+  background-color: rgb(241, 235, 235);
+}
+
+/* .direcao{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+} */
+
+.destaque{
+  display: flex;
+  flex-wrap: row;
+  flex-direction: row;
+
+
+}
+
+.cards{
+  margin: 5px 10px;
+
+}
+
+.foto{
+  border-radius: 5px;
+  width: 180px;
+  height: 160px;
+}

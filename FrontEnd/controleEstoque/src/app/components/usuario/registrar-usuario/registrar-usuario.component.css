@@ -1,0 +1,20 @@
+
+.centralizar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.bloco{
+  margin-top:200px;
+}
+
+
+mat-card{
+  padding: 80px;
+}
+
+botoes{
+  flex: 1 1 auto;
+}

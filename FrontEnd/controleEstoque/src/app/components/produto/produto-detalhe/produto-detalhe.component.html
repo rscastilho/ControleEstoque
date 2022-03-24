@@ -1,0 +1,51 @@
+<div>
+  <mat-card>
+    <mat-card-title>
+
+    </mat-card-title>
+    <mat-card-content>
+      <img class="imagem" src ="https://localhost:5001/recursos/imagens/{{produtoDetalhe.imagemUrl}}">
+      <strong> {{produtoDetalhe.descricao | uppercase }}<br> </strong>
+      Valor unitário:<strong>  {{produtoDetalhe.valor | currency : 'BRL'}}<br></strong>
+      Quantidade disponivel:<strong>  {{produtoDetalhe.quantidadeEstoque}}</strong>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="alinharDireita">
+        <button mat-stroked-button class="cor"> Comprar</button>
+        <button mat-stroked-button mat-dialog-close>Fechar </button>
+
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+<!-- 0:
+categoria:
+createAt: "2022-03-01T19:59:50.970801"
+deleteAt: null
+deleted: null
+descricao: "Material de limpeza"
+id: 1
+produtos: [{…}]
+updateAt: null
+[[Prototype]]: Object
+categoriaId: 1
+descricao: "Primeiro produto cadastrado"
+fornecedor:
+cnpj: "12345678946546"
+createAt: "2022-03-01T03:21:55.783207"
+deleteAt: null
+deleted: null
+id: 1
+produtos: [{…}]
+razaoSocial: "Fornecedor Teste"
+updateAt: "2022-03-01T22:03:21.352017"
+[[Prototype]]: Object
+fornecedorId: 1
+id: 1
+imagemUrl: "jswall.jpg"
+quantidadeEstoque: 100
+quantidadeMinima: 10
+valor: 150
+valorTotal: 15000 -->

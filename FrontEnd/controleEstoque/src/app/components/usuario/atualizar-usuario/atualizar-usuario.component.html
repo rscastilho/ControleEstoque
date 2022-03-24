@@ -1,0 +1,47 @@
+<div>
+  <app-titulo [titulo]="'Atualizar informações de: '" [usuarioNome]="usuario"></app-titulo>
+</div>
+
+<div class="centralizar cardCentral" *ngIf="formulario">
+  <mat-card>
+    <form [formGroup]="formulario" (ngSubmit)="salvarDados()">
+    <mat-card-header>
+      <mat-card-title>
+
+      </mat-card-title>
+      <mat-divider></mat-divider>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-form-field style="display: none;">
+        <mat-label>id</mat-label>
+        <input matInput type="text" placeholder="id" formControlName="id">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" placeholder="Nome" formControlName="nome">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>CPF</mat-label>
+        <input matInput type="text" placeholder="CPF" formControlName="cpf" readonly>
+      </mat-form-field>
+
+        <mat-checkbox formControlName="blocked">bloqueado</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Ultimo acesso</mat-label>
+          <input matInput type="text" placeholder="ultimo acesso" formControlName="ultimoAcesso" readonly>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button mat-stroked-button type="submit" color="primary" [disabled]="formulario.invalid">Salvar</button>
+          <button mat-button color="warn" routerLink="/home">Voltar</button>
+        </mat-card-actions>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+    </form>
+  </mat-card>
+</div>

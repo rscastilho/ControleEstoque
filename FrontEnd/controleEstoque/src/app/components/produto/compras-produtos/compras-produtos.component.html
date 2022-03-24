@@ -1,0 +1,47 @@
+<app-titulo [titulo]="'Escolha o produto que deseja comprar'"></app-titulo>
+
+
+
+<div class="alinharDireita"  style="margin-top: 10px; margin-right: 15px;" *ngIf="produtos">
+
+  <mat-form-field appearance="fill">
+    <div>
+      <mat-label>Filtrar por categoria <mat-icon>search</mat-icon></mat-label>
+    </div>
+    <mat-select [formControl]="categoriaForm">
+      <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">{{categoria.descricao}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+<div class="principal">
+<div class="caixa" *ngIf="produtos">
+     <mat-card *ngFor="let produto of produtos">
+      <div class="tituloCard alinhar">
+        {{produto.descricao}}
+      
+      </div>
+      <mat-divider></mat-divider>
+
+      <div class="alinhar">
+      <mat-card-content>
+          <div class="centralizar img">
+            <img class="imagem" src="https://localhost:5001/recursos/imagens/{{produto.imagemUrl}}">
+          </div>
+          <div class="centralizar preco">
+            {{produto.valor | currency: 'BRL'}}
+          </div>
+          <div class="centralizar">
+            <mat-card-subtitle>
+              Quantidade disponivel: {{produto.quantidadeEstoque}}
+            </mat-card-subtitle>
+          </div>
+        </mat-card-content>
+      </div>
+              <div>
+          <button mat-stroked-button class="cor" (click)="adicionarCarrinho(produto)"> Comprar</button>
+          <button mat-stroked-button (click)="abrirModal(produto.id)"> Detalhes</button>
+        </div>
+    </mat-card>
+</div>
+</div>

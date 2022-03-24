@@ -1,0 +1,74 @@
+<div>
+  <p>
+    <mat-toolbar [color] = "perfil == '(Administrador)' ? 'primary' : 'warn'">
+
+      <div routerLink="/home" style="cursor: pointer;"><mat-icon class="iconeTopo">precision_manufacturing</mat-icon> My App</div>
+      <span class="example-spacer"> </span>
+      <div *ngIf="emailLogado" routerLink="/atualizarUsuario/{{usuarioId}}" style="cursor: pointer;">
+        {{emailLogado}}
+        <span style="font-size: 13px">{{perfil}}</span>
+        <button mat-stroked-button (click)="logoff()" style="border: 0;" ><mat-icon>key</mat-icon>{{!emailLogado ? 'Login': 'LogOff'}}</button>
+      </div>
+      <div class="iconeCarrinho">
+        <mat-icon routerLink="/carrinho" style="cursor: pointer;">shopping_cart</mat-icon>
+        <button mat-raised-button *ngIf="quantidade!=='null'" matBadge={{quantidade}}  matBadgePosition="before" matBadgeColor="accent" routerLink="/carrinho" style="cursor: pointer;"></button>
+      </div>
+
+
+    </mat-toolbar>
+  </p>
+</div>
+<mat-sidenav-container class="example-container" style="height: 100vh;">
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <mat-list>
+      <mat-list-item routerLink="listarusuarios" *ngIf="perfil == '(Administrador)'" routerLinkActive="active">
+        Usuários
+      </mat-list-item>
+
+        <mat-list-item routerLink="listarcategorias" *ngIf="perfil == '(Administrador)'" routerLinkActive="active">
+          Categorias
+        </mat-list-item>
+
+        <mat-list-item routerLink="listarprodutos" routerLinkActive="active">
+          Produtos
+        </mat-list-item>
+
+
+
+        <mat-list-item routerLink="listarfornecedores" routerLinkActive="active" *ngIf="perfil == '(Administrador)'">
+          Fornecedores
+        </mat-list-item>
+        <mat-list-item *ngIf="perfil == '(Administrador)'">
+          Relatórios
+        </mat-list-item>
+
+
+          <!-- <div *ngIf="perfil == '(Administrador)'">
+            <mat-accordion>
+              <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Categorias
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p *ngFor="let categoria of categorias" class="linha" routerLink="produtosporcategoria/{{categoria.id}}">{{categoria.descricao}}</p>
+              </mat-expansion-panel>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div> -->
+
+
+      </mat-list>
+
+    </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

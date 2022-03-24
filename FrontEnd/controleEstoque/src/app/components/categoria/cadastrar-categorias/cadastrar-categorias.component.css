@@ -1,0 +1,15 @@
+
+
+.bloco{
+  margin-top:100px;
+  margin-bottom: 100px;
+}
+
+
+mat-card{
+  padding: 80px;
+}
+
+.botoes{
+  flex: 1 1 auto;
+}

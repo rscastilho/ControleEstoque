@@ -1,0 +1,16 @@
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp3.1\estoque.data.deps.json
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp3.1\estoque.data.dll
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp3.1\estoque.data.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.csproj.AssemblyReference.cache
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.AssemblyInfoInputs.cache
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.AssemblyInfo.cs
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.csproj.CoreCompileInputs.cache
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.dll
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp3.1\estoque.domain.dll
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp3.1\estoque.domain.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp3.1\estoque.data.runtimeconfig.json
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp3.1\estoque.data.runtimeconfig.dev.json
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.genruntimeconfig.cache
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.csproj.CopyComplete

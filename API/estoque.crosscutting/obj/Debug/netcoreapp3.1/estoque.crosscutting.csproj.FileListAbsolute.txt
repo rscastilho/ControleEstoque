@@ -1,0 +1,17 @@
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.crosscutting.deps.json
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.crosscutting.dll
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.crosscutting.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\obj\Debug\netcoreapp3.1\estoque.crosscutting.csproj.AssemblyReference.cache
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\obj\Debug\netcoreapp3.1\estoque.crosscutting.GeneratedMSBuildEditorConfig.editorconfig
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\obj\Debug\netcoreapp3.1\estoque.crosscutting.AssemblyInfoInputs.cache
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\obj\Debug\netcoreapp3.1\estoque.crosscutting.AssemblyInfo.cs
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\obj\Debug\netcoreapp3.1\estoque.crosscutting.csproj.CoreCompileInputs.cache
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\obj\Debug\netcoreapp3.1\estoque.crosscutting.dll
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\obj\Debug\netcoreapp3.1\estoque.crosscutting.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.data.dll
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.domain.dll
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.service.dll
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.domain.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.data.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.service.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.crosscutting\obj\Debug\netcoreapp3.1\estoque.crosscutting.csproj.CopyComplete

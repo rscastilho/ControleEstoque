@@ -1,0 +1,29 @@
+<app-titulo [titulo]="'Carrinho de compra '"></app-titulo>
+<table>
+  <tr *ngFor="let item of itensCarrinho">
+    <thead>
+      <tr>
+      <td>
+       #
+      </td>
+      <td>
+        Descrição
+      </td>
+      <td>
+        Valor
+      </td>
+      <td>
+        2
+      </td>
+      </tr>
+    </thead>
+    <tbody>
+      <td><img src="https://localhost:5001/recursos/imagens/{{item.imagemUrl}}" width="100" height="60"></td>
+      <td>{{item.descricao | uppercase}}</td>
+      <td>{{item.valor | currency: 'BRL'}}</td>
+    </tbody>
+  </tr>
+ </table>
+<button mat-stroked-button (click)="limparCarrinho()">Esvaziar Carrinho </button>
+<hr>
+

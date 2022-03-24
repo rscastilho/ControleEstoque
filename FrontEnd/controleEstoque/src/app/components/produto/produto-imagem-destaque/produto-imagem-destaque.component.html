@@ -1,0 +1,97 @@
+<app-titulo [titulo]="'Imagem destaque do produto'"></app-titulo>
+
+<div class="centralizar bloco">
+  <mat-card>
+    <form [formGroup]="formulario" (ngSubmit)="salvarDados()">
+      <mat-card-title>
+
+      </mat-card-title>
+      <mat-card-header>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+
+        <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="10px">
+          <div fxflex="40%">
+            <div class="ocultar">
+              <mat-form-field>
+                <mat-label>Descrição</mat-label>
+                <input matInput formControlName="descricao" placeholder="Descrição " required minlength="3" maxlength="50">
+              </mat-form-field>
+            </div>
+            <div class="ocultar">
+              <mat-form-field>
+                <mat-label>Quantidade</mat-label>
+                <input type="number" matInput formControlName="quantidadeEstoque" placeholder="Descrição ">
+              </mat-form-field>
+            </div>
+
+            <div class="ocultar" >
+              <mat-form-field>
+                <mat-label> Selecione o fornecedor</mat-label>
+                <mat-select formControlName="fornecedorId">
+
+                  <mat-option *ngFor="let fornecedor of fornecedores" [value]=fornecedor.id> {{fornecedor.razaoSocial}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+
+
+          <div fxflex="60%">
+
+            <div class="ocultar">
+              <mat-form-field>
+                <mat-label></mat-label>
+                <input matInput formControlName="imagemDestaque" #txtImagem  [(ngModel)]="imagem">
+              </mat-form-field>
+            </div>
+            <div class="ocultar">
+              <input type="file" placeholder="Imagem" accept="image/*" (change)="carregarImagem($event)" #carregaImagem>
+          </div>
+
+
+            <div class="ocultar">
+              <mat-form-field>
+                <mat-label>Quantidade minima</mat-label>
+                <input type="number" matInput formControlName="quantidadeMinima" placeholder="Descrição " min="0" required>
+              </mat-form-field>
+            </div>
+            <div class="ocultar">
+              <mat-form-field>
+                <mat-label>Valor</mat-label>
+                <input matInput formControlName="valor" placeholder="Valor do produto" required minlength="3" maxlength="50">
+              </mat-form-field>
+            </div>
+            <div class="ocultar">
+              <mat-form-field>
+                <mat-label> Selecione a categoria</mat-label>
+                <mat-select formControlName="categoriaId">
+
+                  <mat-option *ngFor="let categoria of categorias" [value]=categoria.id> {{categoria.descricao}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <img class="imagemDestaque" [src]="txtImagem.value == '' ? imagemURL1: imagemURL" (click)="carregaImagem.click()" matTooltip="Clique para carregar imagem" onerror="this.src='assets/error-img.jpg'">
+          </div>
+
+        </div>
+        </mat-card-content>
+      <mat-divider></mat-divider>
+
+      <mat-card-actions class="botoes">
+
+        <button mat-stroked-button color="primary" type="submit" [disabled]="txtImagem.value == ''"> Salvar</button>
+        <button mat-stroked-button color="primary" routerLink="/listarprodutos" style="border: 0;"> Voltar</button>
+      </mat-card-actions>
+
+
+      <mat-card-footer>
+
+      </mat-card-footer>
+    </form>
+  </mat-card>
+
+</div>

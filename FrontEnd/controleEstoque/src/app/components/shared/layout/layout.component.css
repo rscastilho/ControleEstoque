@@ -1,0 +1,28 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-list-item{
+  cursor: pointer;
+
+}
+
+mat-list-item:hover{
+  background-color: rgb(126, 176, 241);
+}
+
+mat-sidenav{
+  width: 180px;
+
+
+}
+
+.linha:hover{
+  background-color: rgb(126, 176, 241);
+  cursor: pointer;
+
+}
+.iconeTopo{
+  font-size: 1.8em;
+  margin: auto 10px;
+}

@@ -1,0 +1,80 @@
+.caixa{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+}
+
+mat-card{
+  width: 220px;
+  margin: 10px;
+
+  height: 355px;
+}
+
+mat-card-content{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+
+
+}
+
+.tituloCard{
+  display: flex;
+  text-align:center;
+  font-size: 1.3em;
+  color: rgb(10, 10, 119);
+  margin-bottom: 15px;
+}
+
+.cor{
+  background-color: rgb(66, 177, 66);
+  color: white;
+  margin: 10px;
+
+}
+
+.cor:hover, button:hover{
+
+  background-color: blueviolet;
+}
+
+.img{
+background-size: cover;
+
+}
+
+.img:hover{
+  transform: scaleX(1.2);
+
+
+  }
+
+  .preco{
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+
+ .principal{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .botoes{
+   margin: 20x auto;
+ }
+
+ .rodapeCard{
+  margin: 10px;
+ }
+
+.alinhar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

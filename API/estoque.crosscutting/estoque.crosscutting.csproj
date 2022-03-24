@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\estoque.domain\estoque.domain.csproj" />
+    <ProjectReference Include="..\estoque.data\estoque.data.csproj" />
+    <ProjectReference Include="..\estoque.service\estoque.service.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>

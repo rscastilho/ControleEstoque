@@ -1,0 +1,112 @@
+<div>
+  <app-titulo [titulo]="'Atualizar produto'"></app-titulo>
+</div>
+<div class="centralizar bloco">
+  <mat-card>
+    <form [formGroup]="formulario" (ngSubmit)="salvarDados()">
+      <h1>{{nome}}</h1>
+      <mat-card-content>
+
+        <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="10px">
+          <div fxflex="40%">
+            <div>
+              <mat-form-field>
+                <mat-label>Descrição</mat-label>
+                <input matInput formControlName="descricao" placeholder="Descrição " required minlength="3" maxlength="50">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <mat-label> Selecione a categoria</mat-label>
+                <mat-select formControlName="categoriaId">
+
+                  <mat-option *ngFor="let categoria of categorias" [value]=categoria.id> {{categoria.descricao}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <mat-label> Selecione o fornecedor</mat-label>
+                <mat-select formControlName="fornecedorId">
+
+                  <mat-option *ngFor="let fornecedor of fornecedores" [value]=fornecedor.id> {{fornecedor.razaoSocial}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+
+
+            <div>
+                <mat-checkbox  formControlName="destacarImagem" [disabled]="!destaque"> Destacar imagem</mat-checkbox>
+            </div>
+            <div class="ocultar">
+              <mat-form-field>
+                <mat-label>Valor</mat-label>
+                <input matInput formControlName="imagemDestaque" #txtImagem placeholder="Valor do produto" required minlength="3" maxlength="50" [(ngModel)]="nomeImg" >
+              </mat-form-field>
+            </div>
+              <img class="imagem" [src]="txtImagem.value == '' ? 'assets/upload.jpg': imagemDestaque"
+              matTooltip="Imagem destaque" onerror="this.src='assets/error-img.jpg'">
+
+
+          </div>
+
+
+
+          <div fxflex="60%">
+
+            <div class="ocultar">
+              <mat-form-field>
+                <mat-label>Valor</mat-label>
+                <input matInput formControlName="imagemUrl" placeholder="Valor do produto" required minlength="3" maxlength="50" [(ngModel)]="nomeImg">
+              </mat-form-field>
+            </div>
+
+            <div>
+              <input type="file" placeholder="Imagem" accept="image/*" (change)="carregarImagem($event)" #carregaImagem class="ocultar">
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Quantidade</mat-label>
+              <input type="number" matInput formControlName="quantidadeEstoque" placeholder="Descrição " required [(ngModel)]="quantidade" min="0" (blur)="calcularValor()">
+            </mat-form-field>
+          </div>
+
+            <div>
+              <mat-form-field>
+                <mat-label>Quantidade minima</mat-label>
+                <input type="number" matInput formControlName="quantidadeMinima" placeholder="Descrição " min="0" required>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <mat-label>Valor</mat-label>
+                <input matInput formControlName="valor" placeholder="Valor do produto" required minlength="3" maxlength="50" [(ngModel)]="valor" (blur)="calcularValor()">
+              </mat-form-field>
+            </div>
+            <div>
+              <div>
+                Valor total do estoque <br><strong>
+                  {{valorTotal | currency: 'BRL'}}
+                </strong>
+              </div>
+
+
+            </div>
+            <img class="imagem" [src]=imagemURL (click)="carregaImagem.click()" matTooltip="Clique para carregar imagem">
+          </div>
+
+
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="botoes">
+            <div class="centralizar">
+            <button mat-stroked-button color="primary" type="submit" [disabled]="formulario.invalid"> Salvar</button>
+            <button mat-stroked-button color="primary" routerLink="/listarprodutos" style="border: 0;"> Voltar</button>
+          </div>
+          </mat-card-actions>
+        </mat-card-content>
+    </form>
+  </mat-card>
+
+</div>

@@ -1,0 +1,22 @@
+<div>
+  <mat-card class="dialogExcluir">
+    <mat-card-header class="centralizar">
+
+      <mat-card-title >
+        Confirmar Exclusão
+
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      Deseja realmente excluir usuário <span style="color: blue; font-size: 1.4em;">{{dados.nomeCategoria}} </span> ?
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions align="end">
+      <button mat-button color="warn" [mat-dialog-close]="true" (click)="excluirUsuario(dados.categoriaId)"> Sim</button>
+      <button mat-stroked-button mat-dialog-close> Cancelar</button>
+    </mat-card-actions>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+</div>

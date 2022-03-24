@@ -1,0 +1,47 @@
+<div>
+  <app-titulo [titulo]="'Atualizar categoria'"></app-titulo>
+</div>
+
+<div class="centralizar bloco">
+  <mat-card>
+    <form [formGroup]="formulario" (ngSubmit)="salvarDados()">
+      <mat-card-title>
+
+      </mat-card-title>
+      <mat-card-header>
+
+
+
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div>
+          <mat-form-field style="display: none;">
+            <mat-label>id</mat-label>
+            <input matInput formControlName="id" placeholder="id" required minlength="3" maxlength="50" readonly>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="descricao" placeholder="Descrição " required minlength="3" maxlength="50">
+          </mat-form-field>
+
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+
+      <mat-card-actions class="botoes">
+
+        <button mat-stroked-button color="primary" type="submit" [disabled]="formulario.invalid"> Salvar</button>
+        <button mat-stroked-button color="primary" routerLink="/listarcategorias" style="border: 0;"> Voltar</button>
+      </mat-card-actions>
+
+
+      <mat-card-footer>
+
+      </mat-card-footer>
+    </form>
+  </mat-card>
+
+</div>
+
+
