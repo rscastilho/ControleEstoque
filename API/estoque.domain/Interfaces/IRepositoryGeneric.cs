@@ -12,6 +12,7 @@ namespace estoque.domain.Interfaces
     Task<TEntity> Cadastrar(TEntity tEntity);
     Task<TEntity> Atualizar(TEntity tEntity);
     Task<bool> Deletar (int Id);
+    Task<int> ContadorRegistros();
 
     }
     

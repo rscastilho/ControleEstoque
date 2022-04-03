@@ -66,6 +66,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { CarrinhoUsuarioComponent } from './components/usuario/carrinho-usuario/carrinho-usuario.component';
 import { ProdutoImagemDestaqueComponent } from './components/produto/produto-imagem-destaque/produto-imagem-destaque.component';
 import { DashHomeComponent } from './components/dashboard/dash-home/dash-home.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -146,7 +147,8 @@ const maskConfig: Partial<IConfig> = {
     MatBottomSheetModule,
     FlexLayoutModule,
     MatExpansionModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatPaginatorModule
 
 
   ],

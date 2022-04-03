@@ -45,6 +45,22 @@ namespace estoque.api.Controllers
             }
         }
 
+        [HttpGet("contador")]
+        [Authorize]
+        public async Task<IActionResult> ContadorProdutos(){
+        if (!ModelState.IsValid) return BadRequest("Erro ao processar informações");
+        try
+        {
+            var resultado = await _produtos.ContarProdutos();
+            return Ok(resultado);
+        }
+        catch (Exception ex)
+        {
+            
+            throw ex;
+        }            
+        }
+
         [Authorize]
         [HttpGet("pesquisarporid/{id}")]
 

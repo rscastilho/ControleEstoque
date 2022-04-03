@@ -256,5 +256,19 @@ namespace estoque.service.Services
             }
             
         }
+
+        public async Task<int> ContarProdutos()
+        {
+            try
+            {
+                var resultado = await _produto.ContadorRegistros();
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
     }
 }

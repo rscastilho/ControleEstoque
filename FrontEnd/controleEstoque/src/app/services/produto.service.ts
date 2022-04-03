@@ -25,8 +25,13 @@ export class ProdutoService {
 
   constructor(private http:HttpClient) { }
 
-  getAllProdutos(skip: number = 0, take: number = 3): Observable<Produto[]>{
+  getAllProdutos(skip: number, take: number): Observable<Produto[]>{
     return this.http.get<Produto[]>(`${this.baseUrl}?skip=${skip}&take=${take}` , httpOptions)
+  }
+
+  getContarProdutos():Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/contador`, httpOptions)
+
   }
 
 

@@ -34,7 +34,7 @@ export class ComprasProdutosComponent implements OnInit {
     this.carrinhoExistente = localStorage.getItem(('comprar'));
     this.carrinho = JSON.parse(this.carrinhoExistente);
     this.spinner.show();
-    this.produtoService.getAllProdutos().subscribe({
+    this.produtoService.getAllProdutos(0,15).subscribe({
       next: (resultado: Produto[]) => {
         this.produtos = resultado;
         this.spinner.hide();

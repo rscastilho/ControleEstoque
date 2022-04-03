@@ -14,3 +14,4 @@ D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\ne
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.domain.pdb
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.data.pdb
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\bin\Debug\netcoreapp3.1\estoque.service.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.crosscutting\obj\Debug\netcoreapp3.1\estoque.crosscutting.csproj.CopyComplete

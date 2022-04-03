@@ -61,7 +61,7 @@
       <button mat-button color="accent" matTooltip="salvar imagem destaque" matTooltipPosition="left" routerLink="/produtoimagemdestaque/{{produto.id}}"> <mat-icon>star</mat-icon></button>
       <button mat-button color="primary" matTooltip="atualizar categoria" matTooltipPosition="left" routerLink="/atualizarproduto/{{produto.id}}"> <mat-icon>edit_notes</mat-icon></button>
     <button mat-button color="warn" matTooltip="Deletar categoria" matTooltipPosition="below"> <mat-icon>delete</mat-icon></button>
-    
+
     </td>
   </ng-container>
 
@@ -70,8 +70,25 @@
 
 
 </table>
+
+<div>
+  <mat-form-field>
+  <mat-select #pagina (selectionChange)="paginar(+pagina.value)">
+    <mat-option value="5">5 </mat-option>
+    <mat-option value="10">10 </mat-option>
+    <mat-option value="20">20 </mat-option>
+    <mat-option value="50">50 </mat-option>
+  </mat-select>
+  <mat-label>Quantidade por página </mat-label>
+</mat-form-field> <br>
+<button type="button" #mudaPagina (click)="mudarPagina(+mudaPagina.value)" *ngFor="let pagina of botoesPaginas" [value]="pagina">{{pagina}}</button>
+<div>
+  {{numeroRegistros}} produtos cadastrados <br>
+  {{numeroPaginas}} numero Paginas <br>
+</div>
+</div>
 <mat-divider></mat-divider>
-<!-- - </div> -->
+
 <ng-template #carregando>
   Aguarde carregando...
 
