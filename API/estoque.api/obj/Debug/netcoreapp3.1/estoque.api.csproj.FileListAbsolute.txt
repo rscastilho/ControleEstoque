@@ -80,4 +80,3 @@ D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.api\obj\Debug\netcoreapp3.1\estoque.api.csproj.CopyComplete

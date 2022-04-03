@@ -1,3 +1,4 @@
+import { DashHomeComponent } from './components/dashboard/dash-home/dash-home.component';
 import { ProdutoImagemDestaqueComponent } from './components/produto/produto-imagem-destaque/produto-imagem-destaque.component';
 import { CarrinhoUsuarioComponent } from './components/usuario/carrinho-usuario/carrinho-usuario.component';
 import { ProdutosCategoriaComponent } from './components/produto/produtos-categoria/produtos-categoria.component';
@@ -48,6 +49,9 @@ const routes: Routes =[
           {path: "produtosporcategoria/:id", component: ProdutosCategoriaComponent},
           {path: "carrinho", component: CarrinhoUsuarioComponent},
           {path: "produtoimagemdestaque/:id", component: ProdutoImagemDestaqueComponent},
+
+          {path: "dashHome", component: DashHomeComponent},
+
 
           {path: "**" , component: NotfoundComponent },
 

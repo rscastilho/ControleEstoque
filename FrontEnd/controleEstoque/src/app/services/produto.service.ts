@@ -1,9 +1,10 @@
 import { TokenUser } from './../models/tokenUser';
 import { Produto } from './../models/Produto';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,8 +25,8 @@ export class ProdutoService {
 
   constructor(private http:HttpClient) { }
 
-  getAllProdutos(): Observable<Produto[]>{
-    return this.http.get<Produto[]>(this.baseUrl, httpOptions)
+  getAllProdutos(skip: number = 0, take: number = 3): Observable<Produto[]>{
+    return this.http.get<Produto[]>(`${this.baseUrl}?skip=${skip}&take=${take}` , httpOptions)
   }
 
 
@@ -54,7 +55,7 @@ export class ProdutoService {
   // }
 
   salvaImagem(file : File[]): Observable<Produto>{
-   
+
      const fileToUpload = file[0] as File;
        const formData = new FormData();
        formData.append('file', fileToUpload)

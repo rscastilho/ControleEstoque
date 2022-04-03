@@ -12,7 +12,7 @@ namespace estoque.domain.Interfaces
 
         Task<IEnumerable<Produto>> CarregarProdutoByNome(string produtoNome);
 
-        Task<IEnumerable<Produto>> GetAllCategoria();
+        Task<IEnumerable<Produto>> GetAllCategoria(int skip =0, int take = 5);
 
         Task<int> ContarProdutosPorCategoria(int categoriaId);
         Task<IEnumerable<Produto>> CarregarProdutoPorCategoriaId(int categoriaId);

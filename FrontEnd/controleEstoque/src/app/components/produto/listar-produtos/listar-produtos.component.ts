@@ -4,6 +4,7 @@ import { ProdutoService } from './../../../services/produto.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
+
 @Component({
   selector: 'app-listar-produtos',
   templateUrl: './listar-produtos.component.html',
@@ -19,16 +20,17 @@ export class ListarProdutosComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinner.show();
-    this.produtoService.getAllProdutos().subscribe({
+    this.produtoService.getAllProdutos(0, 10).subscribe({
       next: (resultado) => {
+        console.log(resultado)
         this.produtos.data = resultado;
         this.produtos.sort = this.sort;
         this.spinner.hide();
-        
+
       },
 
       error: (err: any) => {
-        console.log(err);
+        console.log(err.messsage);
       },
     });
 
@@ -36,16 +38,7 @@ export class ListarProdutosComponent implements OnInit {
   }
 
   exibirColunas() {
-    return [
-      'imagemUrl',
-      'descricao',
-      'quantidadeEstoque',
-      'valor',
-      'valorTotal',
-      'categoria',
-      'destacarImagem',
-      'acao',
-    ];
+    return ['imagemUrl','descricao','quantidadeEstoque','valor','valorTotal','categoria','destacarImagem','acao' ];
   }
 
   pesquisarProduto(nomeProduto: string) {
@@ -58,7 +51,7 @@ export class ListarProdutosComponent implements OnInit {
         });
       }, 500);
     } else if (nomeProduto === '') {
-      this.produtoService.getAllProdutos().subscribe((resultado) => {
+      this.produtoService.getAllProdutos(0,3).subscribe((resultado) => {
         this.produtos.data = resultado;
       });
     }

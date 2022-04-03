@@ -35,9 +35,7 @@ export class ListarUsuariosComponent implements OnInit {
         this.usuarios.data = resultado;
         this.usuarios.sort = this.sort;
         this.spinner.hide();
-        console.log(resultado)
-
-      }
+          }
       ,
       error:(err: any) => {
               this.snackBar.open(`Erro ao carregar usuarios. Erro: ${err.message}`, " X ", {duration:3000, panelClass:['erro']});

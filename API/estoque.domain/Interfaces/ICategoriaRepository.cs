@@ -9,6 +9,7 @@ namespace estoque.domain.Interfaces
     public interface ICategoriaRepository : IRepositoryGeneric<Categoria>
     {
         Task<Categoria> CarregarCategoriaPorNome(string categoriaNome);
+        Task<int> ContarCategorias(string categoriaNome);
 
 
 

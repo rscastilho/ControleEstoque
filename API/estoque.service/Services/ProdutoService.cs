@@ -183,11 +183,11 @@ namespace estoque.service.Services
                    }
         }
 
-        public async Task<IEnumerable<ProdutoDto>> GetAll()
+        public async Task<IEnumerable<ProdutoDto>> GetAll(int skip =0, int take = 5)
         {
             try
             {
-                var resultado = await _produto.GetAll();
+                var resultado = await _produto.GetAll(skip, take);
                 if (resultado == null) return null;
                 var produtosMapeado = _mapper.Map<IEnumerable<ProdutoDto>>(resultado);
                 return produtosMapeado;
@@ -199,11 +199,11 @@ namespace estoque.service.Services
             }
         }
 
-        public async Task<IEnumerable<ProdutoDto>> GetAllCategoria()
+        public async Task<IEnumerable<ProdutoDto>> GetAllCategoria(int skip =0, int take = 5)
         {
             try
             {
-                var resultado = await _produto.GetAllCategoria();
+                var resultado = await _produto.GetAllCategoria(skip, take);
                 return _mapper.Map<IEnumerable<ProdutoDto>>(resultado);
             }
             catch (Exception ex)

@@ -4,7 +4,7 @@
 
     </mat-card-title>
     <mat-card-content>
-      <img class="imagem" src ="https://localhost:5001/recursos/imagens/{{produtoDetalhe.imagemUrl}}">
+      <img class="imagem" src ="https://localhost:5001/recursos/imagens/{{produtoDetalhe.imagemUrl}}" mat-dialog-close>
       <strong> {{produtoDetalhe.descricao | uppercase }}<br> </strong>
       Valor unitário:<strong>  {{produtoDetalhe.valor | currency : 'BRL'}}<br></strong>
       Quantidade disponivel:<strong>  {{produtoDetalhe.quantidadeEstoque}}</strong>

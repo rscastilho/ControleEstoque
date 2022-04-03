@@ -30,12 +30,12 @@ namespace estoque.api.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetAllProdutos()
+        public async Task<IActionResult> GetAllProdutos(int skip =0, int take = 5)
         {
             if (!ModelState.IsValid) return BadRequest("Erro ao processar informações");
             try
             {
-                var resultado = await _produtos.GetAllCategoria();
+                var resultado = await _produtos.GetAllCategoria(skip, take);
                 return Ok(resultado);
             }
             catch (Exception ex)

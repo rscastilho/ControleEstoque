@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Produto } from './../../../models/Produto';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,8 +12,8 @@ export class CarrinhoUsuarioComponent implements OnInit {
   pegarItensCarrinho: any;
   itensCarrinho: any;
   produto: Produto[]=[]
-
-  constructor() { }
+  
+  constructor(private router: Router) { }
 
 
 
@@ -28,6 +29,8 @@ export class CarrinhoUsuarioComponent implements OnInit {
   limparCarrinho(){
     localStorage.removeItem('itens');
     localStorage.removeItem('comprar');
+    this.router.navigate(['/home'])
+
   }
 
 }

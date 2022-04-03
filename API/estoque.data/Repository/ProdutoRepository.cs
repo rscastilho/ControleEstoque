@@ -36,7 +36,7 @@ namespace estoque.data.Repository
         {
             try
             {
-                var resultado = await _context.Produtos.Where(x => x.Descricao.Contains(produtoNome)).ToListAsync();
+                var resultado = await _context.Produtos.Include(x => x.Categoria).Where(x => x.Descricao.Contains(produtoNome)).ToListAsync();
                 return resultado;
             }
             catch (Exception ex)
@@ -74,11 +74,17 @@ namespace estoque.data.Repository
             }
         }
 
-        public async Task<IEnumerable<Produto>> GetAllCategoria()
+        public async Task<IEnumerable<Produto>> GetAllCategoria(int skip =0, int take = 5)
         {
             try
             {
-                var resultado = await _context.Produtos.Include(x => x.Categoria).Include(x => x.Fornecedor).Where(x => x.DeleteAt == null).AsNoTracking().ToListAsync();
+                var resultado = await _context.Produtos.Include(x => x.Categoria)
+                .Include(x => x.Fornecedor)
+                .Where(x => x.DeleteAt == null)
+                .AsNoTracking()
+                .Skip(skip)
+                .Take(take)
+                .ToListAsync();
                 return resultado;
             }
             catch (System.Exception)

@@ -13,7 +13,7 @@ namespace estoque.domain.IServices
     Task<object> Cadastrar(FornecedorDtoCreate fornecedor);
     Task<object> Deletar(int id);
     Task<object> CarregarFornecedorById(int fornecedorId);
-    Task<IEnumerable<FornecedorDto>> GetAll();
+    Task<IEnumerable<FornecedorDto>> GetAll(int skip =0, int take = 5);
     Task<object> CarregarFornecedorPorNome(string fornecedorNome);
     Task<object> CarregarFornecedorPorCNPJ(string cnpj);
     }

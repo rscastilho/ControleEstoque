@@ -176,11 +176,11 @@ namespace estoque.service.Services
             }
         }
 
-        public async Task<IEnumerable<FornecedorDto>> GetAll()
+        public async Task<IEnumerable<FornecedorDto>> GetAll(int skip =0, int take = 2)
         {
             try
             {
-                var resultado = await _fornecedor.GetAll();
+                var resultado = await _fornecedor.GetAll(skip, take);
                 var fornecedorMapeado = _mapper.Map<IEnumerable<FornecedorDto>>(resultado);
                 return fornecedorMapeado;
             }

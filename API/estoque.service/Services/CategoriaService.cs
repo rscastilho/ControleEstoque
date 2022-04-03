@@ -124,6 +124,20 @@ namespace estoque.service.Services
             }
         }
 
+        public async Task<int> ContarCategorias(string categoriaNome)
+        {
+            try
+            {
+                var resultado = await _categoria.ContarCategorias(categoriaNome);
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
         public async Task<object> Deletar(int id)
         {
             try
@@ -149,11 +163,11 @@ namespace estoque.service.Services
             }
         }
 
-        public async Task<IEnumerable<CategoriaDtoCreateResult>> GetAll()
+        public async Task<IEnumerable<CategoriaDtoCreateResult>> GetAll(int skip =0, int take = 5)
         {
             try
             {
-                var resultado = await _categoria.GetAll();
+                var resultado = await _categoria.GetAll(skip, take);
                 var categoriaFinal = _mapper.Map<IEnumerable<CategoriaDtoCreateResult>>(resultado);
                 return categoriaFinal;
 

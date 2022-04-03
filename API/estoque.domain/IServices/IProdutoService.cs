@@ -12,8 +12,8 @@ namespace estoque.domain.IServices
         Task<object> Atualizar(ProdutoDtoUpdate produto);
         Task<object> Cadastrar(ProdutoDtoCreate produto);
         Task<object> Deletar(int id);
-        Task<IEnumerable<ProdutoDto>> GetAll();
-        Task<IEnumerable<ProdutoDto>> GetAllCategoria();
+        Task<IEnumerable<ProdutoDto>> GetAll(int skip =0, int take = 5);
+        Task<IEnumerable<ProdutoDto>> GetAllCategoria(int skip =0, int take = 5);
         Task<object> CarregarProdutoById(int produtoId);
         Task<IEnumerable<ProdutoDto>> CarregarProdutoByNome(string produtoNome);
         Task<int> ContarProdutosPorCategoria(int categoriaId);

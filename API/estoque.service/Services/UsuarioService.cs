@@ -193,11 +193,11 @@ namespace estoque.service.Services
             }
         }
 
-        public async Task<IEnumerable<UsuarioDto>> GetAll()
+        public async Task<IEnumerable<UsuarioDto>> GetAll(int skip =0, int take = 5)
         {
             try
             {
-                var resultado = await _usuario.GetAll();
+                var resultado = await _usuario.GetAll(skip, take);
                 if (resultado == null) return null;
                 var listarTodos = _mapper.Map<IEnumerable<UsuarioDto>>(resultado);
                 return listarTodos;

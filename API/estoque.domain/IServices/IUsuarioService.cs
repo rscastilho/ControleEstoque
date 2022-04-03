@@ -14,7 +14,7 @@ namespace estoque.domain.IServices
         Task<object> Atualizar(UsuarioDtoUpdate tEntity);
         Task<object> Cadastrar(UsuarioDtoCreate tEntity);
         Task<object> Deletar(int Id);
-        Task<IEnumerable<UsuarioDto>> GetAll();
+        Task<IEnumerable<UsuarioDto>> GetAll(int skip =0, int take = 5);
 
         Task<IEnumerable<UsuarioDto>> CarregarUsuarioPorNome(string nome);
 

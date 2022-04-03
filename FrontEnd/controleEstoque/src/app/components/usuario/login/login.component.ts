@@ -66,11 +66,16 @@ export class LoginComponent implements OnInit {
               duration: 2000, panelClass:['sucesso']
 
             });
-            this.snakCkBar.open(resultado.mensagem, undefined, { duration: 2000, panelClass:['sucesso']});
-
-           }
+                    }
+          this.snakCkBar.open(resultado.mensagem, undefined, { duration: 2000, panelClass:['erro']});
+          this.spinner.hide();
         },
          error: (err: any) => {
+              this.spinner.show();
+               if(err.status == 401){
+                 this.snakCkBar.open('Usuario ou senha invalidos')
+                 this.spinner.hide();
+               }
               this.snakCkBar.open(`Erro ao logar no sistema. Erro: ${err.message}`, "X", {duration:2000, panelClass:['erro']});
               this.spinner.hide();
          }

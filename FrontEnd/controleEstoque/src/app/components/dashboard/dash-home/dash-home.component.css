@@ -1,0 +1,11 @@
+.alinharCards{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cardDashboard{
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}

@@ -65,6 +65,7 @@ import { ProdutoDetalheComponent } from './components/produto/produto-detalhe/pr
 import {MatBadgeModule} from '@angular/material/badge';
 import { CarrinhoUsuarioComponent } from './components/usuario/carrinho-usuario/carrinho-usuario.component';
 import { ProdutoImagemDestaqueComponent } from './components/produto/produto-imagem-destaque/produto-imagem-destaque.component';
+import { DashHomeComponent } from './components/dashboard/dash-home/dash-home.component';
 
 
 
@@ -109,6 +110,7 @@ const maskConfig: Partial<IConfig> = {
     ProdutoDetalheComponent,
     CarrinhoUsuarioComponent,
     ProdutoImagemDestaqueComponent,
+    DashHomeComponent,
 
   ],
   imports: [

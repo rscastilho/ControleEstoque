@@ -33,6 +33,18 @@ namespace estoque.data.Repository
                 throw ex;
             }
         }
+
+        public async Task<int> ContarCategorias(string categoriaNome)
+        {
+            try
+            {
+                return await _context.Categorias.Where(x => x.Descricao == categoriaNome).CountAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 }

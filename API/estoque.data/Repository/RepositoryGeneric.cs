@@ -77,9 +77,14 @@ namespace estoque.data.Repository
             return true;
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAll(int skip = 0, int take = 5)
         {
-            return await _context.Set<TEntity>().Where(x => x.DeleteAt == null).AsNoTracking().ToListAsync();
+            return await _context.Set<TEntity>()
+            .Where(x => x.DeleteAt == null)
+            .AsNoTracking()
+            .Skip(skip)
+            .Take(take)
+            .ToListAsync();
 
         }
 

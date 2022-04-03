@@ -19,14 +19,14 @@
      <mat-card *ngFor="let produto of produtos">
       <div class="tituloCard alinhar">
         {{produto.descricao}}
-      
+
       </div>
       <mat-divider></mat-divider>
 
       <div class="alinhar">
       <mat-card-content>
           <div class="centralizar img">
-            <img class="imagem" src="https://localhost:5001/recursos/imagens/{{produto.imagemUrl}}">
+            <img class="imagem" src="https://localhost:5001/recursos/imagens/{{produto.imagemUrl}}" (click)="abrirModal(produto.id)">
           </div>
           <div class="centralizar preco">
             {{produto.valor | currency: 'BRL'}}
