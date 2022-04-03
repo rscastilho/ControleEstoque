@@ -1,3 +1,0 @@
-- problema com token quando usuario é logado, para carregar é necessário atualizar a tela;
-- validação de imagens no back. funcionando somente validação html;
-

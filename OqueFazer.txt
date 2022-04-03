@@ -1,6 +1,0 @@
-- Paginação nas listas;
-- Sessão dashboard;
-- filtros de produtos por categorias;
-- carrinho de compras;
-- salvar pedidos;
-- refatorar DTOs herdando de base DTO;
