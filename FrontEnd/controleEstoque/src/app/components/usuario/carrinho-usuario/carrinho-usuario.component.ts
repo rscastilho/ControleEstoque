@@ -19,12 +19,14 @@ export class CarrinhoUsuarioComponent implements OnInit {
               public carrinhoService:CarrinhoService) { }
 
   ngOnInit(): void {
+
     this.itensCarrinho = this.carrinhoService.exibirCarrinho();
     let quantidade = this.itensCarrinho.length
     localStorage.setItem('itens', JSON.stringify(quantidade))
     }
 
   aumentarQuantidade(produto: Carrinho){
+    
     this.carrinhoService.aumentarQuantidade(produto)
   }
 

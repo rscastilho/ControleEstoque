@@ -12,6 +12,7 @@ export class CarrinhoService {
   quantidadeMaxima: number = 0;
 
   constructor(private router: Router,
+    private produtoService: ProdutoService
     ) { }
 
 
@@ -22,13 +23,14 @@ export class CarrinhoService {
     }else {
       this.produtos.push(produto);
     }
-    
+
     let quantidadeItensCarrinho = this.produtos.length;
     localStorage.setItem('itens', JSON.stringify(quantidadeItensCarrinho))
   }
 
   exibirCarrinho(){
     return this.produtos;
+
   }
 
   limparCarrinho(){
@@ -41,9 +43,14 @@ export class CarrinhoService {
   }
 
   aumentarQuantidade(produto: Carrinho){
+    this.verificaQuantidade(produto.id)
     let localizaItemPedido = this.produtos.find(x => x.id === produto.id);
     if(localizaItemPedido){
-             localizaItemPedido.quantidade += 1
+      if(produto.quantidade < this.quantidadeMaxima -1 ){
+        localizaItemPedido.quantidade += 1
+      }else{
+        localizaItemPedido.quantidade = this.quantidadeMaxima
+      }
       }
 }
 
@@ -64,6 +71,13 @@ export class CarrinhoService {
     return total;
   }
 
+  verificaQuantidade(produtoId: number){
+
+    this.produtoService.getAllProdutoById(produtoId).subscribe({
+      next: resultado => {this.quantidadeMaxima = resultado.quantidadeEstoque}
+    })
+
+  }
 
 
 }
