@@ -1,3 +1,4 @@
+import { CarrinhoService } from './../../../services/carrinho.service';
 import { UsuarioService } from './../../../services/usuario.service';
 import { ComprasProdutosComponent } from './../../produto/compras-produtos/compras-produtos.component';
 import { CategoriaService } from './../../../services/categoria.service';
@@ -29,14 +30,17 @@ export class LayoutComponent implements OnInit, DoCheck {
     private router: Router,
     private autorizaService: AutorizaService,
     private catetegoriaService: CategoriaService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private carrinhoService: CarrinhoService
 
   ) {}
 
   ngDoCheck(): void {
-    this.usuarioService.quantidadeCarrinho().subscribe(({
-      next: (resultado)=>{this.quantidade = resultado}
-    }))
+    // this.usuarioService.quantidadeCarrinho().subscribe(({
+    //   next: (resultado)=>{this.quantidade = resultado}
+    // }))
+    this.quantidade = this.carrinhoService.quantidadeItensCarrinho()
+
   }
 
   ngOnInit(): void {

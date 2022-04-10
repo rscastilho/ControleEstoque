@@ -1,3 +1,6 @@
+import { CarrinhoService } from './../../../services/carrinho.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Carrinho } from './../../../models/carrinho';
 import { UsuarioService } from './../../../services/usuario.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ProdutoDetalheComponent } from './../produto-detalhe/produto-detalhe.component';
@@ -18,16 +21,19 @@ export class ComprasProdutosComponent implements OnInit {
   categoriaForm = new FormControl();
   produtos: Produto[] = [];
   categorias: Categoria[] = [];
-  produtosCarrinho: Produto[] = [];
+  produtosCarrinho: Carrinho[] = [];
   produtoId: number = 0;
   carrinho: any;
   carrinhoExistente: any;
+  quantidade: number =1;
 
   constructor(
     private produtoService: ProdutoService,
     private categoriaService: CategoriaService,
+    private carrinhoService: CarrinhoService,
     private dialog: MatDialog,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -61,17 +67,50 @@ export class ComprasProdutosComponent implements OnInit {
   }
 
   adicionarCarrinho(produto: Produto) {
-    this.produtosCarrinho.push(produto);
-    let numero = this.produtosCarrinho.length;
-    localStorage.setItem('comprar', JSON.stringify(this.produtosCarrinho));
-    localStorage.setItem('itens', numero.toString());
-    console.log(
-      'itens do carrinho',
-      this.produtosCarrinho,
-      'quantidade itens',
-      numero
-    );
+
+    let carrinhoCompra = new Carrinho();
+    carrinhoCompra.id = produto.id;
+    carrinhoCompra.descricao = produto.descricao;
+    carrinhoCompra.quantidade = this.quantidade;
+    carrinhoCompra.valorUnitario = produto.valor;
+    carrinhoCompra.valorTotal = produto.valorTotal;
+    carrinhoCompra.imagemUrl = produto.imagemUrl
+
+    this.carrinhoService.adicionarItensCarrinho(carrinhoCompra);
+
+
+    // this.produtosCarrinho.push(carrinhoCompra);
+    // let numero = this.produtosCarrinho.length;
+    // localStorage.setItem('comprar', JSON.stringify(this.produtosCarrinho));
+    // localStorage.setItem('itens', numero.toString());
   }
+    //this.verificaItemCarrinho(carrinhoCompra)
+
+
+    // console.log('novo carrinho', carrinhoCompra)
+    // console.log('carrinhoPush', this.produtosCarrinho);
+    // [...this.produtosCarrinho].forEach(prod =>{
+    //   console.log('itemdocarrinho', prod.id);
+    // // });
+    // console.log(
+    //   'itens do carrinho',
+    //   this.produtosCarrinho,
+    //   'quantidade itens',
+    //   numero
+    // );
+
+
+  verificaItemCarrinho(carrinho: Carrinho){
+    this.produtosCarrinho.forEach(item => {
+      if(item.id === carrinho.id){
+        this.snackBar.open("produto ja adicionado no carrinho", 'X', {panelClass:['erro']})
+      }
+      return true
+    })
+    console.log('item somado', this.quantidade);
+
+  }
+
 
   abrirModal(produtoId: number) {
     this.dialog.open(ProdutoDetalheComponent, {

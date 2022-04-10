@@ -1,36 +1,59 @@
 <app-titulo [titulo]="'Carrinho de compra '"></app-titulo>
 
-<div *ngIf="pegarItensCarrinho else carrinhoVazio">
-  <table class="table">
-    <tr *ngFor="let item of itensCarrinho">
-      <thead>
-        <tr>
-        <td>
-         #
-        </td>
-        <td>
-          Descrição
-        </td>
-        <td>
-          Valor
-        </td>
-        <td>
-          2
-        </td>
-        </tr>
-      </thead>
-      <tbody>
+<div *ngIf="carrinhoService.quantidadeItensCarrinho() else carrinhoVazio">
+  <mat-card>
+
+
+
+  <table class="tableCarrinho">
+    <thead>
+      <td></td>
+      <td>Descrição</td>
+      <td>Quantidade</td>
+      <td>Valor Unitário</td>
+      <td>Valor Total</td>
+      <td></td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of itensCarrinho">
         <td><img src="https://localhost:5001/recursos/imagens/{{item.imagemUrl}}" width="100" height="60"></td>
         <td>{{item.descricao | uppercase}}</td>
-        <td>{{item.valor | currency: 'BRL'}}</td>
+        <td>
+          <button mat-stroked-button style="border: 0;" (click)="diminuiQuantidade(item)" >-</button>
+          {{item.quantidade }}
+          <button mat-stroked-button style="border: 0;" (click)="aumentarQuantidade(item)">+</button>
+        </td>
+        <td>{{item.valorUnitario| currency: 'BRL'}}</td>
+        <td>{{item.valorUnitario * item.quantidade| currency: 'BRL'}}</td>
+
+      </tr>
+      <tr>
+        <td>
+          <button mat-stroked-button (click)="carrinhoService.limparCarrinho()" [disabled]="!carrinhoService.quantidadeItensCarrinho()" color="accent" style="margin-left: 20px; border: 0;">Limpar Carrinho </button>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          <div class="alinharDireita" >
+            <span style="margin-right: 20px;">Total:
+            <strong>{{ carrinhoService.ValorTotalPedido() | currency: 'BRL' }}</strong></span>
+          </div>
+        </td>
+      </tr>
       </tbody>
-    </tr>
    </table>
-  <button mat-stroked-button (click)="limparCarrinho()" [disabled]="!pegarItensCarrinho">Esvaziar Carrinho </button>
+  </mat-card>
+
+   <div style="display:flex">
+
+
+    <button mat-stroked-button [disabled]="!carrinhoService.quantidadeItensCarrinho()" color="primary" routerLink="/home" style="margin-left: 20px; border: 0;">Continuar comprando </button>
+    <button mat-stroked-button [disabled]="!carrinhoService.quantidadeItensCarrinho()" color="primary" style="margin-left: 20px; border: 0;">Finalizar Compra </button>
+  </div>
   <hr>
 </div>
-
-
 <ng-template #carrinhoVazio>
   <div class="centralizar">
     <br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace estoque.domain.Models
 {
-    public class BaseModel
-    {
+    public class BaseModel{
         
         public int Id { get; set; }
         private DateTime? _createAt;

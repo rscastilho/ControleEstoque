@@ -9,9 +9,9 @@
         <span style="font-size: 13px">{{perfil}}</span>
         <button mat-stroked-button (click)="logoff()" style="border: 0;" ><mat-icon>key</mat-icon>{{!emailLogado ? 'Login': 'LogOff'}}</button>
       </div>
-      <div class="iconeCarrinho">
+      <div class="iconeCarrinho" *ngIf="quantidade >= 1">
         <mat-icon routerLink="/carrinho" style="cursor: pointer;">shopping_cart</mat-icon>
-        <button mat-raised-button *ngIf="quantidade!=='null'" matBadge={{quantidade}}  matBadgePosition="before" matBadgeColor="accent" routerLink="/carrinho" style="cursor: pointer;"></button>
+        <button mat-raised-button *ngIf="quantidade >= 1" matBadge={{quantidade}}  matBadgePosition="before" matBadgeColor="accent" routerLink="/carrinho" style="cursor: pointer;"></button>
       </div>
 
 

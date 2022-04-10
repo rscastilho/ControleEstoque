@@ -1,3 +1,4 @@
+import { CarrinhoService } from './services/carrinho.service';
 import { ProdutoService } from './services/produto.service';
 import { FornecedorService } from './services/fornecedor.service';
 import { CategoriaService } from './services/categoria.service';
@@ -158,7 +159,8 @@ const maskConfig: Partial<IConfig> = {
     PerfilService,
     CategoriaService,
     FornecedorService,
-    ProdutoService
+    ProdutoService,
+    CarrinhoService
   ],
   bootstrap: [AppComponent]
 })

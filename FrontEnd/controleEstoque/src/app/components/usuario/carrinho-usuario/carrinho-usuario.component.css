@@ -1,6 +1,21 @@
-.carrinho{
+/* .carrinho{
   display: flex;
   flex-direction: row;
   padding: 10px;
   border: 1px solid red;
+} */
+.tableCarrinho{
+  width: 100%;
+}
+
+.total{
+  font-size: 1.4em;
+}
+
+.remove{
+  color: red;
+}
+
+.espacoDireta{
+  margin-right: 10px;
 }
