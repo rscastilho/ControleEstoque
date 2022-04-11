@@ -28,7 +28,7 @@ bloqueio e desbloqueio de usuario com gestão do administrador do sistema.
 - TypeScript e JavaScript puro;
 - Será implmentado dashboard com relatorios estatisticos e graficos;
 
-Como este é meu primeiro projeto autoral e solo, sofrerá atualizações e correções contantes.
+Como este é meu primeiro projeto autoral e solo, sofrerá atualizações e correções constantes.
 Qualquer sugestão ou duvida estou a disposição.
 
 by rCastilho - rcastilho@gmail.com
