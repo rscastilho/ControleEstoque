@@ -2,24 +2,66 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Titulo from '../../../components/Titulo/Titulo';
 import styles from './Carrinho.module.css'
+import {BsPlusCircle, BsFileMinus} from 'react-icons/bs'
 
 
 const Carrinho = () => {
     const [itens, setItens] = useState([]);
     const [exibirImagem, setExibirImagem] = useState(false)
+    const [quantidade, setQuantidade] = useState(0);
+    const [loop, setLoop] = useState(false);
 
     const handleLimparCarrinho = () => {
         localStorage.removeItem('carrinho')
 
     }
 
+    const handleIncrementaQuantidade = (id)=>{
+
+        const  carrinho =  JSON.parse(localStorage.getItem('carrinho'))
+        let encontra = carrinho.find((x => x.id === id))
+        if(encontra) {
+            setQuantidade(encontra.quantidade +=1)
+            setLoop(true)
+        }
+        localStorage.setItem('carrinho', JSON.stringify(carrinho))
+        console.log(encontra)
+        
+        
+        // let incrementa =   qtde[0].quantidade +1  
+        // console.log(incrementa)
+        
+
+    }
+
+    const handleDecrementaQuantidade = (id)=>{
+        const  carrinho =  JSON.parse(localStorage.getItem('carrinho'))
+        let encontra = carrinho.find((x => x.id === id))
+        if(encontra) {
+            if(encontra.quantidade <= 1){
+                let carrinhoAtualiza = carrinho.filter((x => x.id !== id));
+                localStorage.setItem('carrinho', JSON.stringify(carrinhoAtualiza))
+                setLoop(true)        
+                return
+            } 
+            encontra.quantidade -=1
+            setLoop(true)
+
+        }
+
+        localStorage.setItem('carrinho', JSON.stringify(carrinho))
+        console.log(encontra)
+    }
+
 
     useEffect(() => {
+        
+            setItens(JSON.parse(localStorage.getItem('carrinho')))
+            console.log(itens)
+            setLoop(false)
+        
 
-        setItens(JSON.parse(localStorage.getItem('carrinho')))
-        console.log(itens)
-
-    }, [])
+    }, [loop])
 
 
     return (
@@ -53,7 +95,13 @@ const Carrinho = () => {
                                         }
                                     </td>
                                     <td>{items.descricao}</td>
-                                    <td>{items.quantidade}</td>
+                                    <td>
+                                        <BsFileMinus className='me-2' size={20}
+                                        onClick={()=> handleDecrementaQuantidade(items.id)}/>
+                                        {items.quantidade} 
+                                        <BsPlusCircle className='ms-2' size={20}
+                                        onClick={()=> handleIncrementaQuantidade(items.id)}/> 
+                                        </td>
                                     <td>R$ {items.valor}</td>
                                     <td> R$ {items.quantidade * items.valor}</td>
                                 </tr>

@@ -80,8 +80,11 @@ const ProdutosCompras = () => {
                         </div>
                         <div className={`card-footer ${styles.footer}`}>
                             <button
-                                className={`btn btn-sm btn-primary me-3 ${styles.botao}`}
+                                className={`btn btn-sm me-3 ${items.quantidadeEstoque === 0 ? styles.botaoEstoque : styles.botao }  `}
                                 onClick={() => handleAddCar(items)}
+                                disabled={items.quantidadeEstoque === 0 ? true : false}
+
+
                             >Comprar</button>
                             <button className={`btn btn-sm btn-secondary ${styles.botaoInfo}`}>+ info</button>
                         </div>
