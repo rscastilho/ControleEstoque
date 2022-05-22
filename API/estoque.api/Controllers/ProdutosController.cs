@@ -179,7 +179,11 @@ namespace estoque.api.Controllers
             var file = Request.Form.Files[0];
             if (file.Length > 0)
             {
-               
+                    var imageName = file.FileName.ToLower().ToString();
+                    if (imageName.Contains("uploadImage") || imageName == "uploadImage.jpg"){
+                    DeleteImagem(imageName);
+                    } 
+                    
                     await SaveImage(file);
 
                 }
@@ -188,6 +192,7 @@ namespace estoque.api.Controllers
             return Ok(file.FileName);
 
         }
+
 
         [Authorize(Roles = "Administrador")]
         [HttpPut]
@@ -232,6 +237,7 @@ namespace estoque.api.Controllers
             try
             {
                 var resultado = await _produtos.Deletar(id);
+                
                 return Ok(resultado);
             }
             catch (Exception ex)

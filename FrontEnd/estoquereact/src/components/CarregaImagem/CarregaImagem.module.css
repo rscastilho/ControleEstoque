@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Mukta&family=Roboto+Flex:opsz,wght@8..144,400;8..144,600&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,400&display=swap');
+
+.caixaImagem{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 10px;
+    
+}
+
+.imagem{
+    width: 150px;
+    background-size: cover;
+    border-radius: 8px;
+    
+}
+
+input[type="file"]::file-selector-button{
+ font-family:Roboto ;
+ font-size: 0.9em;
+ border: 0;
+ border-radius: 0.9em;
+ padding: 8px;
+ cursor: pointer;
+ 
+}

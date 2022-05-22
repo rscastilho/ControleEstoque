@@ -1,0 +1,44 @@
+
+.formLogin{
+    padding: 30px;
+    border: 1px solid red;
+    margin-top: 200px;
+    width: 400px;
+    box-shadow: 0 0 1em gold;   
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.caixa{
+    width: 200px;
+}
+
+.boxLogin{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botaoForm{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.principal{
+    height: calc(100vh - 120px);
+    
+}
+
+/* .botoes{
+    width: 100%;
+    
+} */

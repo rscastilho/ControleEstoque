@@ -10,9 +10,10 @@ namespace estoque.domain.Models
 
         public int UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
-        public IEnumerable<Produto> Produtos { get; set; }
+        public int ProdutoId { get; set; }
+        public virtual IEnumerable<Produto> Produtos { get; set; }
         public double ValorTotal { get; set; }
         
-        
+              
     }
 }

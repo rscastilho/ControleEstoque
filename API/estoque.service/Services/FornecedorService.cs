@@ -139,9 +139,23 @@ namespace estoque.service.Services
                     return resultadoFinal;
                 }
                 
-                var fornecedorMapeado = _mapper.Map<FornecedorDto>(resultado);
+                var fornecedorMapeado = _mapper.Map<IEnumerable<FornecedorDto>>(resultado);
                 resultadoFinal.Usuario = fornecedorMapeado;
                 return resultadoFinal;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
+        public async Task<int> ContarFornecedores()
+        {
+            try
+            {
+                return await _fornecedor.ContadorRegistros();
+                
             }
             catch (Exception ex)
             {
@@ -176,7 +190,7 @@ namespace estoque.service.Services
             }
         }
 
-        public async Task<IEnumerable<FornecedorDto>> GetAll(int skip =0, int take = 2)
+        public async Task<IEnumerable<FornecedorDto>> GetAll(int skip =5, int take = 5)
         {
             try
             {

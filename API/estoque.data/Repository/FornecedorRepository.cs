@@ -32,11 +32,11 @@ namespace estoque.data.Repository
             }
         }
 
-        public async Task<Fornecedor> CarregarFornecedorPorNome(string fornecedorNome)
+        public async Task<IEnumerable<Fornecedor>> CarregarFornecedorPorNome(string fornecedorNome)
         {
             try
             {
-                var resultado = await _context.Fornecedores.SingleOrDefaultAsync(x => x.RazaoSocial.Contains(fornecedorNome));
+                var resultado = await _context.Fornecedores.Where(x => x.RazaoSocial.Contains(fornecedorNome) && x.Deleted != true).ToListAsync();
                 return resultado;
             }
             catch (Exception ex)

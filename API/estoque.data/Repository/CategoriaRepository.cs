@@ -21,11 +21,11 @@ namespace estoque.data.Repository
             _context = context;
         }
 
-        public async Task<Categoria> CarregarCategoriaPorNome(string categoriaNome)
+        public async Task<IEnumerable<Categoria>> CarregarCategoriaPorNome(string categoriaNome)
         {
             try
             {
-                return await _context.Categorias.SingleOrDefaultAsync(x => x.Descricao.Equals(categoriaNome) && x.Deleted != true);
+                return await _context.Categorias.Where(x => x.Descricao.Contains(categoriaNome) && x.Deleted != true).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -43,6 +43,19 @@ namespace estoque.data.Repository
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public async Task<Categoria> VerificaCategoriaExistente(string categoriaNome)
+        {
+            try
+            {
+                return await _context.Categorias.FirstOrDefaultAsync(x => x.Descricao.Equals(categoriaNome));
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex; 
             }
         }
     }

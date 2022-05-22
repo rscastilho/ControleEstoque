@@ -1,0 +1,260 @@
+import React from 'react'
+import styles from './ListarProdutos.module.css';
+import { useState, useEffect } from 'react';
+import Titulo from './../../../components/Titulo/Titulo';
+import BotaoAcao from '../../../components/botoesAcao/BotaoAcao';
+import { del, getAll, getById } from './../../../Services/crudApi'
+import { FaRegPlusSquare } from 'react-icons/fa'
+import TextGetByName from '../../../components/TextGetByName/TextGetByName';
+import ModalExclusao from '../../../components/ModalExclusao/ModalExclusao';
+import ItensPorPagina from '../../../components/ItensPorPagina/ItensPorPagina';
+import { FiEye, FiEyeOff } from 'react-icons/fi'
+import CadastrarProduto from './../cadastrarProduto/CadastrarProduto';
+import error from '../../../assets/imageNotFount001.png'
+import EditarProduto from './../EditarProduto/EditarProduto';
+import CadastrarImagem from './../ImagensProduto/CadastrarImagem';
+
+
+
+const ListarProdutos = () => {
+  const [item, setItem] = useState("");
+  const [itens, setItens] = useState([]);
+  const [loop, setLoop] = useState(true);
+  const [mostraCaixaCadastrar, setMostraCaixaCadastrar] = useState(false);
+  const [mostraCaixaEditar, setMostraCaixaEditar] = useState(false);
+  const [show, setShow] = useState(false);
+  const [showImagem, setShowImagem] = useState(false);
+  const [itensPorPagina, setItensPorPagina] = useState(10);
+  const [paginar, setPaginar] = useState(0);
+  const [mostrarImg, setMostrarImg] = useState(false);
+  const [exibeCaixaImagem, setExibeCaixaImagem] = useState(false)
+
+
+  const handleCloseModal = () => setShow(!show)
+  const handleCloseImagem = () => { setShowImagem(!showImagem) };
+  const handleCloseModalImagem = () => setShowImagem(!showImagem)
+
+  const handleCaixaCadastrar = () => {
+    setMostraCaixaEditar(false);
+    setMostraCaixaCadastrar(!mostraCaixaCadastrar);
+  }
+
+  const handleEditar = (id) => {
+    setMostraCaixaEditar(true)
+    setMostraCaixaCadastrar(false);
+    getById(`produtos/pesquisarporid/${id}`).then(produto => {
+      setItem(produto.data)
+      console.log(item)
+    })
+  }
+  const handleClose = (id) => {
+    const produto = getById(`produtos/pesquisarporid/${id}`).then(produtos => {
+      setItem(produtos.data)
+      console.log(produtos.data)
+    })
+    if (produto) {
+      setShow(!show)
+    };
+  }
+
+
+
+  const deleteItem = async (id) => {
+    const resultado = await del(`produtos/${id}`)
+    console.log(resultado)
+    const novaLista = itens.filter((item) => item.id !== resultado.id);
+    setItens([...novaLista])
+    setLoop(true)
+
+  }
+
+  const handleAbrirImagem = (id) => {
+    getById(`produtos/pesquisarporid/${id}`).then(produtos => {
+      setItem(produtos.data)
+    })
+    setExibeCaixaImagem(true)
+    handleCloseImagem()
+  }
+
+  const handleAbrirImagemDestaque = (id) => {
+    getById(`produtos/pesquisarporid/${id}`).then(produtos => {
+      setItem(produtos.data)
+    })
+    setExibeCaixaImagem(true)
+    handleCloseImagem()
+  }
+
+
+
+  useEffect(() => {
+    if (loop) {
+      getAll(`Produtos?skip=${paginar}&take=${itensPorPagina}`).then(produtos => {
+        setItens(produtos.data)
+        setLoop(!loop)
+      })
+    }
+
+  }, [loop, paginar, itensPorPagina])
+
+
+  return (
+    
+    <div className='container'>
+            
+      <Titulo titulo={'Produtos cadastrados'}  />
+      <div>
+        <div>
+          {mostraCaixaCadastrar &&
+            <CadastrarProduto
+              setLoop={setLoop}
+              setMostraCaixaCadastrar={setMostraCaixaCadastrar} />
+          }
+        </div>
+        <div>
+          {mostraCaixaEditar &&
+            <EditarProduto
+              setLoop={setLoop}
+              item={item}
+              setMostraCaixaEditar={setMostraCaixaEditar}
+              handleAbrirImagemDestaque={handleAbrirImagemDestaque}
+              
+              />
+          }
+        </div>
+        <div>
+          {exibeCaixaImagem &&
+            <CadastrarImagem
+              setLoop={setLoop}
+              show={showImagem}
+              setShow={setShowImagem}
+              onHide={handleCloseImagem}
+              handleClose={handleCloseImagem}
+              handleCloseModal={handleCloseModalImagem}
+              item={item}
+              setMostraCaixaEditar={setMostraCaixaEditar}
+              local={'produtos/salvarimagem'}
+              
+            />
+          }
+        </div>
+      </div>
+      <div className={`${styles.botaoAcao} row`}>
+        <div className={`${styles.botaoAdd}`}>
+          {!mostraCaixaCadastrar &&
+            <button className='btn btn-outline-secondary border-0 btn-sm mb-2'
+              type='button'
+              onClick={handleCaixaCadastrar}
+              
+              >
+              <FaRegPlusSquare size={18} className="me-2" />
+              Novo Produto
+            </button>
+          }
+        </div>
+
+        <div>
+          <TextGetByName setLoop={setLoop}
+            setItens={setItens}
+            itens={itens}
+            localPesquisa={'produtos/pesquisarpornome'}
+            local={'produtos'}
+            paginar={paginar}
+            itensPorPagina={itensPorPagina}
+          />
+        </div>
+
+      </div>
+
+      <table className='table table-hover'>
+        <thead>
+          <tr>
+            <th>
+              <button className='btn' onClick={() => setMostrarImg(!mostrarImg)}>
+                {mostrarImg ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+              </button>
+            </th>
+            <th> Estoque</th>
+            <th> Descrição</th>
+            <th> Valor</th>
+            <th> Valor estoque</th>
+            <th> Imagem destaque</th>
+            <th> Ação</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {itens && itens.map((items) => (
+            <tr >
+              <td key={items.id}>
+                {mostrarImg &&
+                  <img
+                    className={`${styles.imagem}`}
+                    src={`https://localhost:5001/recursos/imagens/${items.imagemUrl}`}
+                    alt={items.descricao}
+                    onError={(e) => {
+                      e.target.onerror = null
+                      e.target.src = error
+                    }}
+                    onClick={() => handleAbrirImagem(items.id)}
+
+                  />
+                }
+              </td>
+              <td>{items.quantidadeEstoque}</td>
+              <td>{items.descricao}</td>
+              <td>{items.valor}</td>
+              <td>{items.valorTotal}</td>
+              <td>
+                <input type="checkbox" disabled checked={items.destacarImagem ? true : false}/>
+                
+
+              </td>
+
+              <td>
+                <BotaoAcao
+                  nome={'Editar'}
+                  handle={() => handleEditar(items.id)}
+                  itens={items.id}
+                />
+                <BotaoAcao
+                  nome={'Excluir'}
+                  handle={() => handleClose(items.id)}
+                  deleteItem={deleteItem}
+                  item={items.descricao}
+                  
+                />
+              </td>
+
+              <td></td>
+              <>
+                <ModalExclusao
+                  show={show}
+                  setShow={setShow}
+                  onHide={handleClose}
+                  handleClose={handleClose}
+                  deleteItem={deleteItem}
+                  item={item}
+                  id={items.id}
+                  handleCloseModal={handleCloseModal}
+                  tipo={'produto'}
+                  nome={item.descricao}
+                />
+              </>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <ItensPorPagina
+        setItensPorPagina={setItensPorPagina}
+        setLoop={setLoop}
+        loop={loop}
+        itens={itens.length}
+      />
+      
+    </div>
+
+  )
+}
+
+export default ListarProdutos

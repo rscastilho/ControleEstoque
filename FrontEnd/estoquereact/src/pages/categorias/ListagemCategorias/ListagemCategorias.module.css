@@ -1,0 +1,22 @@
+body{
+    font-family: sans-serif;
+    align-items: center;
+}
+
+.quantidade{
+    text-align: center;
+}
+
+.cabecalho{
+    display: flex;
+    align-content: space-around;
+}
+
+.botaoAcao{
+    display: flex;
+    align-content: space-around;
+}
+
+.botaoAdd, .itensPagina{
+    text-align: right;
+}

@@ -21,12 +21,20 @@ export class FornecedorService {
   constructor(private http: HttpClient) { }
 
 
+  // getAllFornecedores(skip: number, take: number): Observable<Fornecedor[]>{
+  //   return this.http.get<Fornecedor[]>(`${this.baseUrl}?skip=${skip}&take=${take}`, httpOptions)
+  // }
   getAllFornecedores(): Observable<Fornecedor[]>{
     return this.http.get<Fornecedor[]>(`${this.baseUrl}`, httpOptions)
   }
 
+
   getFornecedorById(fornecedorId: number): Observable<Fornecedor>{
     return this.http.get<Fornecedor>(`${this.baseUrl}/${fornecedorId}`, httpOptions)
+  }
+
+  getContarFornecedor(): Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/contador`, httpOptions)
   }
 
   postFornecedor(fornecedor:Fornecedor):Observable<Fornecedor>{

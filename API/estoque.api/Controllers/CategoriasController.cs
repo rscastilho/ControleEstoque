@@ -22,11 +22,11 @@ namespace estoque.api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult>GetAllCategorias(){
+        public async Task<IActionResult>GetAllCategorias(int skip =0,  int take=10){
             if(!ModelState.IsValid) return BadRequest ("Erro ao processar informações");
             try
             {
-                var resultado = await _categoria.GetAll();
+                var resultado = await _categoria.GetAll(skip, take);
                 return Ok (resultado);
             }
             catch (Exception ex)

@@ -1,0 +1,29 @@
+.botao{
+    /* display: flex; */
+    /* align-content: space-around; */
+
+    text-align: center;
+    margin-top: 10px;
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+    
+}
+.caixaImagem{
+    text-align: center;
+    
+}
+
+.miniatura{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 220px;
+    
+    background-size: cover;
+    border-radius: 8px;
+}
+
+

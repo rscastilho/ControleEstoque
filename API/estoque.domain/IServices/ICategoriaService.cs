@@ -15,7 +15,7 @@ namespace estoque.domain.IServices
         Task<IEnumerable<CategoriaDtoCreateResult>> GetAll(int skip =0, int take = 5);
 
         Task<object> CarregarCategoriaById(int categoriaId);
-        Task<CategoriaDtoCreateResult> CarregarCategoriaPorNome(string categoriaNome);
+        Task<IEnumerable<CategoriaDtoCreateResult>> CarregarCategoriaPorNome(string categoriaNome);
         Task<int> ContarCategorias(string categoriaNome);
 
         

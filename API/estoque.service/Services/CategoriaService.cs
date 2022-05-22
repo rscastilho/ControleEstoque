@@ -58,7 +58,7 @@ namespace estoque.service.Services
 
                 if (categoria != null)
                 {
-                    var verifica = await _categoria.CarregarCategoriaPorNome(categoria.Descricao);
+                    var verifica = await _categoria.VerificaCategoriaExistente(categoria.Descricao);
                     if (verifica == null)
                     {
                         var categoriaMapeada = _mapper.Map<Categoria>(categoria);
@@ -109,12 +109,12 @@ namespace estoque.service.Services
             }
         }
 
-        public async Task<CategoriaDtoCreateResult> CarregarCategoriaPorNome(string categoriaNome)
+        public async Task<IEnumerable<CategoriaDtoCreateResult>> CarregarCategoriaPorNome(string categoriaNome)
         {
             try
             {
                 var resultado = await _categoria.CarregarCategoriaPorNome(categoriaNome);
-                var categoriaFinal = _mapper.Map<CategoriaDtoCreateResult>(resultado);
+                var categoriaFinal = _mapper.Map<IEnumerable<CategoriaDtoCreateResult>>(resultado);
                 return categoriaFinal;
             }
             catch (Exception ex)
@@ -163,7 +163,7 @@ namespace estoque.service.Services
             }
         }
 
-        public async Task<IEnumerable<CategoriaDtoCreateResult>> GetAll(int skip =0, int take = 5)
+        public async Task<IEnumerable<CategoriaDtoCreateResult>> GetAll(int skip =0, int take = 10)
         {
             try
             {

@@ -20,7 +20,7 @@ namespace estoque.api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult>GetAllFornecedores(int skip=0, int take = 3){
+        public async Task<IActionResult>GetAllFornecedores(int skip=0, int take = 5){
             if(!ModelState.IsValid) return BadRequest ("Erro ao processar informações");
             try
             {
@@ -78,6 +78,23 @@ namespace estoque.api.Controllers
                 throw ex;
             }
         }
+
+        [HttpGet("contador")]
+        public async Task<IActionResult> ContadorFornecedor(){
+            if(!ModelState.IsValid) return BadRequest ("Erro ao processar informações");
+            try
+            {
+                var resultado = await _fornecedor.ContarFornecedores();
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
+
 
         [HttpPost]
         public async Task<IActionResult> PostFornecedor(FornecedorDtoCreate fornecedor){

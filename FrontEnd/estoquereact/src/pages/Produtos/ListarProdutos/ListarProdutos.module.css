@@ -1,0 +1,37 @@
+body{
+    font-family: sans-serif;
+    align-items: center;
+}
+
+.quantidade{
+    text-align: center;
+}
+
+.cabecalho{
+    display: flex;
+    align-content: space-around;
+}
+
+.botaoAcao{
+    display: flex;
+    align-content: space-around;
+}
+
+.botaoAdd, .itensPagina{
+    text-align: right;
+}
+
+img{
+    /* height: 110px; */
+    width: 120px;
+    background-size: cover;
+}
+
+table{
+    text-align: center;
+}
+
+.imagem{
+    cursor: pointer;
+    
+}
