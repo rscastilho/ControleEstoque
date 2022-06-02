@@ -184,9 +184,9 @@ const ListarProdutos = () => {
         </thead>
 
         <tbody>
-          {itens && itens.map((items) => (
-            <tr >
-              <td key={items.id}>
+          {itens && itens.map((items, i) => (
+            <tr  key={i}>
+              <td key={i}>
                 {mostrarImg &&
                   <img
                     className={`${styles.imagem}`}
@@ -201,10 +201,10 @@ const ListarProdutos = () => {
                   />
                 }
               </td>
-              <td>{items.quantidadeEstoque}</td>
-              <td>{items.descricao}</td>
-              <td>{items.valor}</td>
-              <td>{items.valorTotal}</td>
+              <td className={items.quantidadeEstoque < 1 ? `${styles.estoqueZero}`: '' }>{items.quantidadeEstoque}</td>
+              <td className={items.quantidadeEstoque < 1 ? `${styles.estoqueZero}`: '' }>{items.descricao}</td>
+              <td className={items.quantidadeEstoque < 1 ? `${styles.estoqueZero}`: '' }>{items.valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</td>
+              <td className={items.quantidadeEstoque < 1 ? `${styles.estoqueZero}`: '' }>{items.valorTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</td>
               <td>
                 <input type="checkbox" disabled checked={items.destacarImagem ? true : false}/>
                 
@@ -212,7 +212,7 @@ const ListarProdutos = () => {
               </td>
 
               <td>
-                <BotaoAcao
+                <BotaoAcao 
                   nome={'Editar'}
                   handle={() => handleEditar(items.id)}
                   itens={items.id}

@@ -146,7 +146,7 @@ const EditarProduto = (props) => {
                                         value={quantidadeEstoque}
                                         onChange={(e) => { setQuantidadeEstoque(e.target.value) }}
                                         placeholder='Quantidade'
-                                        min="1"
+                                        min="0"
                                     />
                                 </label>
                                 <label className={`me-1`}> Quantidade minima:

@@ -35,8 +35,18 @@ namespace estoque.crosscutting.Mapping
             CreateMap<ProdutoDto, Produto>().ReverseMap();
             CreateMap<ProdutoDtoCreate, Produto>().ReverseMap();
             CreateMap<ProdutoDtoUpdate, Produto>().ReverseMap();
+            CreateMap<ProdutoDtoItensCarrinho, Produto>().ReverseMap();
+            CreateMap<ProdutosDtoItensCarrinhoGetAll, Produto>().ReverseMap();
 
-            
+
+            CreateMap<PedidoDto, Pedido>().ReverseMap();
+            CreateMap<PedidoDtoCreate, Pedido>().ReverseMap();
+            CreateMap<PedidoDtoGetAll, Pedido>().ReverseMap();
+
+            CreateMap<ItensCarrinhoDto, ItensCarrinho>().ReverseMap();
+            CreateMap<ItensCarrinhoDtoCreate, ItensCarrinho>().ReverseMap();
+            CreateMap<ItensCarrinhoDtoGetAll, ItensCarrinho>().ReverseMap();
+                
 
 
 

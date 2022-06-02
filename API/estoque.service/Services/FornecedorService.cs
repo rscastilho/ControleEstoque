@@ -204,5 +204,19 @@ namespace estoque.service.Services
                 throw ex;
             }
         }
+
+        public async Task<IEnumerable<Fornecedor>> ListarFornecedoresPorNome(string forncedorNome)
+        {
+            try
+            {
+                var resultado = await _fornecedor.ListarFornecedoresPorNome(forncedorNome);
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
     }
 }

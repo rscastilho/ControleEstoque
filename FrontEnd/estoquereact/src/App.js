@@ -9,6 +9,7 @@ import Home from './pages/home/Home';
 import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/sidebar/Sidebar';
 import Login from './pages/users/login/Login';
+import Register from './pages/users/register/Register';
 
 function App() {
   const { authentication } = useContext(AutContext);

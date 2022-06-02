@@ -69,6 +69,13 @@ namespace estoque.api
 
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IProdutoService, ProdutoService>();
+
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
+            services.AddScoped<IPedidoService, PedidoService>();
+
+            services.AddScoped<IitensCarrinhoRepository, ItensCarrinhoRepository>();
+            services.AddScoped<IitensCarrinhoService, ItensCarrinhoService>();
+
                         
 
             var config = new AutoMapper.MapperConfiguration(options =>

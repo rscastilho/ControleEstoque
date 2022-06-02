@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { post } from '../../../Services/crudApi'
 import styles from './CadastrarFornecedor.module.css'
 

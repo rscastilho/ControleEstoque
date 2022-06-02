@@ -84,6 +84,72 @@ namespace estoque.api.Migrations
                     b.ToTable("Fornecedores");
                 });
 
+            modelBuilder.Entity("estoque.domain.Models.ItensCarrinho", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeleteAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("Deleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("PedidoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProdutoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("double");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PedidoId");
+
+                    b.ToTable("ItensCarrinho");
+                });
+
+            modelBuilder.Entity("estoque.domain.Models.Pedido", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeleteAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("Deleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("UpdateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("ValorTotal")
+                        .HasColumnType("double");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pedidos");
+                });
+
             modelBuilder.Entity("estoque.domain.Models.Perfil", b =>
                 {
                     b.Property<int>("PerfilId")
@@ -139,6 +205,9 @@ namespace estoque.api.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int?>("ItensCarrinhoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("QuantidadeEstoque")
                         .HasColumnType("int");
 
@@ -161,6 +230,8 @@ namespace estoque.api.Migrations
                     b.HasIndex("Descricao");
 
                     b.HasIndex("FornecedorId");
+
+                    b.HasIndex("ItensCarrinhoId");
 
                     b.ToTable("Produtos");
                 });
@@ -229,6 +300,15 @@ namespace estoque.api.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("estoque.domain.Models.ItensCarrinho", b =>
+                {
+                    b.HasOne("estoque.domain.Models.Pedido", null)
+                        .WithMany("ItensCarrinho")
+                        .HasForeignKey("PedidoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("estoque.domain.Models.Perfil", b =>
                 {
                     b.HasOne("estoque.domain.Models.Usuario", "Usuario")
@@ -251,6 +331,10 @@ namespace estoque.api.Migrations
                         .HasForeignKey("FornecedorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("estoque.domain.Models.ItensCarrinho", null)
+                        .WithMany("Produtos")
+                        .HasForeignKey("ItensCarrinhoId");
                 });
 #pragma warning restore 612, 618
         }

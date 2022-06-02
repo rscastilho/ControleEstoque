@@ -17,7 +17,9 @@ namespace estoque.data.Context
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
-
+        public DbSet<Pedido> Pedidos{get;set;}
+        public DbSet<ItensCarrinho> ItensCarrinho { get; set; }
+        
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
@@ -44,6 +46,13 @@ namespace estoque.data.Context
             modelBuilder.Entity<Fornecedor>().HasKey(x => x.Id);
             modelBuilder.Entity<Fornecedor>().HasIndex(x => x.CNPJ).IsUnique();
             modelBuilder.Entity<Fornecedor>().HasMany(x => x.Produtos).WithOne(x => x.Fornecedor);
+
+            // modelBuilder.Entity<Pedido>().ToTable("Pedido");
+            // modelBuilder.Entity<Pedido>().HasKey(x => x.Id);
+            
+            modelBuilder.Entity<ItensCarrinho>().ToTable("ItensCarrinho");
+            modelBuilder.Entity<ItensCarrinho>().HasKey(x => x.Id);
+            modelBuilder.Entity<ItensCarrinho>().HasMany(x => x.Produtos);
                       
         }
 

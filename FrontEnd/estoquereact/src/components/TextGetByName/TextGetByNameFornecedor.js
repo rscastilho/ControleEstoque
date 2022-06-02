@@ -12,9 +12,8 @@ const handleSearch = (e)=>{
         setTimeout(()=>{
             props.setItens('')
             getByName(`${props.localPesquisa}/${pesquisa}`).then((resultado)=>{
-                props.setItens(resultado.data.usuario);
-                 // props.setloop(true)
-            })
+                props.setItens(resultado.data);
+                            })
         },500)
     } else{
         setTimeout(()=> {

@@ -15,6 +15,8 @@ namespace estoque.domain.IServices
     Task<object> CarregarFornecedorById(int fornecedorId);
     Task<IEnumerable<FornecedorDto>> GetAll(int skip =0, int take = 5);
     Task<object> CarregarFornecedorPorNome(string fornecedorNome);
+    
+    Task<IEnumerable<Fornecedor>> ListarFornecedoresPorNome(string forncedorNome);
     Task<object> CarregarFornecedorPorCNPJ(string cnpj);
     Task<int> ContarFornecedores();
     }

@@ -22,7 +22,7 @@ namespace estoque.data.Repository
         {
             try
             {
-                var resultado = await _context.Fornecedores.SingleOrDefaultAsync(x => x.CNPJ.Contains(cnpj));
+                var resultado = await _context.Fornecedores.SingleOrDefaultAsync(x => x.CNPJ.Equals(cnpj));
                 return resultado;
             }
             catch (Exception ex)
@@ -32,11 +32,26 @@ namespace estoque.data.Repository
             }
         }
 
-        public async Task<IEnumerable<Fornecedor>> CarregarFornecedorPorNome(string fornecedorNome)
+        public async Task<Fornecedor> CarregarFornecedorPorNome(string fornecedorNome)
         {
             try
             {
-                var resultado = await _context.Fornecedores.Where(x => x.RazaoSocial.Contains(fornecedorNome) && x.Deleted != true).ToListAsync();
+                var resultado = await _context.Fornecedores
+                .FirstOrDefaultAsync(x => x.RazaoSocial.Contains(fornecedorNome) && x.Deleted != true);
+               return resultado;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<Fornecedor>> ListarFornecedoresPorNome(string forncedorNome)
+        {
+            try
+            {
+                var resultado = await _context.Fornecedores.Where(x => x.RazaoSocial.Contains(forncedorNome)).ToListAsync();
                 return resultado;
             }
             catch (Exception ex)

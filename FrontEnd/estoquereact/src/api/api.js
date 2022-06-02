@@ -3,6 +3,8 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+// const urlApi = 'https://localhost:44378/api/'
+
 const urlApi = 'https://localhost:5001/api'
 const aut = `bearer ${JSON.parse(localStorage.getItem(('token')))}`
 

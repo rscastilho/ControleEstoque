@@ -79,6 +79,21 @@ namespace estoque.api.Controllers
             }
         }
 
+        [HttpGet("listarfornecedores/{nome}")]
+        public async Task<IActionResult> GetFornecedoresByNome(string nome){
+            if(!ModelState.IsValid) return BadRequest ("Erro ao processar informações");
+            try
+            {
+                var resultado = await _fornecedor.ListarFornecedoresPorNome(nome);
+                return Ok (resultado);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
         [HttpGet("contador")]
         public async Task<IActionResult> ContadorFornecedor(){
             if(!ModelState.IsValid) return BadRequest ("Erro ao processar informações");

@@ -35,3 +35,9 @@ table{
     cursor: pointer;
     
 }
+
+.estoqueZero{
+    background-color: red;
+    color: red;
+    font-weight: bold;
+}

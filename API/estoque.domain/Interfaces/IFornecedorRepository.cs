@@ -8,7 +8,8 @@ namespace estoque.domain.Interfaces
 {
     public interface IFornecedorRepository : IRepositoryGeneric<Fornecedor>
     {
-     Task<IEnumerable<Fornecedor>> CarregarFornecedorPorNome(string fornecedorNome);
+     Task<Fornecedor> CarregarFornecedorPorNome(string fornecedorNome);
+     Task<IEnumerable<Fornecedor>> ListarFornecedoresPorNome(string forncedorNome);
      Task<Fornecedor> CarregarFornecedorPorCNPJ(string cnpj);
      
 

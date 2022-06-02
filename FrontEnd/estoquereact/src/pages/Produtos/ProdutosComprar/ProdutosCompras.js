@@ -4,6 +4,8 @@ import { getAll } from './../../../Services/crudApi';
 import error from '../../../assets/error-img.jpg'
 import Titulo from './../../../components/Titulo/Titulo';
 import { AutContext } from '../../../context/AutContext';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 
@@ -15,30 +17,45 @@ const ProdutosCompras = () => {
     const { setItensCarrinho, itensCarrinho } = useContext(AutContext);
 
     const local = JSON.parse(localStorage.getItem('carrinho')) || ''
+    const [quantidadeItem, setQuantidadeItem] = useState(local.quantidadeEstoque)
     const carrinho = [...local]
 
 
     const handleAddCar = (itemsAdd) => {
-        
+
         let itensCarrinho = carrinho.find(x => x.id === itemsAdd.id);
-        if(itensCarrinho){
-            itensCarrinho.quantidade +=1;
-        }else{
-            carrinho.push({ ...itemsAdd, quantidade: 1})
+        if (itensCarrinho) {
+            if(itensCarrinho.quantidade < itensCarrinho.quantidadeEstoque){
+                itensCarrinho.quantidade += 1;
+                toast.success(`${itemsAdd.descricao} incluído no carrinho`, { autoClose: 2000 })
+                setQuantidadeItem(itensCarrinho.quantidadeEstoque -= 1);
+                setItensCarrinho(JSON.parse(localStorage.getItem('carrinho')))
+            }
+            else{
+                toast.warning("Quantidade maxima permitida")
+                return
+            }
+
+        } else {
+            carrinho.push({ ...itemsAdd, produtoId: itemsAdd.id, quantidade: 1, valor: itemsAdd.valor })
+
+            toast.success(`${itemsAdd.descricao} incluído no carrinho`, { autoClose: 2000 })
+
         }
-        console.log(carrinho)
         localStorage.setItem('carrinho', JSON.stringify(carrinho))
-        
-        
+        setItensCarrinho(JSON.parse(localStorage.getItem('carrinho')))
+
+
+
     }
 
     useEffect(() => {
 
         getAll(`Produtos?skip=${paginar}&take=${itensPorPagina}`).then(produtos => {
             setItens(produtos.data)
-            console.log(itens)
+
         })
-        
+
 
     }, [])
 
@@ -69,10 +86,11 @@ const ProdutosCompras = () => {
                                 />
                             </div>
                             <div className={styles.valor}>
-                                R$ {items.valor}
+                                {items.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                             </div>
                             <div className={styles.disponivel}>
                                 Disponivel:
+
                                 <strong className={styles.quantidade}> {items.quantidadeEstoque} </strong> unids.
                             </div>
 
@@ -80,12 +98,11 @@ const ProdutosCompras = () => {
                         </div>
                         <div className={`card-footer ${styles.footer}`}>
                             <button
-                                className={`btn btn-sm me-3 ${items.quantidadeEstoque === 0 ? styles.botaoEstoque : styles.botao }  `}
+                                className={`btn btn-sm me-3 ${items.quantidadeEstoque === 0 ? styles.botaoEstoque : styles.botao}  `}
                                 onClick={() => handleAddCar(items)}
                                 disabled={items.quantidadeEstoque === 0 ? true : false}
-
-
-                            >Comprar</button>
+                                >Comprar</button>
+                                {/* {console.log(items)} */}
                             <button className={`btn btn-sm btn-secondary ${styles.botaoInfo}`}>+ info</button>
                         </div>
                     </div>

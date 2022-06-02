@@ -102,6 +102,7 @@ const ListagemCategorias = () => {
             setItens={setItens}
             itens={itens}
             local={'categorias'}
+            localPesquisa={'categorias'}
             paginar={paginar}
             itensPorPagina={itensPorPagina}
           />

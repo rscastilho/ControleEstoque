@@ -3,33 +3,33 @@ import WebApi from './../api/WebApi';
 
 export const AutContext = createContext();
 
-export const AutContextProvider = ({children}) => {
+export const AutContextProvider = ({ children }) => {
       const [authentication, setAuthentication] = useState(false);
-      const [itensCarrinho, setItensCarrinho]= useState(0);
-      
-            
-      useEffect(()=>{
+      const [itensCarrinho, setItensCarrinho] = useState(0);
+      const [perfil, setPerfil] = useState('');
+
+      useEffect(() => {
             const autent = localStorage.getItem('token');
-            if(autent){
+            setPerfil(JSON.parse(localStorage.getItem('@perfil')))
+
+            if (autent) {
                   setAuthentication(true);
                   WebApi.defaults.headers.Authorization = `Bearer ${JSON.parse(autent)}`;
-             }
-            },[])
-            
-     
+            }
+      }, [])
+
       return (
-      <AutContext.Provider 
-      value={{
-            authentication, 
-            setAuthentication, 
-            itensCarrinho, 
-            setItensCarrinho
-            }}>
-      {children}
-      {console.log("carrinhoContext",itensCarrinho)}
-      </AutContext.Provider>
-
-
+            <AutContext.Provider
+                  value={{
+                        authentication,
+                        setAuthentication,
+                        itensCarrinho,
+                        setItensCarrinho,
+                        perfil, 
+                        setPerfil
+                  }}>
+                  {children}
+            </AutContext.Provider>
       )
 }
 

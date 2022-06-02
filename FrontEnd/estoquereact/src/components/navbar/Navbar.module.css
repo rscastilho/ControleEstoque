@@ -33,6 +33,10 @@ color:black
     /* margin-right: 15px; */
 }
 
+.perfil{
+    color: black;
+}
+
 .logout{
     font-size: 1.4em;
 }

@@ -126,9 +126,9 @@ const CadastrarProduto = (props) => {
                                 className="form-select form-select-sm"
                                 aria-label=".form-select-sm example">
                                     <option defaultValue> Selecione a categoria: </option>
-                                {categorias && categorias.map((itens) => (
+                                {categorias && categorias.map((itens,i) => (
                                     <>
-                                        <option key={itens.id} value={itens.id}>
+                                        <option key={i} value={itens.id}>
                                             {itens.descricao}
                                         </option>
                                     </>
@@ -157,7 +157,7 @@ const CadastrarProduto = (props) => {
                                     value={quantidadeEstoque}
                                     onChange={(e) => { setQuantidadeEstoque(e.target.value) }}
                                     placeholder='Quantidade'
-                                    min="1"
+                                    min="0"
                                     />
                             </label>
                             <label className={`me-1`}> Quantidade minima:
@@ -178,9 +178,9 @@ const CadastrarProduto = (props) => {
                                 className="form-select form form-select-sm"
                                 aria-label=".form-select-sm example">
                                 <option defaultValue > Selecione o fornecedor: </option>
-                                {fornecedores && fornecedores.map((itens) => (
+                                {fornecedores && fornecedores.map((itens,i) => (
                                     <>
-                                        <option key={itens.id} value={itens.id}>
+                                        <option key={i} value={itens.id}>
                                             {itens.razaoSocial}
                                         </option>
                                     </>

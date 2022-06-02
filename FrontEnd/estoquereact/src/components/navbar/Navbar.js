@@ -1,23 +1,33 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
 import { useState, useEffect, useContext } from 'react';
-import { FaReact, FaSignOutAlt, FaShoppingCart } from 'react-icons/fa'
-
+import { FaReact, FaSignOutAlt, FaShoppingCart, FaCoins } from 'react-icons/fa'
 import { AutContext } from '../../context/AutContext'
+import { UtilService } from '../../Services/util'
 
 
 const Navbar = () => {
 
   const navigate = useNavigate()
-  const { authentication, setAuthentication, itensCarrinho } = useContext(AutContext)
-
-
+  const { authentication, setAuthentication, perfil, setPerfil } = useContext(AutContext)
   const [botaoMenu, setBotaoMenu] = useState(<FaSignOutAlt />)
+  const [botaoPedido, setBotaoPedido] = useState(<FaCoins size={25} color="blue" />)
+
+  const consultarPedidos = useCallback(() => {
+    navigate('/pedidos')
+
+  }, [])
 
   useEffect(() => {
     authentication ? setBotaoMenu(<FaSignOutAlt className={styles.logout} />) : setBotaoMenu('Login')
+
   }, [authentication])
+
+  useEffect(() => {
+    setPerfil(+localStorage.getItem('@perfil'))
+
+  }, [perfil, setPerfil])
 
   const handleLogof = () => {
     localStorage.clear();
@@ -46,21 +56,31 @@ const Navbar = () => {
       <div></div>
       <div>
         <span className={styles.email}>{JSON.parse(localStorage.getItem('@email'))}</span>
-        {authentication ?
-        <>
-        <div className={`${styles.botoes}`}>
-          {localStorage.getItem('carrinho') &&
-          <Link to='/carrinho'>
-            <FaShoppingCart size={25} className='ms-2' color='blue' />
-          </Link>
-                    }
-          <button className='btn btn-outline' onClick={handleLogin}>{botaoMenu}</button> 
-        </div>
-        </>
-          :
-          <button className='btn btn-outline' onClick={handleLogof}>{botaoMenu}</button>
 
+        <button className='btn btn-outline' onClick={consultarPedidos}>{botaoPedido}</button>
+
+        {authentication ?
+          <>
+            <div className={`${styles.botoes}`}>
+              {localStorage.getItem('carrinho') &&
+                <Link to='/carrinho'>
+                  <FaShoppingCart size={25} className='ms-2' color='blue' />
+                  <span class="translate-middle badge rounded-pill bg-danger ms-1">
+                    {JSON.parse(localStorage.getItem("carrinho")).length}
+                  </span>
+                </Link>
+
+              }
+              <span className={`${styles.perfil}`}>{UtilService.validaPerfil(perfil)}</span>
+              <button className='btn btn-outline' onClick={handleLogin}>{botaoMenu}</button>
+            </div>
+          </>
+          :
+          <>
+            <button className='btn btn-outline' onClick={handleLogof}>{botaoMenu}</button>
+          </>
         }
+
       </div>
 
     </nav>
