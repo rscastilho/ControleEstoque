@@ -99,7 +99,7 @@ const ListarProdutos = () => {
 
   return (
     
-    <div className='container'>
+    <div className='row col-md-12 row-cols-sm-12'>
             
       <Titulo titulo={'Produtos cadastrados'}  />
       <div>

@@ -47,7 +47,8 @@ const EditarFornecedor = (props) => {
                 className={`ms-2 me-1`}
                 value={cnpj}
                 onChange={(e) => { setCnpj(e.target.value) }}
-                placeholder='CNPJ' />
+                placeholder='CNPJ'
+                maxLength={14} />
             </label>
 
             <div>

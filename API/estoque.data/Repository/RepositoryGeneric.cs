@@ -71,6 +71,20 @@ namespace estoque.data.Repository
             }
         }
 
+        public async Task<int> ContadorRegistrosById(int id)
+        {
+            try
+            {
+                var resultado = await _context.Set<TEntity>().Where(x => x.Deleted != true && x.Id == id).CountAsync();
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
         public async Task<bool> Deletar(int Id)
         {
             try

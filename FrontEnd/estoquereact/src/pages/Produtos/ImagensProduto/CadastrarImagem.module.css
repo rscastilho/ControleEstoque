@@ -5,17 +5,20 @@
     align-content: center;
     justify-content: center;
     
+    
 }
 
 .imagem{
     width: 350px;
     background-size: cover;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 input[type="file"]{
  font-family:Roboto ;
  font-size: 0.9em;
  border: 0;
+ display: none;
  
 }

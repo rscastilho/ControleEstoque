@@ -9,8 +9,11 @@ namespace estoque.domain.Interfaces
     public interface IPedidoRepository : IRepositoryGeneric<Pedido>
     {
      Task<IEnumerable<Pedido>> getAllPedidos();
-     Task<IEnumerable<Pedido>> getPedidosByUserId(int userId);
+     Task<IEnumerable<Pedido>> getPedidosByUserId(int userId, int skip, int take);
      Task<Pedido> CarregarPedidoById(int pedidoId);
-     
+
+     Task<int> ContadorPedidoByUserId(int userId);
+
+          
     }
 }

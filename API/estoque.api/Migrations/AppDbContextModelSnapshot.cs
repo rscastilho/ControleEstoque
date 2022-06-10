@@ -118,6 +118,8 @@ namespace estoque.api.Migrations
 
                     b.HasIndex("PedidoId");
 
+                    b.HasIndex("ProdutoId");
+
                     b.ToTable("ItensCarrinho");
                 });
 
@@ -135,6 +137,12 @@ namespace estoque.api.Migrations
 
                     b.Property<bool?>("Deleted")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("StatusPedidos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TiposPagamentos")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
@@ -305,6 +313,12 @@ namespace estoque.api.Migrations
                     b.HasOne("estoque.domain.Models.Pedido", null)
                         .WithMany("ItensCarrinho")
                         .HasForeignKey("PedidoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("estoque.domain.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

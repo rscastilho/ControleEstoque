@@ -13,6 +13,7 @@ using estoque.domain.Interfaces;
 using estoque.domain.IServices;
 using estoque.domain.Security;
 using estoque.service.Services;
+using estoque.service.Validations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -76,7 +77,9 @@ namespace estoque.api
             services.AddScoped<IitensCarrinhoRepository, ItensCarrinhoRepository>();
             services.AddScoped<IitensCarrinhoService, ItensCarrinhoService>();
 
-                        
+            services.Configure<ConfiguracoesEmail>(Configuration.GetSection("configuracoesEmail"));
+            services.AddScoped<IEmailService, EmailService>();
+                                    
 
             var config = new AutoMapper.MapperConfiguration(options =>
             {

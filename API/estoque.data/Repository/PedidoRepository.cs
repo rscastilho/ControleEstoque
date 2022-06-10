@@ -29,19 +29,27 @@ namespace estoque.data.Repository
             return resultado;
         }
 
+        public async Task<int> ContadorPedidoByUserId(int userId)
+        {
+            var resultado = await _context.Pedidos.Where(x => x.UsuarioId == userId).CountAsync();
+            return resultado;
+        }
+
         public async Task<IEnumerable<Pedido>> getAllPedidos()
         {
             var resultado = await _context.Pedidos.AsNoTracking().ToListAsync();
             return resultado;
         }
 
-        public async Task<IEnumerable<Pedido>> getPedidosByUserId(int userId)
+        public async Task<IEnumerable<Pedido>> getPedidosByUserId(int userId, int skip, int take)
         {
             var resultado = await _context.Pedidos
                                             .Include(x => x.ItensCarrinho)
                                             .ThenInclude(x=> x.Produto)
                                             .Where(x => x.UsuarioId == userId)
                                             .OrderByDescending(x=> x.CreateAt)
+                                            .Take(take)
+                                            .Skip(skip)
                                             .AsNoTracking()
                                             .ToListAsync();
             return resultado;

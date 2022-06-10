@@ -9,8 +9,11 @@ namespace estoque.domain.Interfaces
     public interface IUsuarioRepository: IRepositoryGeneric<Usuario>
     {
         Task<Usuario> GetByEmail(string email);
+
         Task<bool> VerificaEmail(string email);
         Task<bool> VerificaCPF(string cpf);
+
+
 
         Task<string> PegarSenhaPorId(int id);
         Task<string> PegarDataExpiraId(int id);

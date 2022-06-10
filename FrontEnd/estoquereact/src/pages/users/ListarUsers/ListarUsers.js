@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import WebApi from '../../../api/WebApi';
 import styles from './ListarUsers.module.css'
-import {FaUser, FaUserCircle} from 'react-icons/fa'
+import {FaUserCircle} from 'react-icons/fa'
+import {UtilService} from '../../../Services/util';
 
 const ListarUsers = () => {
     const [itens, setItens] = useState([]);
@@ -38,9 +39,9 @@ const ListarUsers = () => {
                     {itens.map((item)=>(
                     <tr key={item.id}>
                         <td><FaUserCircle size={28}/></td>
-                        <td>{item.nome}</td>
+                        <td>{UtilService.getUpperCase(item.nome)}</td>
                         <td>{item.email}</td>
-                        <td>{item.cpf}</td>
+                        <td>{UtilService.cpf(item.cpf)}</td>
                         
                         <td>
                             <button className='btn btn-outline-warning btn-sm '>Edit</button>

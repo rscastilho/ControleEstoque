@@ -72,11 +72,11 @@ namespace estoque.api.Controllers
         }
 
         [HttpGet("pedidosbyuserId/{userId}")]
-        public async Task<IActionResult> getByUserId(int userId){
+        public async Task<IActionResult> getByUserId(int userId, int skip=0, int take=5){
             if(!ModelState.IsValid) return BadRequest("Erro ao processar informações");
             try
             {
-                var resultado = await _pedido.getPedidosByUserId(userId);
+                var resultado = await _pedido.getPedidosByUserId(userId, skip, take);
                 return Ok(resultado);
             }
             catch (Exception ex)
@@ -86,6 +86,20 @@ namespace estoque.api.Controllers
             }
         }
 
-        
+        [HttpGet("contarpedidoporusuario/{userId}")]
+        public async Task<IActionResult> countPedidoByUserId(int userId){
+            if(!ModelState.IsValid) return BadRequest("Erro ao processar informações");
+            try
+            {
+                var resultado = await _pedido.ContadorPedidoByUserId(userId);
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
     }
 }

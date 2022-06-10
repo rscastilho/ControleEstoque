@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import styles from './CadastrarImagem.module.css'
 import { salvarImagem, put } from './../../../Services/crudApi';
@@ -9,6 +9,7 @@ const CadastrarImagem = (props) => {
   const [carregaImagem, setCarregaImagem] = useState('');
   const [imagemUrl, setImagemUrl] = useState('uploadImage.jpg');
   const [imagemFile, setImagemFile] = useState();
+  const openFile = useRef();
 
   const dadosAtualizados = {
     id: props.item.id,
@@ -42,6 +43,10 @@ const CadastrarImagem = (props) => {
       }
       console.log('imagem carregada', image, 'imagemstate', imagemFile)
     }
+  }
+
+  const handleOpenFile = () => {
+    openFile.current.click()
   }
 
   const handleSalvarImagem = () => {
@@ -81,12 +86,21 @@ const CadastrarImagem = (props) => {
                 e.target.onerror = null
                 e.target.src = error
               }}
-              alt='imagem' />
+              alt='imagem'
+              onClick={handleOpenFile}
+            />
           }
 
         </div>
         <div className={`${styles.caixaImagem}`}  >
-          <input className='btn btn-sm mt-2' accept='image/*' type='file' onChange={handleCarregaImagem} />
+          <input
+            className='btn btn-sm mt-2'
+            accept='image/*'
+            type='file'
+            onChange={handleCarregaImagem}
+            ref={openFile}
+
+          />
 
         </div>
 

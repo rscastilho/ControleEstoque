@@ -7,26 +7,36 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useEffect } from 'react';
 import { post } from '../../../Services/crudApi'
+import { UtilService } from '../../../Services/util'
 
 
 const FinalizarPedido = () => {
 
     const { setItensCarrinho } = useContext(AutContext);
-    const [pedido, setCarrinho] = useState(JSON.parse(localStorage.getItem('@pedido')));
+    const [pedido] = useState(JSON.parse(localStorage.getItem('@pedido')));
     const [nome] = useState(JSON.parse(localStorage.getItem('@nome')))
-    const [pagamento, setPagamento] = useState('1')
+    const [tiposPagamentos, setTiposPagamentos] = useState(0)
+    const [loading , setLoading] = useState(false);
+    const pagamentos = ([
+        //  {id: 0, descricao: 'Cartão de credito'},
+        {id: 1, descricao: 'Boleto'},
+        {id: 2, descricao: 'PIX'},
+        {id: 3, descricao: 'Débito em conta'}
+    ])
     const navigate = useNavigate();
     
-    let compraFinalizada = {}
+    let compraFinalizada = ''
 
     const postPedido = async (data) => {
-         await post('/Pedidos', data).then((resultado) => {
-            toast.success(`Pedido numero ${resultado.data.id} - valor R$ ${resultado.data.valorTotal} - Realizado com sucesso.` , 
-            { autoClose: 3000, position:'bottom-center' })
-            console.log('resultado',resultado)
+        setLoading(true);
+        await post('/Pedidos', data).then((resultado) => {
+            toast.success(`Pedido numero ${resultado.data.id} - valor R$ ${resultado.data.valorTotal} - Realizado com sucesso.`,
+                { autoClose: 3000, position: 'bottom-center' })
+            console.log('resultado', resultado)
+            setLoading(false);
             navigate('/');
-                        
-         })
+
+        })
     }
 
     const handleCancelarComprar = () => {
@@ -36,16 +46,17 @@ const FinalizarPedido = () => {
     }
 
     const handleComprar = () => {
-        compraFinalizada = pedido;
+        compraFinalizada = { ...pedido, TiposPagamentos: tiposPagamentos };
         postPedido(compraFinalizada);
         localStorage.removeItem('carrinho')
-        localStorage.setItem('@pedidoFinalizado', JSON.stringify(compraFinalizada))
+        localStorage.removeItem('@pedido')
+        // localStorage.setItem('@pedidoFinalizado', JSON.stringify(compraFinalizada))
 
-        console.log('comprafinalizada', compraFinalizada)
+        console.log('pedido realizado', compraFinalizada)
     }
 
     useEffect(() => {
-        console.log('pedido',pedido)
+        console.log('pedido', pedido)
 
     }, [])
 
@@ -67,7 +78,7 @@ const FinalizarPedido = () => {
                                     <tr>
                                         <td>{x.descricao}</td>
                                         <td>{x.Quantidade}</td>
-                                        <td>{x.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                                        <td>{UtilService.formatCurrency(x.valor)}</td>
                                     </tr>
                                 </>
                             ))}
@@ -83,11 +94,17 @@ const FinalizarPedido = () => {
                     </div>
                     <div className='card-footer p-4'>
                         <span>Forma de pagamento: </span>
-                        <select className="form-select" onChange={(e) => setPagamento(e.target.value)}>
-                            <option value='1'>Cartão de credito</option>
-                            <option value='2'>Boleto</option>
-                            <option value='3'>PIX</option>
-                            <option value='4'>Débito em conta</option>
+                        <select className="form-select" onChange={(e) => setTiposPagamentos(e.target.value)}>
+                            <option defaultValue={0}>Cartão de crédito</option>
+                        {pagamentos.map((x => (
+                            <>
+                            <option value={x.id}>{x.descricao}</option>
+                            {/* <option value={0}>Cartão de crédito</option>
+                            <option value={1}>Boleto</option>
+                            <option value={2}>PIX</option>
+                        <option value={3}>Débito em conta</option> */}
+                    </>
+                    )))}
                         </select>
                     </div>
                     <div className={`card-footer p-4 ${styles.valorTotal}`}>
@@ -95,7 +112,6 @@ const FinalizarPedido = () => {
                             <span>Total a pagar:</span>
                             <span className={`${styles.valor}`}>
                                 {pedido.valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                            
                             </span>
                         </div>
                     </div>
@@ -109,7 +125,11 @@ const FinalizarPedido = () => {
                                 <button onClick={() => handleCancelarComprar()} className='btn btn-danger me-2'>Cancelar compra</button>
                             </Link>
                             <Link to='/finalizarpedido'>
+                                {loading ? 
+                                <button onClick={handleComprar} className='btn btn-primary' disabled='true'>Aguarde...</button>
+                                : 
                                 <button onClick={handleComprar} className='btn btn-primary'>Finalizar compra</button>
+                                }
                             </Link>
                             <div></div>
                         </div>

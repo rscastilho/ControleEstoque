@@ -10,11 +10,14 @@ const Sidebar = () => {
   const { perfil } = useContext(AutContext);
 
   return (
+    <div className='col'>
+
+    
     <div className='row row-cols-sm-auto'>
 
       {perfil === 0 &&
         <>
-          <div className={`${styles.sideBar} mt-0 navegacao d-none d-md-block  col-sm-2 col-md-2`}>
+          <div className={`${styles.sideBar} mt-0 navegacao d-none d-md d-md-block col-sm-2 col-md-2`}>
             <ul className='list-group mt-4'>
 
               <div>
@@ -66,10 +69,17 @@ const Sidebar = () => {
         </>
       }
 
-      <div className='conteudo col-sm col-md col-lg col-xl'>
+      <div className='conteudo col-sm d-md col-md-8 col-lg col-xl'>
         <Routs />
       </div>
 
+    </div>
+    <div className={ `${styles.footer}`}>
+      <div className={`${styles.footerTexto}`}>
+          <span className={`${styles.footerTexto1}`}> Desenvolvido by </span><span className={`${styles.footerTexto2}`}>rCastilho </span>
+          
+      </div>
+    </div>
     </div>
   )
 }

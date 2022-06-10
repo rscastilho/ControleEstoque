@@ -22,3 +22,24 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.tipoPagamento{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: brown;
+
+}
+.statusPedido{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #07f56e;
+
+}
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

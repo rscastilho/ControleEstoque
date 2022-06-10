@@ -3,7 +3,7 @@ import jwt_decode from 'jwt-decode';
 
 export const validaPerfil = (token) => {
     const decriptaToken = jwt_decode(token);
-    
+        
     switch (decriptaToken.role) {
         case 'Administrador': return 0;
             break;

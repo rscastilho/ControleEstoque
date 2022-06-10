@@ -1,24 +1,47 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Titulo from '../../../components/Titulo/Titulo'
 import styles from './PedidosById.module.css'
 import { getById } from './../../../Services/crudApi'
 import error from './../../../assets/error-img.jpg'
 import { UtilService } from '../../../Services/util'
+import { useEffect } from 'react';
+
 
 
 const PedidosById = () => {
     const [pedidos, setPedidos] = useState([]);
+    const [numeroPedidos, setNumerosPedidos] = useState('');
     const [id] = useState(JSON.parse(localStorage.getItem('@id')));
     const [nome] = useState(JSON.parse(localStorage.getItem('@nome')));
+    const [take, setTake] = useState(5);
+    const [skip, setSkip] = useState(0);
+    const tableRef = useRef(null)
+    const [numeroBotoes, setNumeroBotoes] = useState('');
 
     useMemo(() => {
-        getById(`Pedidos/pedidosbyuserId/${id}`).then((resultado) => {
+        getById(`Pedidos/pedidosbyuserId/${id}?skip=${skip}&take=${take}`).then((resultado) => {
             setPedidos(resultado.data);
-
         })
-    }, [id])
 
+        getById(`Pedidos/contarpedidoporusuario/${id}`).then((resultado) => {
+            console.log(resultado.data)
+            setNumerosPedidos(resultado.data);
+        })
+
+
+    }, [id, take, skip])
+
+    useEffect(() => {
+        numeroBtn()
+    })
+
+    const numeroBtn = () => {
+
+        const numero = Math.ceil(numeroPedidos / 5)
+        setNumeroBotoes(numero)
+        return numero;
+    }
 
     return (
         <>
@@ -35,11 +58,11 @@ const PedidosById = () => {
                         <span>
                             <span className={`${styles.nome}`}>
                                 {nome}
-                            </span>. Você tem {pedidos.length} pedidos</span>
+                            </span>. Você tem {numeroPedidos && numeroPedidos} pedidos</span>
                     </div>
 
                     {pedidos.map((itens, i) => (
-                        <div key={itens.id} className={`${styles.pedidos}`}>
+                        <div key={i} className={`${styles.pedidos}`}>
                             <div className={`accordion w-50 mb-3`} id="accordionExample">
                                 <div className="accordion-item  ">
                                     <h2 className={`accordion-header`} id={`item00${i}`}>
@@ -49,16 +72,25 @@ const PedidosById = () => {
                                             data-bs-target={`#collapse${i}`}
                                             aria-expanded="true"
                                             aria-controls={`collapse${i}`}>
-                                            <span>
+                                            <span ref={tableRef}>
                                                 Numero: {itens.id}
                                             </span>
                                             <span>
-                                                Data do pedido: {itens.createAt}
+                                                Data do pedido: {UtilService.formatDate(itens.createAt)}
                                             </span>
                                             <span>
                                                 Valor total  {UtilService.formatCurrency(itens.valorTotal)}
                                             </span>
+                                            <div className={`${styles.statusPedido}`}>
+                                                <apan>
+                                                    Status do pedido:
+                                                </apan>
+                                                <span>
+                                                    {UtilService.statusPedido(itens.statusPedidos)}
+                                                </span>
+                                            </div>
                                         </button>
+
                                     </h2>
                                     <div id={`collapse${i}`}
                                         className="accordion-collapse collapse collapse"
@@ -68,16 +100,16 @@ const PedidosById = () => {
                                             <table className='table'>
                                                 <thead>
                                                     <tr>
-                                                        <th>Produto</th>
-                                                        <th>descricao</th>
-                                                        <th>quantidade</th>
-                                                        <th>Valor</th>
+                                                        <th>Imagem</th>
+                                                        <th>Descrição</th>
+                                                        <th>Quantidade</th>
+                                                        <th>Valor unit.</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     {itens.itensCarrinho.map((x) => (
-                                                        <tr>
-                                                            <td>
+                                                        <tr key={x.id}>
+                                                            <td >
                                                                 <img
                                                                     className={`${styles.imagem}`}
                                                                     src={`https://localhost:5001/recursos/imagens/${x.produto.imagemUrl}`}
@@ -89,11 +121,19 @@ const PedidosById = () => {
                                                             </td>
                                                             <td> {x.produto.descricao}</td>
                                                             <td> {x.quantidade}</td>
-                                                            <td> {x.valor}</td>
+                                                            <td> {UtilService.formatCurrency(x.valor)}</td>
                                                         </tr>
                                                     ))}
                                                 </tbody>
                                             </table>
+                                            <div className={`${styles.tipoPagamento}`}>
+                                                <span>
+                                                    Tipo de pagamento:
+                                                </span>
+                                                <span>
+                                                    {UtilService.tipoPagamento(itens.tiposPagamentos)}
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -102,6 +142,23 @@ const PedidosById = () => {
                     ))}
                 </div>
             }
+            <div className={`${styles.botoes}`}>
+                <button
+                    disabled={pedidos.length < 5 ? true : false}
+                    onClick={(e) => {
+                        setSkip(skip + 5)
+                        setTake(take + 5)
+                    }}
+                >Anterior</button>
+                {numeroBotoes}
+                <button
+                    disabled={skip < 1 ? true : false}
+                    onClick={(e) => {
+                        setSkip(skip - 5)
+                        setTake(take - 5)
+                    }}
+                >Proximo</button>
+            </div>
             <hr />
             <div>
 

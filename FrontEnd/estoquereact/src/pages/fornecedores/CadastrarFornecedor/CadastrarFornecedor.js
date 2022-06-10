@@ -40,7 +40,9 @@ const CadastrarFornecedor = (props) => {
                     className={`ms-2 me-1`} 
                     value={cnpj} 
                     onChange={(e)=> {setCnpj(e.target.value)}} 
-                    placeholder='Insira o CNPJ' />
+                    placeholder='Insira o CNPJ'
+                    maxLength={14} 
+                    />
                 </label>
 
                 <div>

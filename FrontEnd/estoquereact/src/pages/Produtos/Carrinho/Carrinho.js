@@ -29,7 +29,7 @@ const Carrinho = () => {
         pedido = { usuarioId: usuarioId, itensCarrinho: itensCarrinho, valorTotal: valorTotal }
 
         localStorage.setItem('@pedido', JSON.stringify(pedido))
-    
+
     }
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const Carrinho = () => {
         }
         localStorage.setItem('carrinho', JSON.stringify(carrinho))
         setItensCarrinho(JSON.parse(localStorage.getItem('carrinho')))
-        
+
     }
 
     const handleDecrementaQuantidade = (id) => {
@@ -83,7 +83,7 @@ const Carrinho = () => {
 
         localStorage.setItem('carrinho', JSON.stringify(carrinho))
         setItensCarrinho(JSON.parse(localStorage.getItem('carrinho')))
-        }
+    }
 
 
     useEffect(() => {
@@ -133,10 +133,10 @@ const Carrinho = () => {
                                         {items.quantidade}
                                         <BsPlusCircle className='ms-2' size={20}
                                             onClick={() => handleIncrementaQuantidade(items.id)}
-                                            />
+                                        />
                                     </td>
-                                    <td>{items.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-                                    <td> {(items.quantidade * items.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                                    <td>{UtilService.formatCurrency(items.valor)}</td>
+                                    <td> {UtilService.formatCurrency(items.quantidade * items.valor)}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -154,8 +154,7 @@ const Carrinho = () => {
                                 onClick={handleFinalizarCompra} >Finalizar compra</button>
                         </Link>
                         <div>
-                            {itens.forEach((x) => (valorTotal += (x.valor * x.quantidade)))
-                            }
+                            {itens.forEach((x) => (valorTotal += (x.valor * x.quantidade)))}
                             <span className={`${styles.total}`}>Valor total: </span>
                             <strong className={`${styles.valorTotal}`}>
                                 {UtilService.formatCurrency(valorTotal)}

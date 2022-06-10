@@ -4,12 +4,12 @@ import CadastrarFornecedor from '../CadastrarFornecedor/CadastrarFornecedor';
 import styles from './ListarFornecedores.module.css'
 import EditarFornecedor from './../EditarFornecedor/EditarFornecedor';
 import { FaRegPlusSquare } from 'react-icons/fa';
-import TextGetByName from '../../../components/TextGetByName/TextGetByName';
 import BotaoAcao from './../../../components/botoesAcao/BotaoAcao';
 import { del, getAll, getById } from '../../../Services/crudApi';
 import ModalExclusao from '../../../components/ModalExclusao/ModalExclusao';
 import ItensPorPagina from '../../../components/ItensPorPagina/ItensPorPagina';
 import TextGetByNameFornecedor from '../../../components/TextGetByName/TextGetByNameFornecedor';
+import {UtilService} from '../../../Services/util'
 
 const ListarFornecedores = () => {
   const [item, setItem] = useState("");
@@ -133,8 +133,8 @@ const ListarFornecedores = () => {
           {itens && itens.map((items) => (
 
             <tr key={items.id}>
-              <td>{items.razaoSocial}</td>
-              <td>{items.cnpj}</td>
+              <td>{UtilService.getUpperCase(items.razaoSocial)}</td>
+              <td>{UtilService.cnpj(items.cnpj)}</td>
               <td>
                 <BotaoAcao
                   nome={'Editar'}

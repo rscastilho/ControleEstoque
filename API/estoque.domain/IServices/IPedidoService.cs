@@ -13,8 +13,12 @@ namespace estoque.domain.IServices
         Task<object> Deletar(int id);
         Task<IEnumerable<Pedido>> getAllPedidos();
         Task<IEnumerable<Pedido>> GetAll(int skip =0, int take = 5);
-        Task<IEnumerable<PedidoDtoGetAll>> getPedidosByUserId(int userId);
+        Task<IEnumerable<PedidoDtoGetAll>> getPedidosByUserId(int userId, int skip, int take);
         Task<Pedido> CarregarPedidoById(int pedidoId);
+
+        Task<int> ContadorPedidoByUserId(int userId);
+
+        
 
 
         

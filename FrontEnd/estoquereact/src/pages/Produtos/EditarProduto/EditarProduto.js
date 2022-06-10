@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { getAll, put } from '../../../Services/crudApi';
+import { getAll, put, salvarImagem } from '../../../Services/crudApi';
 import styles from './EditarProduto.module.css'
 import { useEffect } from 'react';
 import ImagemProdutoDestaque from '../ImagemProdutoDestaque/ImagemProdutoDestaque';
 import CarregaImagem from '../../../components/CarregaImagem/CarregaImagem';
 import CadastrarImagem from '../ImagensProduto/CadastrarImagem';
+import UtilService from '../../../Services/util';
 
 
 const EditarProduto = (props) => {
@@ -20,6 +21,7 @@ const EditarProduto = (props) => {
     const [imagemDestaque, setImagemDestaque] = useState('');
     const [destacarImagem, setDestacarImagem] = useState('');
     const [boxImagemDestaque, setBoxImagemDestaque] = useState(false);
+    const [imagemFile, setImagemFile] = useState('');
 
 
     const produto = {
@@ -30,7 +32,7 @@ const EditarProduto = (props) => {
         valor,
         categoriaId,
         imagemUrl: props.imagemUrl ? props.imagemUrl : imagemUrl,
-        imagemDestaque: 'uploadImage.jpg',
+        imagemDestaque: imagemDestaque,
         destacarImagem,
         fornecedorId,
 
@@ -46,8 +48,17 @@ const EditarProduto = (props) => {
         put('produtos', produto).then(() => {
             props.setLoop(true)
             props.setMostraCaixaEditar(false)
+        }).then(() => {
+            if (imagemDestaque) {
+                salvarImagem('produtos/salvarimagem', imagemFile).then((resultado) => {
+                    console.log("salvando imagem", resultado)
+                })
+            }
         })
     }
+
+
+
     const carregarCategorias = () => {
         getAll('categorias').then(resultado => {
             setCategorias(resultado.data)
@@ -69,7 +80,7 @@ const EditarProduto = (props) => {
             setValor(props.item.valor);
             setCategoriaId(props.item.categoriaId);
             setImagemUrl(props.item.imagemUrl);
-            setImagemDestaque(props.item.imagemDestaque);
+            setImagemDestaque(imagemDestaque ? imagemDestaque : props.item.imagemDestaque);
             setDestacarImagem(props.item.destacarImagem);
             setFornecedorId(props.item.fornecedorId);
             carregarCategorias();
@@ -83,11 +94,23 @@ const EditarProduto = (props) => {
 
     return (
         <div className={``} >
-
             <div className={`card ms-4 me-4 mt-4 p-2 `}>
                 <h6>Cadastrar novo produto</h6>
                 <form onSubmit={handleSalvar}>
                     <div className={`${styles.itensForm} row`}>
+                        {boxImagemDestaque &&
+                            <>
+                                <div className={`col col-md-2 ${styles.forms}`}>
+                                    <ImagemProdutoDestaque
+                                        item={props.item}
+                                        setImagemDestaque={setImagemDestaque}
+                                        setDestacarImagem={setDestacarImagem}
+                                        setImagemFile={setImagemFile}
+
+                                    />
+                                </div>
+                            </>
+                        }
                         <div className={`col col-md-6 ${styles.forms}`}>
 
                             <label className={`me-1`}> Descrição:
@@ -128,17 +151,16 @@ const EditarProduto = (props) => {
                                 className='btn btn-outline-info mt-4 btn-sm'
                                 onClick={() => {
                                     handleBoxImagemDestaque()
-                                                                    }}
-
-                            >Destacar Imagem</button>
+                                }}
+                            >Destacar Imagem
+                            </button>
                             {boxImagemDestaque &&
-
-                                <>imagem </>
+                                <>{imagemDestaque} </>
                             }
 
                         </div>
 
-                        <div className={`col col-md-6 ${styles.forms}`}>
+                        <div className={`col col-md-4 ${styles.forms}`}>
                             <div>
                                 <label className={`me-1`}> Quantidade Estoque:
                                     <input type="number"

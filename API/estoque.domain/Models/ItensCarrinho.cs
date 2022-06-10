@@ -11,7 +11,7 @@ namespace estoque.domain.Models
         
         public int PedidoId { get; set; }
         public int ProdutoId { get; set; }
-        public Produto Produto { get; set; }
+        public virtual Produto Produto { get; set; }
         public virtual IEnumerable<Produto> Produtos { get; set; }
         public int Quantidade { get; set; }
         public double Valor { get; set; }

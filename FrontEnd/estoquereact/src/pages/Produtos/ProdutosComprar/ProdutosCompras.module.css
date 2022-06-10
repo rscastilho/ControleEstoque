@@ -1,3 +1,4 @@
+
 .principal{
     display:flex;
     flex-wrap: wrap;
@@ -5,12 +6,20 @@
     gap: 8px;
     justify-content:center;
 }
+
+.imagens{
+    display: flex;
+    justify-content: center;
+    
+    
+}
+
 .card{
     min-width: 250px;
     max-width: 250px;
     margin: 10px 0px 10px 0px;
     min-height: 200px;
-    max-height: 350px;
+    max-height: 380px;
  
 }
 
@@ -37,8 +46,9 @@
     border-radius: 4px;
     width: 100%;
     height: 100%;
-    transition-duration: 0.9s;
-    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* transition-duration: .5s; */
+    /* transition: cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+    
     
     
     
@@ -48,12 +58,16 @@
     display: flex;
     background-size: cover;
     border-radius: 20px;
-    width: 120%;
-    height: 110%;
+    width: 100%;
+    height: 100%;
     box-shadow:0 0 0.5em #b6ef0b;
     z-index: 10;
-        
-    
+    /* transition: ease-in-out 0.1s; */
+    transform: scale(1.6);
+    /* transition: .1s all; */
+    /* transition-duration: .5s;        
+    transition-delay: inherit; */
+    cursor: pointer;    
 }
 
 
@@ -101,12 +115,14 @@
 
 
  .card .botaoEstoque{
-    background-color: #f7c204;
-    color: black;
+    background-color: #ed7011;
+    color: rgb(2, 1, 19);
     padding-right: 20px;
     padding-left: 20px;
     font-size: 1em;
+    font-weight: bold;
     cursor: no-drop;
+    border: 0;
 
  }
 

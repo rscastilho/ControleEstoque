@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import {toast} from 'react-toastify'
+
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-
-
-const ToastMessage = (props) => {
-    
-  
-    useEffect(()=>{
-    toast.success(props.mensagem, {autoClose: 2000})
-}, [])
-
-
-  return (
-    <div>
-
-        
-        
-    </div>
-  )
+export const mensagemSucesso = (mensagem) => {
+  toast.success(mensagem, { autoClose: 2000 })
 }
+
+export const mensagemErro = (mensagem) => {
+  toast.error(mensagem, { autoClose: 2000 })
+}
+
+const ToastMessage = () => { }
 
 export default ToastMessage

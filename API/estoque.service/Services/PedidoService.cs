@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
 using estoque.domain.Dtos;
@@ -17,13 +19,17 @@ namespace estoque.service.Services
         private readonly IitensCarrinhoService _itensCarrinho;
         private readonly IProdutoRepository _produto;
         private readonly IMapper _mapper;
+        private readonly IEmailService _email;
+        private readonly IUsuarioRepository _usuario;
 
-        public PedidoService(IPedidoRepository pedido, IitensCarrinhoService itensCarrinho, IProdutoRepository produto, IMapper mapper)
+        public PedidoService(IPedidoRepository pedido, IitensCarrinhoService itensCarrinho, IProdutoRepository produto, IMapper mapper, IEmailService email, IUsuarioRepository usuario)
         {
             _pedido = pedido;
             _itensCarrinho = itensCarrinho;
             _produto = produto;
             _mapper = mapper;
+            _email = email;
+            _usuario = usuario;
         }
 
 
@@ -61,11 +67,64 @@ namespace estoque.service.Services
             }
         }
 
+        //funcao criada para pegar as informacoes de descricao do enum enviada no email
+        private string decriptarEnum(Enum value)
+        {
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+            DescriptionAttribute[] attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+            if (attributes != null && attributes.Any())
+            {
+                return attributes.First().Description;
+            }
+            return value.ToString();
+        }
+
+        private async void EnviarEmail(
+            string emailUser, 
+            string userName, 
+            int pedidoId, 
+            double valorTotal, 
+            Enum tipoPagamento, 
+            Enum statusPedido)
+        {
+            try
+            {
+                Enum valueStatusPedido = statusPedido;
+                string statusPedidoEnum = decriptarEnum((StatusPedido)valueStatusPedido);
+
+                Enum valueTipoPagamento = tipoPagamento;
+                string tipoPagamentoEnum = decriptarEnum((TipoPagamento)valueTipoPagamento);
+
+                string assunto = $"Pedido recebido com sucesso! numero: {pedidoId}";
+                string mensagem =
+                $@"
+                <hr>
+                <h2>Olá {userName.ToUpper()},</h2> 
+                <h3> Seu pedido número {pedidoId} foi gerado com sucesso. </h3></br> 
+                <strong> Valor: </strong> R$ {valorTotal}</br>
+                <strong> Pagamento:</strong> {tipoPagamentoEnum} </br> 
+                <strong> Status do pedido:</strong> {statusPedidoEnum} </br>
+                </br></br></br></br></br>
+                <hr>
+                Agradecemos seu pedido </br> 
+                <strong>by rcastilho@gmail.com </strong>";
+
+                await _email.EnviarEmail(emailUser, assunto, mensagem);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
         public async Task<Pedido> Cadastrar(PedidoDto pedido)
         {
             try
             {
                 ValidarPedido(pedido);
+
                 Produto pegaItem = new Produto();
                 var pedidoMapeado = _mapper.Map<Pedido>(pedido);
                 var pedidoFinal = _mapper.Map<Pedido>(pedidoMapeado);
@@ -95,7 +154,28 @@ namespace estoque.service.Services
                 }
 
                 await _produto.Atualizar(pegaItem);
+
                 var result = await _pedido.Cadastrar(pedidoMapeado);
+                var usuario = await _usuario.GetById(pedidoMapeado.UsuarioId);
+
+                EnviarEmail(
+                        usuario.Email,
+                        usuario.Nome,
+                        pedidoMapeado.Id,
+                        pedidoMapeado.ValorTotal,
+                        pedidoMapeado.TiposPagamentos,
+                        pedidoMapeado.StatusPedidos
+                    );
+
+                await Task.Delay(60000);
+                await StatusPedido(pedidoMapeado,
+                    usuario.Email,
+                    usuario.Nome,
+                    pedidoMapeado.Id,
+                    pedidoMapeado.ValorTotal,
+                    pedidoMapeado.TiposPagamentos,
+                    pedidoMapeado.StatusPedidos);
+
                 return pedidoFinal;
 
             }
@@ -104,6 +184,32 @@ namespace estoque.service.Services
 
                 throw ex;
             }
+        }
+
+        public async Task<Pedido> StatusPedido(
+            Pedido pedido,
+            string emailUser,
+            string userName,
+            int pedidoId,
+            double valorTotal,
+            Enum tipoPagamento,
+            Enum statusPedido)
+        {
+            try
+            {
+                var pedidoMapeado = _mapper.Map<Pedido>(pedido);
+                pedidoMapeado.StatusPedidos = domain.Enums.StatusPedido.PedidoAutorizado;
+                var resultado = await _pedido.Atualizar(pedidoMapeado);
+                EnviarEmail(emailUser, userName, pedidoId, valorTotal, tipoPagamento, pedidoMapeado.StatusPedidos);
+
+                return pedidoMapeado;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         public async Task<Pedido> CarregarPedidoById(int pedidoId)
@@ -168,17 +274,31 @@ namespace estoque.service.Services
         }
 
 
-        public async Task<IEnumerable<PedidoDtoGetAll>> getPedidosByUserId(int userId)
+        public async Task<IEnumerable<PedidoDtoGetAll>> getPedidosByUserId(int userId, int skip, int take)
         {
             try
             {
-                var resultado = await _pedido.getPedidosByUserId(userId);
+                var resultado = await _pedido.getPedidosByUserId(userId, skip, take);
                 var pedidoMapeado = _mapper.Map<IEnumerable<PedidoDtoGetAll>>(resultado);
                 return pedidoMapeado;
             }
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        public async Task<int> ContadorPedidoByUserId(int userId)
+        {
+            try
+            {
+                var resultado = await _pedido.ContadorPedidoByUserId(userId);
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                
                 throw ex;
             }
         }

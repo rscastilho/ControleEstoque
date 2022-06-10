@@ -14,6 +14,8 @@ namespace estoque.domain.Interfaces
     Task<bool> Deletar (int Id);
     Task<int> ContadorRegistros();
 
+    Task<int> ContadorRegistrosById(int id);
+
     }
     
 }
