@@ -10,6 +10,7 @@ import { UtilService } from '../../../Services/util'
 import OpenModal from '../../../components/Modal/OpenModal';
 import InformacaoProduto from '../InformacaoProduto/InformacaoProduto';
 import ImagensDestacadas from '../ImagensDestacadas/ImagensDestacadas';
+import TextGetByName from './../../../components/TextGetByName/TextGetByName';
 
 
 const ProdutosCompras = () => {
@@ -19,7 +20,6 @@ const ProdutosCompras = () => {
     const [itensPorPagina, setItensPorPagina] = useState(20);
     const [show, setShow] = useState(false);
     const { setItensCarrinho, itensCarrinho } = useContext(AutContext);
-
     const local = JSON.parse(localStorage.getItem('carrinho')) || ''
     const [quantidadeItem, setQuantidadeItem] = useState(local.quantidadeEstoque)
     const carrinho = [...local]
@@ -28,7 +28,7 @@ const ProdutosCompras = () => {
         setShow(!show)
     }, [show]);
 
-    const handleAddCar = (itemsAdd) => {
+    const handleAddCar = useCallback((itemsAdd) => {
         let itensCarrinho = carrinho.find(x => x.id === itemsAdd.id);
         if (itensCarrinho) {
             if (itensCarrinho.quantidade < itensCarrinho.quantidadeEstoque) {
@@ -47,25 +47,29 @@ const ProdutosCompras = () => {
         }
         localStorage.setItem('carrinho', JSON.stringify(carrinho))
         setItensCarrinho(JSON.parse(localStorage.getItem('carrinho')))
-    }
+    }, [setItensCarrinho])
 
-    useEffect(() => {
+    useMemo(() => {
         getAll(`Produtos?skip=${paginar}&take=${itensPorPagina}`).then(produtos => {
             setItens(produtos.data)
         })
-    }, [])
+    }, [paginar, itensPorPagina])
 
     return (
         <div>
             <div className={`${styles.imagens}`}>
                 <ImagensDestacadas />
             </div>
-            <Titulo className='text-center'
-                titulo={"Compre seu produto..."} />
+            <Titulo
+                className='text-center'
+                titulo={"Compre seu produto..."}
+            />
+            <TextGetByName />
+
             <div className={`${styles.principal}`}>
                 {itens && itens.map((items) => (
                     <div key={items.id} className={`card ${styles.card}`}>
-                        <div className='card-header'>
+                        <div className={`card-header ${styles.titulo}`}>
                             <div className={`${styles.title}`}>
                                 <div key={items.id}>{items.descricao}</div>
 

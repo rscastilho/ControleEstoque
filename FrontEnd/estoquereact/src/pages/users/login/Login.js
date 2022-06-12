@@ -37,6 +37,7 @@ const Login = () => {
                 setAuthentication(true);
                 navigate('/')
                 carregarPerfil();
+                
              }           
              else{
                  toast.warning(resultado.data.mensagem, {autoClose: 1500, position:"bottom-right"})

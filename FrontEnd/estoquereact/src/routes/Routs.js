@@ -7,7 +7,7 @@ import PageNotFound from '../pages/pageNotFound/PageNotFound';
 import Login from '../pages/users/login/Login'
 import Register from '../pages/users/register/Register'
 import ListagemCategorias from './../pages/categorias/ListagemCategorias/ListagemCategorias';
-import Home from './../pages/home/Home';
+
 import { useContext } from 'react';
 
 import { AutContext } from '../context/AutContext';

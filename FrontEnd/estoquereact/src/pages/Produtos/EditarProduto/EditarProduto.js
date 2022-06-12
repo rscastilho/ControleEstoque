@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { getAll, put, salvarImagem } from '../../../Services/crudApi';
 import styles from './EditarProduto.module.css'
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import ImagemProdutoDestaque from '../ImagemProdutoDestaque/ImagemProdutoDestaque';
 import CarregaImagem from '../../../components/CarregaImagem/CarregaImagem';
 import CadastrarImagem from '../ImagensProduto/CadastrarImagem';
@@ -44,15 +44,14 @@ const EditarProduto = (props) => {
 
     const handleSalvar = (e) => {
         e.preventDefault()
-        console.log(produto)
         put('produtos', produto).then(() => {
             props.setLoop(true)
             props.setMostraCaixaEditar(false)
         }).then(() => {
-            if (imagemDestaque) {
+            if (imagemDestaque !== props.item.imagemDestaque) {
                 salvarImagem('produtos/salvarimagem', imagemFile).then((resultado) => {
-                    console.log("salvando imagem", resultado)
                 })
+            
             }
         })
     }
@@ -72,7 +71,7 @@ const EditarProduto = (props) => {
 
 
 
-    useEffect(() => {
+    useMemo(() => {
         if (props.item) {
             setDescricao(props.item.descricao);
             setQuantidadeEstoque(props.item.quantidadeEstoque);
@@ -85,6 +84,7 @@ const EditarProduto = (props) => {
             setFornecedorId(props.item.fornecedorId);
             carregarCategorias();
             carregarFornecedores();
+            
         }
     }, [props.item])
 
@@ -95,7 +95,7 @@ const EditarProduto = (props) => {
     return (
         <div className={``} >
             <div className={`card ms-4 me-4 mt-4 p-2 `}>
-                <h6>Cadastrar novo produto</h6>
+                <h6>Atualizar produto</h6>
                 <form onSubmit={handleSalvar}>
                     <div className={`${styles.itensForm} row`}>
                         {boxImagemDestaque &&
@@ -153,9 +153,19 @@ const EditarProduto = (props) => {
                                     handleBoxImagemDestaque()
                                 }}
                             >Destacar Imagem
-                            </button>
+                            </button> <br />
                             {boxImagemDestaque &&
-                                <>{imagemDestaque} </>
+                                <>
+                                    {/* <>{imagemDestaque} </> */}
+                                    <div>
+                                        <input
+                                            type="checkbox"
+                                            checked={destacarImagem}
+                                            onChange={() => {
+                                                setDestacarImagem(!destacarImagem)
+                                            }} /> Destacar Imagem
+                                    </div>
+                                </>
                             }
 
                         </div>

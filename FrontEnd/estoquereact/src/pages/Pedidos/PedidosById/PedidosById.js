@@ -6,6 +6,7 @@ import { getById } from './../../../Services/crudApi'
 import error from './../../../assets/error-img.jpg'
 import { UtilService } from '../../../Services/util'
 import { useEffect } from 'react';
+import ItensPorPagina from '../../../components/ItensPorPagina/ItensPorPagina'
 
 
 
@@ -23,12 +24,10 @@ const PedidosById = () => {
         getById(`Pedidos/pedidosbyuserId/${id}?skip=${skip}&take=${take}`).then((resultado) => {
             setPedidos(resultado.data);
         })
-
+        
         getById(`Pedidos/contarpedidoporusuario/${id}`).then((resultado) => {
-            console.log(resultado.data)
             setNumerosPedidos(resultado.data);
         })
-
 
     }, [id, take, skip])
 
@@ -37,11 +36,12 @@ const PedidosById = () => {
     })
 
     const numeroBtn = () => {
-
         const numero = Math.ceil(numeroPedidos / 5)
         setNumeroBotoes(numero)
         return numero;
     }
+
+
 
     return (
         <>
@@ -133,6 +133,7 @@ const PedidosById = () => {
                                                 <span>
                                                     {UtilService.tipoPagamento(itens.tiposPagamentos)}
                                                 </span>
+
                                             </div>
                                         </div>
                                     </div>
@@ -150,10 +151,16 @@ const PedidosById = () => {
                         setTake(take + 5)
                     }}
                 >Anterior</button>
-                {numeroBotoes}
+                {/* - {numeroBotoes}- */}
+                <ItensPorPagina
+                    setItensPorPagina={setTake}
+                    itens={pedidos.length}
+                />
+
                 <button
                     disabled={skip < 1 ? true : false}
                     onClick={(e) => {
+                        
                         setSkip(skip - 5)
                         setTake(take - 5)
                     }}

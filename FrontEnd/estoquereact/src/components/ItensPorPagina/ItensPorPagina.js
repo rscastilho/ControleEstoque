@@ -11,9 +11,10 @@ const ItensPorPagina = (props) => {
                         props.setLoop(!props.loop)
                     }}>
                     <option defaultValue value="5"> 5 </option>
-                    <option className="10" >10</option>
+                    <option className="10">10</option>
                     <option className="20">20</option>
                     <option className="50">50</option>
+                    <option className="150">150</option>
                 </select>
             </div>
             <span className='ms-4'>

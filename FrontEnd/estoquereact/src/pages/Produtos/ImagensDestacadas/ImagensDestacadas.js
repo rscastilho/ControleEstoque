@@ -29,7 +29,7 @@ const ImagensDestacadas = () => {
                     <>
                         <img
                             className={`${styles.imagens}`}
-                            src={UtilService.localImagem(img.imagemDestaque)} alt={img.imagemDestaque}
+                            src={UtilService.localImagem(img.imagemDestaque)} alt={img.descricao}
                         />
                     </>
                 )).sort()}

@@ -1,6 +1,6 @@
-.boxPrincipal{
-    max-width: 100ox;
-   height: 220px;
+.boxPrincipal {
+    max-width: 100px;
+    height: 220px;
     /* background-color: rgb(92, 90, 85); */
     display: flex;
     justify-content: center;
@@ -9,15 +9,17 @@
     border-radius: 5px;
 }
 
-.imagem{
+.imagem {
     height: 100%;
-    /* background-color: black; */
+    width: 180px;
+    /* background-color: green;  */
     margin: 5px;
     border-radius: 8px;
     cursor: pointer;
+    
 }
 
-.botao{
+.botao {
     width: 100%;
     display: none;
 }

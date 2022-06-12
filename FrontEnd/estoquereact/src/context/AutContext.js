@@ -16,6 +16,7 @@ export const AutContextProvider = ({ children }) => {
                   setAuthentication(true);
                   WebApi.defaults.headers.Authorization = `Bearer ${JSON.parse(autent)}`;
             }
+            
       }, [])
 
       return (
@@ -25,7 +26,7 @@ export const AutContextProvider = ({ children }) => {
                         setAuthentication,
                         itensCarrinho,
                         setItensCarrinho,
-                        perfil, 
+                        perfil,
                         setPerfil
                   }}>
                   {children}

@@ -44,7 +44,7 @@ const ListarProdutos = () => {
     setMostraCaixaCadastrar(false);
     getById(`produtos/pesquisarporid/${id}`).then(produto => {
       setItem(produto.data)
-      console.log(item)
+      
     })
   }
   const handleClose = (id) => {

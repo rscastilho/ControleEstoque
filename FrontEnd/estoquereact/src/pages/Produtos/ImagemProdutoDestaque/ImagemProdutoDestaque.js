@@ -13,11 +13,6 @@ const ImagemProdutoDestaque = (props) => {
     
   }
 
-  useEffect(()=>{
-    console.log('item carregado', props.item)
-    console.log(nomeImagem)
-  },[])
-
 
   return (
     <div className={`${styles.boxPrincipal}`}>

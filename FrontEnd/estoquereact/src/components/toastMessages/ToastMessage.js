@@ -10,6 +10,10 @@ export const mensagemErro = (mensagem) => {
   toast.error(mensagem, { autoClose: 2000 })
 }
 
+export const mensagemAlerta = (mensagem) => {
+  toast.warning(mensagem, { autoClose: 2000 })
+}
+
 const ToastMessage = () => { }
 
 export default ToastMessage
