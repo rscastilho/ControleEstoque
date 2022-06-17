@@ -1,16 +1,30 @@
-import React from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS} from 'chart.js/'
-import {Legend, Tooltip} from 'chart.js'
-
+import { Chart as ChartJS } from 'chart.js'
+import { Legend, Tooltip } from 'chart.js'
 import Titulo from './../../../components/Titulo/Titulo';
+import { getAll } from '../../../Services/crudApi';
+
 ChartJS.register(
     Legend,
     Tooltip);
 
-const GraphQtdProdutos = ({ produtos }) => {
+const GraphQtdProdutos = () => {
+    const [produtos, setProdutos] = useState([]);
+    const paginar = 0;
+    const itensPorPagina = 100;
 
-    const [data, setData] = [{
+     useMemo(() => {
+        getAll(`Produtos?skip=${paginar}&take=${itensPorPagina}`)
+            .then((resultado) => {
+             setProdutos(resultado.data)
+
+            })
+            .catch((error) => console.log('error', error))
+    }, [])
+
+
+    const [data] = [{
         labels: produtos.map((produto) => produto.descricao),
         datasets: [{
             data: produtos.map((produto) => produto.quantidadeEstoque),
@@ -31,6 +45,7 @@ const GraphQtdProdutos = ({ produtos }) => {
             borderWidth: 1,
             hoverOffset: 34,
             boderWidth: 0,
+            
         }],
 
     }]
@@ -47,8 +62,12 @@ const GraphQtdProdutos = ({ produtos }) => {
 
     return (
         <div>
-            <Titulo titulo={"Quantidade de produtos"} />
-            <Doughnut data={data} options={options} />
+            {data &&
+                <>
+                    <Titulo titulo={"Quantidade de produtos"} />
+                    <Doughnut data={data} options={options} />
+                </>
+            }
         </div>
     )
 }

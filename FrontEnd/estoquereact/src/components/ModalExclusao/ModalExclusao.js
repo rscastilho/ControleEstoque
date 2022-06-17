@@ -12,7 +12,7 @@ const ModalExclusao = (props) => {
             
             <Modal.Body>Deseja realmente excluir {props.tipo} 
                 <strong className='ms-1' style={{ color: 'red' }}>
-                {props.nome} 
+                {props.item.descricao ?props.item.descricao : props.item.razaoSocial } 
                 </strong> ?
             </Modal.Body>
 

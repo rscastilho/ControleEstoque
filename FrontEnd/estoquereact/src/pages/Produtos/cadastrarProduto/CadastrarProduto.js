@@ -43,22 +43,22 @@ const CadastrarProduto = (props) => {
     }
 
  
-    const handleCarregaImagem = (e) => {
-        e.preventDefault();
-        if (e.target.files[0]) {
-            const image = e.target.files[0];
-            if (image.type === 'image/jpeg' || image.type === 'image/png') {
-                setCarregaImagem(URL.createObjectURL(e.target.files[0]))
+    // const handleCarregaImagem = (e) => {
+    //     e.preventDefault();
+    //     if (e.target.files[0]) {
+    //         const image = e.target.files[0];
+    //         if (image.type === 'image/jpeg' || image.type === 'image/png') {
+    //             setCarregaImagem(URL.createObjectURL(e.target.files[0]))
                
 
-            }
-         }
-        const imagemName = e.target.value;
-        const nomeFinal = imagemName.slice(12).trim();
-        setImagemUrl(nomeFinal)
-        console.log(nomeFinal)
-        console.log(imagemUrl)
-    }
+    //         }
+    //      }
+    //     const imagemName = e.target.value;
+    //     const nomeFinal = imagemName.slice(12).trim();
+    //     setImagemUrl(nomeFinal)
+    //     console.log(nomeFinal)
+    //     console.log(imagemUrl)
+    // }
 
 
     
@@ -134,19 +134,6 @@ const CadastrarProduto = (props) => {
                                     </>
                                 ))}
                             </select>
-
-
-
-                            {/* <label className={`me-1`}> Imagem:
-                                <input type="file"
-                                    accept='image/*'
-                                    className={`ms-2 me-1`}
-                                    value={''}
-                                    onChange={handleCarregaImagem}
-                                    placeholder='Insira a categoria'
-
-                                />
-                            </label> */}
                         </div>
                         
                         <div className={`col col-md-6 ${styles.forms}`}>
@@ -196,12 +183,7 @@ const CadastrarProduto = (props) => {
                                     />
                             </label>
                                 }
-                            
 
-                            {/* <div className={`${styles.caixaImg}`}>
-
-                                {carregaImagem ? <img className={`${styles.miniatura}`} src={carregaImagem} alt='Imagem' /> : <img className={`${styles.miniatura}`} src={upload} alt='Imagem' />}
-                            </div> */}
                         </div>
                         <div className={`${styles.botao}`}>
                             <button

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const aut = `bearer ${JSON.parse(localStorage.getItem('token'))}`
+// const aut = `bearer ${JSON.parse(localStorage.getItem('token'))}`
 
 const WebApi = axios.create({
     

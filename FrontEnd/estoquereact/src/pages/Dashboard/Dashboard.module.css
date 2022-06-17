@@ -1,14 +1,5 @@
-.principal{
-text-align: center;
-    align-items: center;
-}
-.grafico{
-    text-align: center;
-   
-    margin: 5px;
-    width: 50%;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center; 
+.areaGrafico{
+    width: 50%;   
+    
 
 }

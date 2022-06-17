@@ -30,6 +30,7 @@ const ImagensDestacadas = () => {
                         <img
                             className={`${styles.imagens}`}
                             src={UtilService.localImagem(img.imagemDestaque)} alt={img.descricao}
+                            title={img.descricao}
                         />
                     </>
                 )).sort()}

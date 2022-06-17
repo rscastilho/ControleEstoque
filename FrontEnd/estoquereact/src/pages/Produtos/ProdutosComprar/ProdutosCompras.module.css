@@ -37,7 +37,7 @@
 }
 .titulo{
     background-color: #393838;
-    opacity: .5;
+    /* opacity: .5; */
 }
 
 .card .body{
@@ -113,7 +113,7 @@
     text-align: center;
     color: #535aab;
     background-color: #393838;
-    opacity: .5;
+    /* opacity: .5; */
 
 }
 
