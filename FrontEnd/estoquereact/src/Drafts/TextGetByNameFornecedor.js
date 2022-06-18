@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import {getAll, getByName} from '../../Services/crudApi'
+import {getAll, getByName} from '../Services/crudApi'
 
 const TextGetByNameFornecedor = (props) => {
     const [pesquisa, setPesquisa] = useState('');

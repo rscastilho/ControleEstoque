@@ -8,14 +8,13 @@ import BotaoAcao from './../../../components/botoesAcao/BotaoAcao';
 import { del, getAll, getById } from '../../../Services/crudApi';
 import ModalExclusao from '../../../components/ModalExclusao/ModalExclusao';
 import ItensPorPagina from '../../../components/ItensPorPagina/ItensPorPagina';
-import TextGetByNameFornecedor from '../../../components/TextGetByName/TextGetByNameFornecedor';
+import SearchByName from '../../../components/SearchByName/SearchByName';
 import { UtilService } from '../../../Services/util'
 import Loading from './../../../components/Loading/Loading';
 
 const ListarFornecedores = () => {
   const [item, setItem] = useState("");
   const [itens, setItens] = useState([]);
-  const [itens2, setItens2] = useState([]);
   const [loop, setLoop] = useState(true);
   const [mostraCaixaCadastrar, setMostraCaixaCadastrar] = useState(false);
   const [mostraCaixaEditar, setMostraCaixaEditar] = useState(false);
@@ -114,12 +113,10 @@ const ListarFornecedores = () => {
             </div>
 
             <div>
-              <TextGetByNameFornecedor
+              <SearchByName
                 setLoop={setLoop}
                 setItens={setItens}
                 itens={itens}
-                setItens2={setItens2}
-                itens2={itens2}
                 localPesquisa={'Fornecedores/listarfornecedores'}
                 local={'Fornecedores'}
                 paginar={paginar}

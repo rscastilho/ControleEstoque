@@ -1,32 +1,27 @@
 import React, { useState } from 'react'
 
-import { getAll, getByName } from './../../Services/crudApi'
+import { getAll, getByName } from '../../Services/crudApi'
 
-const TextGetByName = (props) => {
+const SearchByName = (props) => {
     const [pesquisa, setPesquisa] = useState('');
 
     const handleSearch = (e) => {
         setPesquisa(e.target.value)
         if (pesquisa.trim().length >= 3) {
-
             setTimeout(() => {
                 getByName(`${props.localPesquisa}/${pesquisa}`).then((resultado) => {
-
                     props.setItens(resultado.data);
-                    // props.setloop(true)
                 })
             }, 500)
         } else {
             setTimeout(() => {
                 getAll(`${props.local}?skip=${props.paginar}&take=${props.itensPorPagina}`)
-
                     .then((resultado) => {
                         props.setItens(resultado.data)
                     })
             }, 500)
         }
     }
-
 
     return (
         <>
@@ -41,4 +36,4 @@ const TextGetByName = (props) => {
     )
 }
 
-export default TextGetByName
+export default SearchByName

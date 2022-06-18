@@ -27,10 +27,7 @@ const CarregaImagem = (props) => {
         setImagemUrl(nomeFinal);
         props.setImagemDestaque(nomeFinal);
         props.setDestacarImagem(true);
-
       }
-      console.log(imagemUrl)
-
     }
   }
 
@@ -63,7 +60,6 @@ const CarregaImagem = (props) => {
           type='file'
           onChange={handleCarregaImagem}
           ref={openFile} />
-
       </div>
     </div>
   )

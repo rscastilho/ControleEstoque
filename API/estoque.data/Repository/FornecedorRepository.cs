@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace estoque.data.Repository
 {
-    public class FornecedorRepository: RepositoryGeneric<Fornecedor>, IFornecedorRepository
+    public class FornecedorRepository : RepositoryGeneric<Fornecedor>, IFornecedorRepository
     {
         private readonly AppDbContext _context;
 
@@ -27,7 +27,7 @@ namespace estoque.data.Repository
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -38,11 +38,11 @@ namespace estoque.data.Repository
             {
                 var resultado = await _context.Fornecedores
                 .FirstOrDefaultAsync(x => x.RazaoSocial.Contains(fornecedorNome) && x.Deleted != true);
-               return resultado;
+                return resultado;
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -51,12 +51,15 @@ namespace estoque.data.Repository
         {
             try
             {
-                var resultado = await _context.Fornecedores.Where(x => x.RazaoSocial.Contains(forncedorNome)).ToListAsync();
+                var resultado = await _context.Fornecedores
+                .Where(x => x.RazaoSocial.Contains(forncedorNome) && x.Deleted != true)
+                .AsNoTracking()
+                .ToListAsync();
                 return resultado;
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }

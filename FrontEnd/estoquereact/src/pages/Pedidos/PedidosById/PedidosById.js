@@ -62,7 +62,7 @@ const PedidosById = () => {
                     </div>
 
                     {pedidos.map((itens, i) => (
-                        <div key={i} className={`${styles.pedidos}`}>
+                        <div key={itens.id} className={`${styles.pedidos}`}>
                             <div className={`accordion w-50 mb-3`} id="accordionExample">
                                 <div className="accordion-item  ">
                                     <h2 className={`accordion-header`} id={`item00${i}`}>
@@ -108,8 +108,8 @@ const PedidosById = () => {
                                                 </thead>
                                                 <tbody>
                                                     {itens.itensCarrinho.map((x) => (
-                                                        <tr key={x.id}>
-                                                            <td >
+                                                        <tr >
+                                                            <td key={x.id} >
                                                                 <img
                                                                     className={`${styles.imagem}`}
                                                                     src={`https://localhost:5001/recursos/imagens/${x.produto.imagemUrl}`}

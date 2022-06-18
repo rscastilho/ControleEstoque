@@ -4,6 +4,7 @@ import { Chart as ChartJS } from 'chart.js'
 import { Legend, Tooltip } from 'chart.js'
 import Titulo from './../../../components/Titulo/Titulo';
 import { getAll } from '../../../Services/crudApi';
+import Loading from './../../../components/Loading/Loading';
 
 ChartJS.register(
     Legend,
@@ -11,6 +12,7 @@ ChartJS.register(
 
 const GraphQtdProdutos = () => {
     const [produtos, setProdutos] = useState([]);
+    const [isLoading, setIsloading]= useState(true);
     const paginar = 0;
     const itensPorPagina = 100;
 
@@ -18,6 +20,7 @@ const GraphQtdProdutos = () => {
         getAll(`Produtos?skip=${paginar}&take=${itensPorPagina}`)
             .then((resultado) => {
              setProdutos(resultado.data)
+             setIsloading(false);
 
             })
             .catch((error) => console.log('error', error))
@@ -62,12 +65,19 @@ const GraphQtdProdutos = () => {
 
     return (
         <div>
+            {isLoading ? 
+             
+            <Loading isLoading={isLoading}/>
+            :
+            <>
             {data &&
                 <>
                     <Titulo titulo={"Quantidade de produtos"} />
                     <Doughnut data={data} options={options} />
                 </>
             }
+            </>
+        }
         </div>
     )
 }

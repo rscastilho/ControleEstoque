@@ -7,7 +7,7 @@ import EditarCategoria from '../EditarCategoria/EditarCategoria';
 import { getAll, getById } from './../../../Services/crudApi'
 import styles from './ListagemCategorias.module.css'
 import { FaRegPlusSquare } from 'react-icons/fa'
-import TextGetByName from '../../../components/TextGetByName/TextGetByName';
+import SearchByName from '../../../components/SearchByName/SearchByName';
 import ModalExclusao from '../../../components/ModalExclusao/ModalExclusao';
 import ItensPorPagina from '../../../components/ItensPorPagina/ItensPorPagina';
 import Loading from '../../../components/Loading/Loading';
@@ -105,7 +105,8 @@ const ListagemCategorias = () => {
             </div>
 
             <div>
-              <TextGetByName setLoop={setLoop}
+              <SearchByName
+                setLoop={setLoop}
                 setItens={setItens}
                 itens={itens}
                 local={'categorias'}

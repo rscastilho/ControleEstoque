@@ -5,7 +5,7 @@ import Titulo from './../../../components/Titulo/Titulo';
 import BotaoAcao from '../../../components/botoesAcao/BotaoAcao';
 import { del, getAll, getById } from './../../../Services/crudApi'
 import { FaRegPlusSquare } from 'react-icons/fa'
-import TextGetByName from '../../../components/TextGetByName/TextGetByName';
+import SearchByName from '../../../components/SearchByName/SearchByName';
 import ModalExclusao from '../../../components/ModalExclusao/ModalExclusao';
 import ItensPorPagina from '../../../components/ItensPorPagina/ItensPorPagina';
 import { FiEye, FiEyeOff } from 'react-icons/fi'
@@ -167,7 +167,7 @@ const ListarProdutos = () => {
               </div>
 
               <div>
-                <TextGetByName setLoop={setLoop}
+                <SearchByName setLoop={setLoop}
                   setItens={setItens}
                   itens={itens}
                   localPesquisa={'produtos/pesquisarpornome'}
@@ -199,7 +199,7 @@ const ListarProdutos = () => {
 
               <tbody>
                 {itens && itens.map((items, i) => (
-                  <tr key={i}>
+                  <tr key={i} className={items.quantidadeEstoque < 1 ? `${styles.estoqueZero}` : ''}>
                     <td key={i}>
                       {mostrarImg &&
                         <img
@@ -215,10 +215,10 @@ const ListarProdutos = () => {
                         />
                       }
                     </td>
-                    <td className={items.quantidadeEstoque < 1 ? `${styles.estoqueZero}` : ''}>{items.quantidadeEstoque}</td>
-                    <td className={items.quantidadeEstoque < 1 ? `${styles.estoqueZero}` : ''}>{items.descricao}</td>
-                    <td className={items.quantidadeEstoque < 1 ? `${styles.estoqueZero}` : ''}>{items.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-                    <td className={items.quantidadeEstoque < 1 ? `${styles.estoqueZero}` : ''}>{items.valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                    <td>{items.quantidadeEstoque}</td>
+                    <td>{items.descricao}</td>
+                    <td>{items.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                    <td>{items.valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
                     <td>
                       <input type="checkbox" disabled checked={items.destacarImagem ? true : false} />
 
@@ -236,7 +236,6 @@ const ListarProdutos = () => {
                         handle={() => handleClose(items.id)}
                         deleteItem={deleteItem}
                         item={items.descricao}
-
                       />
                     </td>
 

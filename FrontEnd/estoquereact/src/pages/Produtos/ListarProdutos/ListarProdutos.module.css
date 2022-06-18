@@ -37,7 +37,8 @@ table{
 }
 
 .estoqueZero{
-    background-color: red;
-    color: red;
+    background-color: #d09191;
+    color: #ef0606;
     font-weight: bold;
+    
 }
