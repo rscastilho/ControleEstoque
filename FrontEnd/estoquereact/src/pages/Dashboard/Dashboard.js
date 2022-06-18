@@ -1,6 +1,7 @@
 import Titulo from '../../components/Titulo/Titulo'
 import styles from './Dashboard.module.css'
 import GraphQtdProdutos from '../Graficos/Produtos/GraphQtdProdutos';
+import StatusEstoque from '../Produtos/StatusEstoque/StatusEstoque';
 
 const Dashboard = () => {
 
@@ -8,7 +9,8 @@ const Dashboard = () => {
   <>
       <Titulo titulo={'Dashboard'} />
     <div className={`${styles.areaGrafico}`}>
-        {/* <GraphQtdProdutos/> */}
+        
+        <StatusEstoque/>
     </div>
   </>
   )
