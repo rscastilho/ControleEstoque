@@ -73,13 +73,13 @@ const PedidosById = () => {
                                             aria-expanded="true"
                                             aria-controls={`collapse${i}`}>
                                             <span ref={tableRef}>
-                                                Numero: {itens.id}
+                                                Numero do pedido: {itens.id}
                                             </span>
                                             <span>
-                                                Data do pedido: {UtilService.formatDate(itens.createAt)}
+                                                Realizado em: {UtilService.formatDate(itens.createAt)}
                                             </span>
                                             <span>
-                                                Valor total  {UtilService.formatCurrency(itens.valorTotal)}
+                                                Total:  {UtilService.formatCurrency(itens.valorTotal)}
                                             </span>
                                             <div className={`${styles.statusPedido}`}>
                                                 <apan>
@@ -145,6 +145,7 @@ const PedidosById = () => {
             }
             <div className={`${styles.botoes}`}>
                 <button
+                    className='btn btn-sm btn-warning'
                     disabled={pedidos.length < 5 ? true : false}
                     onClick={(e) => {
                         setSkip(skip + 5)
@@ -158,6 +159,7 @@ const PedidosById = () => {
                 />
 
                 <button
+                    className='btn btn-sm btn-warning'
                     disabled={skip < 1 ? true : false}
                     onClick={(e) => {
                         
@@ -172,6 +174,7 @@ const PedidosById = () => {
                 <Link to={'/'}>
                     <button className='btn btn-secondary'>Voltar</button>
                 </Link>
+                <button className='btn' onClick={()=>window.scrollTo(0,0)}>ir para inicio da página</button>
             </div>
         </>
     )

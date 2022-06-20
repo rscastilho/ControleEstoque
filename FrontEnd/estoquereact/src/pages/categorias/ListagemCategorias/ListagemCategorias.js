@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import WebApi from '../../../api/WebApi';
 import BotaoAcao from '../../../components/botoesAcao/BotaoAcao';
 import Titulo from '../../../components/Titulo/Titulo';
@@ -21,7 +21,7 @@ const ListagemCategorias = () => {
   const [mostraCaixaEditar, setMostraCaixaEditar] = useState(false);
   const [show, setShow] = useState(false);
   const [itensPorPagina, setItensPorPagina] = useState(5);
-  const [paginar, setPaginar] = useState(0);
+  const [paginar] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   //abertura e fechamento do modal exclusao
@@ -75,12 +75,12 @@ const ListagemCategorias = () => {
 
   return (
     <div className='container'>
+      <Titulo titulo={'Categorias cadastradas'} />
       {isLoading ?
         <Loading isLoading={isLoading} />
         :
         <>
           <div>
-            <Titulo titulo={'Categorias cadastradas'} />
             <div>
               {mostraCaixaCadastrar &&
                 <CadastrarCategoria setLoop={setLoop} setMostraCaixaCadastrar={setMostraCaixaCadastrar} />

@@ -145,6 +145,7 @@ const ProdutosCompras = () => {
                             </div>
                         ))}
                     </div>
+                        <button className='btn' onClick={()=>window.scrollTo(0,0)}>topo</button>
                 </>
             }
             <OpenModal

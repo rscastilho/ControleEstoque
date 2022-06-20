@@ -1,3 +1,18 @@
-.progress{
-    width: 50%;
+.principal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+       
+}
+
+
+.descricao{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.estadoAtual{
+    display:none;
 }

@@ -62,6 +62,7 @@ const ListarProdutos = () => {
 
 
   const deleteItem = async (id) => {
+    // console.log("registrenado id", id)
     const resultado = await del(`produtos/${id}`)
     console.log(resultado)
     const novaLista = itens.filter((item) => item.id !== resultado.id);
@@ -167,7 +168,8 @@ const ListarProdutos = () => {
               </div>
 
               <div>
-                <SearchByName setLoop={setLoop}
+                <SearchByName
+                  setLoop={setLoop}
                   setItens={setItens}
                   itens={itens}
                   localPesquisa={'produtos/pesquisarpornome'}
@@ -266,7 +268,9 @@ const ListarProdutos = () => {
             />
 
           </>
+
         }
+
       </div>
 
     </>

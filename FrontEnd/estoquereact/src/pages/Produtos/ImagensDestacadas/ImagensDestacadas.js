@@ -15,9 +15,16 @@ const ImagensDestacadas = () => {
         })
     }
 
+
+    const imagesRandon = ()=>{
+        const imagensRandon = Math.ceil(Math.random()* imagens.length + 1)
+        return imagensRandon
+
+    }
+
     useEffect(() => {
         getImagensDestacadas();
-
+        
     }, [])
 
     return (
@@ -34,6 +41,7 @@ const ImagensDestacadas = () => {
                             />
                         </div>
                     )).sort()}
+                    {/* {imagesRandon && imagesRandon()} */}
                 </div>
             </div>
         </div>

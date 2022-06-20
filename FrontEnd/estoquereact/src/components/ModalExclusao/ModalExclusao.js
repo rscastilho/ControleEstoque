@@ -1,29 +1,33 @@
 import { Modal, Button } from 'react-bootstrap'
 
-const ModalExclusao = (props) => {
-
+const ModalExclusao = ({
+    show,
+    handleClose,
+    tipo,
+    item,
+    deleteItem,
+    handleCloseModal
+}) => {
 
     return (
-
-        <Modal show={props.show} onHide={props.handleClose}>
+        <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton >
                 <Modal.Title>Confirmar exclusão </Modal.Title>
             </Modal.Header>
-            
-            <Modal.Body>Deseja realmente excluir {props.tipo} 
+            <Modal.Body>Deseja realmente excluir {tipo}
                 <strong className='ms-1' style={{ color: 'red' }}>
-                {props.item.descricao ?props.item.descricao : props.item.razaoSocial } 
+                    {item.descricao ? item.descricao : item.razaoSocial}
                 </strong> ?
             </Modal.Body>
 
             <Modal.Footer>
                 <Button variant="outline-secondary" onClick={() => {
-                    props.deleteItem(props.id)
-                    props.handleCloseModal()
+                    deleteItem(item.id)
+                    handleCloseModal()
                 }} size="sm">
                     Confirmar
                 </Button>
-                <Button variant="outline-danger" onClick={()=> props.handleCloseModal()} size="sm">
+                <Button variant="outline-danger" onClick={() => handleCloseModal()} size="sm">
                     Cancelar
                 </Button>
             </Modal.Footer>

@@ -2,24 +2,24 @@ import React, { useState } from 'react'
 
 import { getAll, getByName } from '../../Services/crudApi'
 
-const SearchByName = (props) => {
+const SearchByName = ({ localPesquisa, setItens, local, paginar, itensPorPagina }) => {
     const [pesquisa, setPesquisa] = useState('');
 
     const handleSearch = (e) => {
         setPesquisa(e.target.value)
         if (pesquisa.trim().length >= 3) {
             setTimeout(() => {
-                getByName(`${props.localPesquisa}/${pesquisa}`).then((resultado) => {
-                    props.setItens(resultado.data);
+                getByName(`${localPesquisa}/${pesquisa}`).then((resultado) => {
+                    setItens(resultado.data);
                 })
             }, 500)
         } else {
             setTimeout(() => {
-                getAll(`${props.local}?skip=${props.paginar}&take=${props.itensPorPagina}`)
+                getAll(`${local}?skip=${paginar}&take=${itensPorPagina}`)
                     .then((resultado) => {
-                        props.setItens(resultado.data)
+                        setItens(resultado.data)
                     })
-            }, 500)
+            }, 10)
         }
     }
 

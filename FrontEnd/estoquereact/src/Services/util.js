@@ -15,11 +15,18 @@ export const UtilService = {
     cnpj,
     cpf,
     localImagem,
+    calcularPercentual,
     // formatNumberIdioma,
     // generateExcel,
     // compareValues,
     // configDate
 };
+
+function calcularPercentual(menorValor, mariorValor){
+    let percentual = Math.ceil((((menorValor / mariorValor)-1)*100)+100)+"%"
+    return percentual
+
+}
 
 function localImagem(imagemUrl){
 

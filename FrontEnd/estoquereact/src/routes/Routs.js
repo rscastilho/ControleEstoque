@@ -20,6 +20,8 @@ import Dashboard from '../pages/Dashboard/Dashboard';
 import Carrinho from '../pages/Produtos/Carrinho/Carrinho';
 import FinalizarPedido from '../pages/Produtos/FinalizarPedido/FinalizarPedido';
 import PedidosById from '../pages/Pedidos/PedidosById/PedidosById';
+import StatusEstoque from './../pages/Produtos/StatusEstoque/StatusEstoque';
+import TestComponent from '../Drafts/Table/TestComponent';
 
 
 const Routs = () => {
@@ -47,7 +49,12 @@ const Routs = () => {
         <Route path='/listagemcategorias' element={authentication ? <ListagemCategorias /> : <Navigate to='/login' />} />
         <Route path='/cadastrarcategoria' element={authentication ? <CadastrarCategoria /> : <Navigate to='/login' />} />
 
-        <Route path='/dashboard' element={authentication ? <Dashboard /> : <Navigate to='/login' />} />
+        <Route path='/dashboard' element={authentication ? <Dashboard /> : <Navigate to='/login' />}/>
+        <Route path='/statusestoque' element={authentication ? <StatusEstoque /> : <Navigate to='/login' />}/>
+        <Route path='/testes' element={authentication ? <TestComponent /> : <Navigate to='/login' />}/>
+
+        
+        
 
         <Route path='*' element={<PageNotFound />} />
       </Routes>

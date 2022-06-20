@@ -1,20 +1,20 @@
 import {MdEdit, MdDeleteForever} from 'react-icons/md'
 
-const BotaoAcao = (props) => {
+const BotaoAcao = ({nome, handle, itens}) => {
 
     return (
         <>
             <button
-                className={`btn btn-sm me-1 btn-outline-${props.nome === 'Editar' ? 'secondary' : 'danger'}`}
-                onClick={() => props.handle(props.itens)}>
-                    {props.nome ==='Editar' ?  
+                className={`btn btn-sm me-1 btn-outline-${nome === 'Editar' ? 'secondary' : 'danger'}`}
+                onClick={() => handle(itens)}>
+                    {nome ==='Editar' ?  
                     <>
                     <MdEdit size={20}/>
-                    {props.nome}
+                    {nome}
                     </>:
                     <>
                     <MdDeleteForever size={20}/> 
-                    {props.nome}
+                    {nome}
                     </> 
                     }
             </button>
