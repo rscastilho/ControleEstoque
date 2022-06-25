@@ -16,12 +16,13 @@ import ListarFornecedores from './../pages/fornecedores/ListarFornecedores/Lista
 import ListarUsers from './../pages/users/ListarUsers/ListarUsers';
 import CadastrarCategoria from './../pages/categorias/CadastrarCategoria/CadastrarCategoria';
 import ProdutosCompras from './../pages/Produtos/ProdutosComprar/ProdutosCompras';
-import Dashboard from '../pages/Dashboard/Dashboard';
+import Dashboard from '../pages/Dashboard/Dashboard/Dashboard';
 import Carrinho from '../pages/Produtos/Carrinho/Carrinho';
 import FinalizarPedido from '../pages/Produtos/FinalizarPedido/FinalizarPedido';
 import PedidosById from '../pages/Pedidos/PedidosById/PedidosById';
-import StatusEstoque from './../pages/Produtos/StatusEstoque/StatusEstoque';
 import TestComponent from '../Drafts/Table/TestComponent';
+import StatusEstoque from '../pages/Dashboard/DashboardProdutos/DashboardStatusEstoque/DashboardStatusEstoque';
+import Produtos from '../pages/Dashboard/DashboardProdutos/DashboardProdutos';
 
 
 const Routs = () => {
@@ -50,8 +51,9 @@ const Routs = () => {
         <Route path='/cadastrarcategoria' element={authentication ? <CadastrarCategoria /> : <Navigate to='/login' />} />
 
         <Route path='/dashboard' element={authentication ? <Dashboard /> : <Navigate to='/login' />}/>
-        <Route path='/statusestoque' element={authentication ? <StatusEstoque /> : <Navigate to='/login' />}/>
-        <Route path='/testes' element={authentication ? <TestComponent /> : <Navigate to='/login' />}/>
+        <Route path='/dashboard/produtos' element={authentication ? <Produtos/> : <Navigate to='/login' />}/>
+        <Route path='/dashboard/statusestoque' element={authentication ? <StatusEstoque /> : <Navigate to='/login' />}/>
+        <Route path='/dashboard/testes' element={authentication ? <TestComponent /> : <Navigate to='/login' />}/>
 
         
         

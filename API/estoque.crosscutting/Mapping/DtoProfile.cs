@@ -37,6 +37,8 @@ namespace estoque.crosscutting.Mapping
             CreateMap<ProdutoDtoUpdate, Produto>().ReverseMap();
             CreateMap<ProdutoDtoItensCarrinho, Produto>().ReverseMap();
             CreateMap<ProdutosDtoItensCarrinhoGetAll, Produto>().ReverseMap();
+            CreateMap<ProdutosStatusEstoqueDto, Produto>().ReverseMap();
+
 
 
             CreateMap<PedidoDto, Pedido>().ReverseMap();

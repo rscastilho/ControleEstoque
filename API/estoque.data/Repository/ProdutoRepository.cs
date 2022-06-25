@@ -93,5 +93,7 @@ namespace estoque.data.Repository
                 throw;
             }
         }
+
+       
     }
 }

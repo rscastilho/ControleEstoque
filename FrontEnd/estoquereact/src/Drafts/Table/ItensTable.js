@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react'
-import WebApi from '../../api/WebApi';
 import BotaoAcao from '../../components/botoesAcao/BotaoAcao';
 import ModalExclusao from '../../components/ModalExclusao/ModalExclusao';
 import { del, getById } from '../../Services/crudApi';
@@ -9,8 +8,6 @@ const ItensTable = ({ itens, setItens, setLoop, i, local, localPesquisa }) => {
 
     const [item, setItem] = useState("");
     const [show, setShow] = useState(false);
-    const [mostraCaixaCadastrar, setMostraCaixaCadastrar] = useState(false);
-    const [mostraCaixaEditar, setMostraCaixaEditar] = useState(false);
     let coluna = Object.values(itens[i]);
     let novo = Array.from(coluna);
 
@@ -28,8 +25,8 @@ const ItensTable = ({ itens, setItens, setLoop, i, local, localPesquisa }) => {
 
 
     const handleEditar = useCallback((id) => {
-        getById(`${localPesquisa}/${id}`).then(categoria => {
-            setItem(categoria.data)
+        getById(`${localPesquisa}/${id}`).then(resultado => {
+            setItem(resultado.data)
         })
     }, [])
 
@@ -48,9 +45,7 @@ const ItensTable = ({ itens, setItens, setLoop, i, local, localPesquisa }) => {
                 <tbody>
                     <tr>
                         {novo.map((x, i) => (
-                            <>
-                                <td key={i}>{x}</td>
-                            </>
+                            <td key={i}>{x}</td>
                         ))}
                         <BotaoAcao
                             nome={'Editar'}

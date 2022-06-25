@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using estoque.domain.Dtos;
+using estoque.domain.Models;
 
 namespace estoque.domain.IServices
 {
@@ -24,6 +25,8 @@ namespace estoque.domain.IServices
         Task<object> CadastrarImagemDestaque(ProdutoDtoUpdate produto);
 
         Task<IEnumerable<ProdutoDto>> CarregarImagensDestaque();
+
+        Task<Object> StatusEstoque();
         
         
     }

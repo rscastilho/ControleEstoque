@@ -19,6 +19,7 @@ const PedidosById = () => {
     const [skip, setSkip] = useState(0);
     const tableRef = useRef(null)
     const [numeroBotoes, setNumeroBotoes] = useState('');
+    const [loop, setLoop]=useState(false);
 
     useMemo(() => {
         getById(`Pedidos/pedidosbyuserId/${id}?skip=${skip}&take=${take}`).then((resultado) => {
@@ -156,6 +157,7 @@ const PedidosById = () => {
                 <ItensPorPagina
                     setItensPorPagina={setTake}
                     itens={pedidos.length}
+                    setLoop={setLoop}
                 />
 
                 <button
@@ -174,7 +176,7 @@ const PedidosById = () => {
                 <Link to={'/'}>
                     <button className='btn btn-secondary'>Voltar</button>
                 </Link>
-                <button className='btn' onClick={()=>window.scrollTo(0,0)}>ir para inicio da página</button>
+                <button className='btn' onClick={()=>window.scrollTo(0,0)}>Topo da página</button>
             </div>
         </>
     )

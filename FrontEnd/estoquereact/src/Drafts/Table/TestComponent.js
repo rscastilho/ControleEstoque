@@ -10,7 +10,7 @@ const TestComponent = () => {
     <>
       <Titulo titulo={'Testando tabelas dinamicamente'} />
       <TableList
-        estilo={`table-hover`}
+        estilo={``}
         local={'fornecedores'}
         localPesquisa={'Fornecedores/listarfornecedores'}
       />

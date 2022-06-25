@@ -73,30 +73,7 @@ namespace estoque.service.Services
 
 
         }
-        // public async Task<string> GerarJwt(string email)
-        // {
-
-        //     var resultado = await _usuario.GetByEmail(email);
-
-
-        //     var tokenHandler = new JwtSecurityTokenHandler();
-        //     var key = Encoding.ASCII.GetBytes(_appsettings.Secret);
-
-        //     var tokenDescriptor = new SecurityTokenDescriptor
-        //     {
-        //         Issuer = _appsettings.Emissor,
-        //         Audience = _appsettings.ValidoEm,
-        //         Expires = DateTime.UtcNow.AddHours(_appsettings.ExpiracaoHoras),
-        //         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-
-        //     };
-        //     return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
-
-
-
-        // }
-
-     
+   
 
 
         public async Task<UsuarioDtoCreateResult> Logar(LoginDto login)
@@ -174,7 +151,7 @@ namespace estoque.service.Services
                         var userFinal = _mapper.Map<UsuarioDtoCreateResult>(usuario);
                         var token = GerarJwt(login.Email);
 
-                        resultadoFinal.Mensagem = $"Seja bem vindo {login.Email}. Login realizado com sucesso!";
+                        resultadoFinal.Mensagem = $"Seja bem vindo {usuario.Nome.ToUpper()}. Login realizado com sucesso!";
                         resultadoFinal.TokenUsuario = token;
                         resultadoFinal.Usuario = userFinal;
                     }
@@ -183,7 +160,7 @@ namespace estoque.service.Services
                          usuario.Blocked = true;
                         usuario.BlockeAt = DateTime.Now;
                         await _usuario.Atualizar(usuario);
-                        resultadoFinal.Mensagem = ("Usuario bloqueado apos varias tentavidas sem exito");
+                        resultadoFinal.Mensagem = ("Usuario bloqueado apos varias tentativas sem exito");
                         
                     }
                     else

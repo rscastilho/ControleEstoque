@@ -16,19 +16,25 @@ export const UtilService = {
     cpf,
     localImagem,
     calcularPercentual,
+    abreviar,
     // formatNumberIdioma,
     // generateExcel,
     // compareValues,
     // configDate
 };
 
-function calcularPercentual(menorValor, mariorValor){
-    let percentual = Math.ceil((((menorValor / mariorValor)-1)*100)+100)+"%"
+function abreviar(texto) {
+    let resultado = (texto.substring(0, 15) + '...')
+    return resultado
+}
+
+function calcularPercentual(menorValor, mariorValor) {
+    let percentual = Math.ceil((((menorValor / mariorValor) - 1) * 100) + 100) + "%"
     return percentual
 
 }
 
-function localImagem(imagemUrl){
+function localImagem(imagemUrl) {
 
     return `https://localhost:5001/recursos/imagens/${imagemUrl}`
 
@@ -36,13 +42,13 @@ function localImagem(imagemUrl){
 
 
 
-function formatDate(dataCrida){
+function formatDate(dataCrida) {
 
     const date = new Date(dataCrida)
-    const retornaData = Intl.DateTimeFormat('pt-BR',{
-        weekday:"long",
-        year:'numeric',
-        month:'long',
+    const retornaData = Intl.DateTimeFormat('pt-BR', {
+        weekday: "long",
+        year: 'numeric',
+        month: 'long',
         day: 'numeric'
     })
     const dataFinal = retornaData.format(date);
@@ -50,7 +56,7 @@ function formatDate(dataCrida){
 
 }
 
-function getUpperCase(text){
+function getUpperCase(text) {
     let upper = text.toUpperCase()
     return upper
 }
@@ -120,19 +126,19 @@ function statusPedido(statusPedidos) {
     }
 }
 
-function cnpj(cnpj){
-    cnpj=cnpj.replace(/\D/g,"")                           
-    cnpj=cnpj.replace(/^(\d{2})(\d)/,"$1.$2")             
-    cnpj=cnpj.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3") 
-    cnpj=cnpj.replace(/\.(\d{3})(\d)/,".$1/$2")           
-    cnpj=cnpj.replace(/(\d{4})(\d)/,"$1-$2")              
+function cnpj(cnpj) {
+    cnpj = cnpj.replace(/\D/g, "")
+    cnpj = cnpj.replace(/^(\d{2})(\d)/, "$1.$2")
+    cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+    cnpj = cnpj.replace(/\.(\d{3})(\d)/, ".$1/$2")
+    cnpj = cnpj.replace(/(\d{4})(\d)/, "$1-$2")
     return cnpj
 }
-function cpf(cpf){
-    cpf=cpf.replace(/\D/g,"")                    
-    cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")       
-    cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")       
-    cpf=cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2") 
+function cpf(cpf) {
+    cpf = cpf.replace(/\D/g, "")
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
     return cpf
 }
 

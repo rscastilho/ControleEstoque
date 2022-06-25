@@ -30,7 +30,7 @@ namespace estoque.api.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetAllProdutos(int skip =0, int take = 5)
+        public async Task<IActionResult> GetAllProdutos(int skip = 0, int take = 5)
         {
             if (!ModelState.IsValid) return BadRequest("Erro ao processar informações");
             try
@@ -47,18 +47,19 @@ namespace estoque.api.Controllers
 
         [HttpGet("contador")]
         [Authorize]
-        public async Task<IActionResult> ContadorProdutos(){
-        if (!ModelState.IsValid) return BadRequest("Erro ao processar informações");
-        try
+        public async Task<IActionResult> ContadorProdutos()
         {
-            var resultado = await _produtos.ContarProdutos();
-            return Ok(resultado);
-        }
-        catch (Exception ex)
-        {
-            
-            throw ex;
-        }            
+            if (!ModelState.IsValid) return BadRequest("Erro ao processar informações");
+            try
+            {
+                var resultado = await _produtos.ContarProdutos();
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         [Authorize]
@@ -99,7 +100,8 @@ namespace estoque.api.Controllers
         }
 
         [HttpGet("imagemdestaque")]
-        public async Task<IActionResult> CarregarImagensDestaque(){
+        public async Task<IActionResult> CarregarImagensDestaque()
+        {
             if (!ModelState.IsValid) return BadRequest("Erro ao processar informações");
             try
             {
@@ -109,7 +111,22 @@ namespace estoque.api.Controllers
             }
             catch (Exception ex)
             {
-                
+
+                throw ex;
+            }
+        }
+
+        [HttpGet("statusestoque")]
+        public async Task<IActionResult> StatusEstoque()
+        {
+            try
+            {
+                var resultado = await _produtos.StatusEstoque();
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }
@@ -179,15 +196,16 @@ namespace estoque.api.Controllers
             var file = Request.Form.Files[0];
             if (file.Length > 0)
             {
-                    var imageName = file.FileName.ToLower().ToString();
-                    if (imageName.Contains("uploadImage") || imageName == "uploadImage.jpg"){
+                var imageName = file.FileName.ToLower().ToString();
+                if (imageName.Contains("uploadImage") || imageName == "uploadImage.jpg")
+                {
                     DeleteImagem(imageName);
-                    } 
-                    
-                    await SaveImage(file);
-
                 }
-            
+
+                await SaveImage(file);
+
+            }
+
 
             return Ok(file.FileName);
 
@@ -203,7 +221,7 @@ namespace estoque.api.Controllers
             {
                 var resultado = await _produtos.Atualizar(produto);
 
-               return Ok(resultado);
+                return Ok(resultado);
             }
             catch (Exception ex)
             {
@@ -213,18 +231,19 @@ namespace estoque.api.Controllers
         }
 
         [HttpPut("imagemdestaque")]
-        public async Task<IActionResult> ImagemDestaque(ProdutoDtoUpdate produto){
+        public async Task<IActionResult> ImagemDestaque(ProdutoDtoUpdate produto)
+        {
             if (!ModelState.IsValid) return BadRequest("Erro ao processar informações");
             try
             {
                 var resultado = await _produtos.CadastrarImagemDestaque(produto);
                 return Ok(resultado);
 
-                
+
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
@@ -237,7 +256,7 @@ namespace estoque.api.Controllers
             try
             {
                 var resultado = await _produtos.Deletar(id);
-                
+
                 return Ok(resultado);
             }
             catch (Exception ex)

@@ -45,9 +45,9 @@ namespace estoque.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .AddJsonOptions( options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()))
-                .AddNewtonsoftJson( options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-            
+                .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()))
+                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 
             services.AddDbContext<AppDbContext>(options => options.UseMySql(Configuration.GetConnectionString("connection"),
             builder => builder.MigrationsAssembly("estoque.api")));
@@ -79,7 +79,7 @@ namespace estoque.api
 
             services.Configure<ConfiguracoesEmail>(Configuration.GetSection("configuracoesEmail"));
             services.AddScoped<IEmailService, EmailService>();
-                                    
+
 
             var config = new AutoMapper.MapperConfiguration(options =>
             {
@@ -103,24 +103,25 @@ namespace estoque.api
                         Email = "rcastilho@gmail.com."
                     }
                 });
-                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme{
-                                                Description = "Entre com o token JWT", 
-                                                Name = "Authorization",
-                                                In = ParameterLocation.Header, 
-                                                Type = SecuritySchemeType.ApiKey, 
-                                                Scheme = "Bearer"
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Entre com o token JWT",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
                 });
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement{
                     {
                     new OpenApiSecurityScheme{
                                             Reference = new OpenApiReference{
-                                            Id = "Bearer", 
+                                            Id = "Bearer",
                                             Type = ReferenceType.SecurityScheme
-                        }, 
+                        },
                                             Scheme = "oauth2",
                                             Name = "Bearer",
                                             In = ParameterLocation.Header
-                    }, 
+                    },
                     new List<string>()
                     }
                     });
@@ -153,12 +154,12 @@ namespace estoque.api
                 };
 
             });
-                     services.AddAuthorization(auth =>
-            {
-                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
-                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
-                    .RequireAuthenticatedUser().Build());
-            });
+            services.AddAuthorization(auth =>
+   {
+       auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+           .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
+           .RequireAuthenticatedUser().Build());
+   });
         }
 
 
@@ -176,8 +177,9 @@ namespace estoque.api
                                             .AllowAnyOrigin()
             );
 
-            app.UseStaticFiles(new StaticFileOptions(){
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"Recursos")),
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Recursos")),
                 RequestPath = new PathString("/recursos")
 
             });

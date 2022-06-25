@@ -105,7 +105,7 @@ namespace estoque.data.Repository
             return true;
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll(int skip = 0, int take = 5)
+        public async Task<IEnumerable<TEntity>> GetAll(int skip=0, int take=10)
         {
             return await _context.Set<TEntity>()
             .Where(x => x.DeleteAt == null)

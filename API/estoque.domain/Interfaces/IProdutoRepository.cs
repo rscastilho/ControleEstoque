@@ -18,6 +18,8 @@ namespace estoque.domain.Interfaces
         Task<IEnumerable<Produto>> CarregarProdutoPorCategoriaId(int categoriaId);
         Task<IEnumerable<Produto>> CarregarImagensDestaque();
 
+        
+
        
 
         

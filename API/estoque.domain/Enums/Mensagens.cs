@@ -22,5 +22,6 @@ namespace estoque.domain.Enums
         public string Mensagem { get; set; }
         public object TokenUsuario { get; set; }
         public object Usuario { get; set; }
+        
     }
 }
