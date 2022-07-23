@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AMk6iFrVUeUNAzhZpVJDU/NgKq6ZJ7VK1gAv9TxY3upGVS8sSQ5MLe8HyCsQ/1pDZjxN3rStwFMZ56PNtuUOSw==",
+  "dgSpecHash": "c9dHkcU3gnTqHZ99+5IpVeL/WRyFKY7x62Ot+7zQC6cKLpne2a6Sbfm12or5Yv0+KiPO7+5ga9Vx5sXtRlNYNw==",
   "success": true,
-  "projectFilePath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\api\\estoque.data\\estoque.data.csproj",
+  "projectFilePath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.data\\estoque.data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\b00rsc\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\b00rsc\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",

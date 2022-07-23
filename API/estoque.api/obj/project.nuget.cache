@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PZ79JwoT+2JRkHsAGrKIBhJTUlN3NADbb4oV2jx5rUywnMm5z+6dzmOAfPM2y1tTFayEhSQEs2kqOWF0easFcg==",
+  "dgSpecHash": "+WTfxDlHW9yFJvEMDyCr8zI3vIQQpgiBu8UXI7sOXHtpWLvTf3qHu8eBn5gnG3HqWcMTrZZ6Yk9X9Yz9+75tsw==",
   "success": true,
-  "projectFilePath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\api\\estoque.api\\estoque.api.csproj",
+  "projectFilePath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.api\\estoque.api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\b00rsc\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\b00rsc\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.22\\microsoft.aspnetcore.authentication.jwtbearer.3.1.22.nupkg.sha512",

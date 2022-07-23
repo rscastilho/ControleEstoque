@@ -7,13 +7,22 @@
     justify-content:center;
 }
 
+.search{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .imagens{
     display: flex;
     justify-content: center;
     
-      
-    
-    
+}
+
+.data{
+    font-family: Acme;
+    font-size: 1.3em;
+    margin-right: 35px;
 }
 
 .card{
@@ -34,13 +43,18 @@
     text-align: center;
     font-weight: bold;
     font-size: 0.95em;
-    color: #535aab;
+    color: #2b2d42;
     
 }
 .titulo{
     background-color: #393838;
     /* opacity: .5; */
     
+}
+
+.tituloPagina{
+    display: flex;
+    justify-content: space-between;
 }
 
 .card .body{

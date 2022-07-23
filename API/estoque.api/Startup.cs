@@ -77,6 +77,10 @@ namespace estoque.api
             services.AddScoped<IitensCarrinhoRepository, ItensCarrinhoRepository>();
             services.AddScoped<IitensCarrinhoService, ItensCarrinhoService>();
 
+            services.AddScoped<IDashboardRepository,DashboardRepository>();
+            services.AddScoped<IDashboardService, DashboardService>();
+            
+
             services.Configure<ConfiguracoesEmail>(Configuration.GetSection("configuracoesEmail"));
             services.AddScoped<IEmailService, EmailService>();
 

@@ -11,9 +11,8 @@ namespace estoque.domain.Interfaces
      Task<IEnumerable<Pedido>> getAllPedidos();
      Task<IEnumerable<Pedido>> getPedidosByUserId(int userId, int skip, int take);
      Task<Pedido> CarregarPedidoById(int pedidoId);
-
      Task<int> ContadorPedidoByUserId(int userId);
-
-          
+     Task<IEnumerable<Pedido>> GetPedidosPorData(DateTime? dataInicial, DateTime? dataFinal);
+               
     }
 }

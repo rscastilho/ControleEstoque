@@ -34,18 +34,7 @@ namespace estoque.data.Repository
             }
         }
 
-        public async Task<int> ContarCategorias(string categoriaNome)
-        {
-            try
-            {
-                return await _context.Categorias.Where(x => x.Descricao == categoriaNome).CountAsync();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
+        
         public async Task<Categoria> VerificaCategoriaExistente(string categoriaNome)
         {
             try

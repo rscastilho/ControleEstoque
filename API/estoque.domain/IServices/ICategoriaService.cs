@@ -13,12 +13,9 @@ namespace estoque.domain.IServices
         Task<object> Cadastrar(CategoriaDtoCreate categoria);
         Task<object> Deletar(int id);
         Task<IEnumerable<CategoriaDtoCreateResult>> GetAll(int skip =0, int take = 5);
-
         Task<object> CarregarCategoriaById(int categoriaId);
         Task<IEnumerable<CategoriaDtoCreateResult>> CarregarCategoriaPorNome(string categoriaNome);
-        Task<int> ContarCategorias(string categoriaNome);
-
-        
+               
 
 
     }

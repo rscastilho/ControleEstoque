@@ -1,4 +1,4 @@
-import React, { useState, useContext, useMemo, useCallback } from 'react'
+import React, { useState, useContext, useMemo, useCallback, useEffect } from 'react'
 import styles from './ProdutosCompras.module.css'
 import { getAll } from './../../../Services/crudApi';
 import error from '../../../assets/error-img.jpg'
@@ -25,6 +25,8 @@ const ProdutosCompras = () => {
     const [quantidadeItem, setQuantidadeItem] = useState(local.quantidadeEstoque)
     const carrinho = [...local]
     const [isLoading, setIsLoading] = useState(true);
+    const [categorias, setCategorias] = useState([]);
+    const [categoriaId, setCategoriaId] = useState(0);
 
     const handleClose = useCallback(() => {
         setShow(!show)
@@ -58,29 +60,84 @@ const ProdutosCompras = () => {
         })
     }, [paginar, itensPorPagina])
 
+    useMemo(() => {
+        getAll('categorias?skip=0&take=100').then((resultado) => {
+            setCategorias(resultado.data)
+
+        })
+    }, [])
+
+    useEffect(() => {
+        if (categoriaId == 0) {
+            setIsLoading(true)
+            getAll(`Produtos?skip=${paginar}&take=${itensPorPagina}`).then(produtos => {
+                setItens(produtos.data)
+                setIsLoading(false);
+            })
+        }
+        else {
+            getAll(`produtos/produtosporcategoria/${categoriaId}`).then((resultado) => {
+                setItens(resultado.data);
+                setIsLoading(false);
+            })
+
+        }
+
+
+
+    }, [categoriaId, itensPorPagina, paginar])
+
     return (
         <div>
             <div className={`${styles.imagens}`}>
                 <ImagensDestacadas />
             </div>
 
-            <Titulo
-                className='text-center'
-                titulo={"Compre seu produto..."}
-            />
+            <div>
+                <Titulo
+                    className='text-center'
+                    titulo={"Compre seu produto..."}
+                />
+
+
+            </div>
+
+
+
 
             {isLoading ?
                 <Loading isLoading={isLoading} />
                 :
                 <>
-                    <SearchByName
-                    localPesquisa={"produtos/pesquisarpornome"}
-                    setItens={setItens}
-                    local={'produtos'}
-                    paginar={paginar}
-                    itensPorPagina={itensPorPagina}
-                                       
-                    />
+                    <div className={`${styles.search}`}>
+                        <div>
+                            <SearchByName
+                                localPesquisa={"produtos/pesquisarpornome"}
+                                setItens={setItens}
+                                local={'produtos'}
+                                paginar={paginar}
+                                itensPorPagina={itensPorPagina}
+
+                            />
+                        </div>
+                        <div>
+                            <select className='form-select' onChange={(e) => setCategoriaId(e.target.value)}>
+                                <option selected value={0}>- -Pesquisar por categoria- -</option>
+                                {categorias && categorias.map((categoria, i) => (
+                                    <>
+                                        <option key={i} value={categoria.id}>{categoria.descricao}</option>
+                                    </>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <div>
+                                <span className={`${styles.data}`}>{UtilService.hoje()}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr />
 
                     <div className={`${styles.principal}`}>
                         {itens && itens.map((items) => (
@@ -145,7 +202,7 @@ const ProdutosCompras = () => {
                             </div>
                         ))}
                     </div>
-                        <button className='btn' onClick={()=>window.scrollTo(0,0)}>topo</button>
+                    <button className='btn' onClick={() => window.scrollTo(0, 0)}>topo</button>
                 </>
             }
             <OpenModal

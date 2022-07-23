@@ -3,4 +3,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-decoration: none;
+    
+}
+
+.item:hover{
+    background-color: rgb(235, 237, 238);
+    font-weight: bold;
+    cursor: pointer;
+    color: #0508b9;
+
+}
+
+Link{
+    text-decoration: none;
 }

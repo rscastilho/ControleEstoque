@@ -23,6 +23,8 @@ import PedidosById from '../pages/Pedidos/PedidosById/PedidosById';
 import TestComponent from '../Drafts/Table/TestComponent';
 import StatusEstoque from '../pages/Dashboard/DashboardProdutos/DashboardStatusEstoque/DashboardStatusEstoque';
 import Produtos from '../pages/Dashboard/DashboardProdutos/DashboardProdutos';
+import DashboardFornecedores from './../pages/Dashboard/DashboardFornecedores/DashboardFornecedores';
+import DashboardPedidos from './../pages/Dashboard/DashboardPedidos/DashboardPedidos';
 
 
 const Routs = () => {
@@ -54,6 +56,10 @@ const Routs = () => {
         <Route path='/dashboard/produtos' element={authentication ? <Produtos/> : <Navigate to='/login' />}/>
         <Route path='/dashboard/statusestoque' element={authentication ? <StatusEstoque /> : <Navigate to='/login' />}/>
         <Route path='/dashboard/testes' element={authentication ? <TestComponent /> : <Navigate to='/login' />}/>
+        <Route path='/dashboard/fornecedores' element={authentication ? <DashboardFornecedores /> : <Navigate to='/login' />}/>
+        <Route path='/dashboard/pedidos' element={authentication ? <DashboardPedidos /> : <Navigate to='/login' />}/>
+
+     
 
         
         

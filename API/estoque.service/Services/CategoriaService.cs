@@ -124,19 +124,7 @@ namespace estoque.service.Services
             }
         }
 
-        public async Task<int> ContarCategorias(string categoriaNome)
-        {
-            try
-            {
-                var resultado = await _categoria.ContarCategorias(categoriaNome);
-                return resultado;
-            }
-            catch (Exception ex)
-            {
-                
-                throw ex;
-            }
-        }
+  
 
         public async Task<object> Deletar(int id)
         {

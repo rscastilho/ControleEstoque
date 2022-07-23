@@ -101,5 +101,24 @@ namespace estoque.api.Controllers
             }
         }
 
+        [HttpGet("pedidospordata/")]
+        public async Task<IActionResult> PedidosporDatas(DateTime dataInicial, DateTime dataFinal){
+            try
+            {
+                var resultado = await _pedido.GetPedidosPorData(dataInicial, dataFinal);
+                if(resultado == null) {
+                    return Ok (new{ mensagem = "nada encontrado"});
+                }else{
+
+                return Ok(resultado);
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
     }
 }

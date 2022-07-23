@@ -5,7 +5,6 @@ import { AutContext } from '../../../context/AutContext'
 import styles from './FinalizarPedido.module.css';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useEffect } from 'react';
 import { post } from '../../../Services/crudApi'
 import { UtilService } from '../../../Services/util'
 
@@ -18,7 +17,6 @@ const FinalizarPedido = () => {
     const [tiposPagamentos, setTiposPagamentos] = useState(0)
     const [loading , setLoading] = useState(false);
     const pagamentos = ([
-        //  {id: 0, descricao: 'Cartão de credito'},
         {id: 1, descricao: 'Boleto'},
         {id: 2, descricao: 'PIX'},
         {id: 3, descricao: 'Débito em conta'}
@@ -35,7 +33,7 @@ const FinalizarPedido = () => {
             console.log('resultado', resultado)
             setLoading(false);
             navigate('/');
-
+            
         })
     }
 
@@ -50,15 +48,10 @@ const FinalizarPedido = () => {
         postPedido(compraFinalizada);
         localStorage.removeItem('carrinho')
         localStorage.removeItem('@pedido')
-        // localStorage.setItem('@pedidoFinalizado', JSON.stringify(compraFinalizada))
 
         console.log('pedido realizado', compraFinalizada)
     }
 
-    useEffect(() => {
-        console.log('pedido', pedido)
-
-    }, [])
 
     return (
         <>
@@ -99,10 +92,7 @@ const FinalizarPedido = () => {
                         {pagamentos.map((x => (
                             <>
                             <option value={x.id}>{x.descricao}</option>
-                            {/* <option value={0}>Cartão de crédito</option>
-                            <option value={1}>Boleto</option>
-                            <option value={2}>PIX</option>
-                        <option value={3}>Débito em conta</option> */}
+                       
                     </>
                     )))}
                         </select>

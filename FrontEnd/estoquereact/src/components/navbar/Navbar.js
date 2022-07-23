@@ -49,7 +49,7 @@ const Navbar = () => {
       <div>
         <h5>
           <Link className={styles.links} to={'/'}>
-            <FaReact className={styles.icone} /> myApp
+            <FaReact className={styles.icone} /> <span className={`${styles.tituloLogo}`}>myApp</span>
           </Link>
         </h5>
       </div>

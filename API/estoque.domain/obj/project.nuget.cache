@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6NmireWBMOG9K9Psx3Nb/LtB7+N7QdlQJpDeyRItFMEbnwkRt91QrPgGaK0MO4621TDa1/4Vo5Uk2HvXYThNhQ==",
+  "dgSpecHash": "B2Dvwjfc+rXtCCrAVvrosKLwG7iL6N/YqM58K/nySI2XTMDCYX7o8xmgeCoQPdFAlD5PSumZUjQYhtl2H4y51g==",
   "success": true,
-  "projectFilePath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\api\\estoque.domain\\estoque.domain.csproj",
+  "projectFilePath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.domain\\estoque.domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -10,7 +10,7 @@ namespace estoque.domain.Interfaces
     {
         Task<IEnumerable<Categoria>> CarregarCategoriaPorNome(string categoriaNome);
         Task<Categoria> VerificaCategoriaExistente(string categoriaNome);
-        Task<int> ContarCategorias(string categoriaNome);
+        
 
 
 

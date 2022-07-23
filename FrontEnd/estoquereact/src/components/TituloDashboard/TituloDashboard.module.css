@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0508b9;
+    font-weight: 400;
+    padding: 15px;
+    font-size: 1.3em;
+    word-spacing: .2em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-family: Acme, sans-serif;
+    
+    }

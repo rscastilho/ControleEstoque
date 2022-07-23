@@ -7,6 +7,7 @@ import error from './../../../assets/error-img.jpg'
 import { UtilService } from '../../../Services/util'
 import { useEffect } from 'react';
 import ItensPorPagina from '../../../components/ItensPorPagina/ItensPorPagina'
+import PesquisarPorDatas from '../../../components/PesquisarPorDatas/PesquisarPorDatas'
 
 
 
@@ -48,6 +49,11 @@ const PedidosById = () => {
         <>
             <Titulo
                 titulo="Consulte aqui seus pedidos" />
+            <PesquisarPorDatas
+            setPedidos={setPedidos}
+            pedidos={pedidos}
+            
+            />
             {!pedidos ?
                 <p className={`${styles.validaPedido}`}>
                     <span className={`${styles.nome}`}>

@@ -17,11 +17,21 @@ export const UtilService = {
     localImagem,
     calcularPercentual,
     abreviar,
+    hoje,
     // formatNumberIdioma,
     // generateExcel,
     // compareValues,
     // configDate
 };
+
+function hoje(){
+    let data = new Date();
+    let dia = data.getDate()
+    let mes = data.getMonth()+1;
+    let ano = data.getFullYear();
+    let dataAtual = `${dia}/${mes}/${ano}`
+    return dataAtual
+}
 
 function abreviar(texto) {
     let resultado = (texto.substring(0, 15) + '...')

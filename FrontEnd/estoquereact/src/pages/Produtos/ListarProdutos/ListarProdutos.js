@@ -14,6 +14,7 @@ import error from '../../../assets/imageNotFount001.png'
 import EditarProduto from './../EditarProduto/EditarProduto';
 import CadastrarImagem from './../ImagensProduto/CadastrarImagem';
 import Loading from './../../../components/Loading/Loading';
+import { UtilService } from './../../../Services/util';
 
 
 
@@ -60,9 +61,7 @@ const ListarProdutos = () => {
   }
 
 
-
   const deleteItem = async (id) => {
-    // console.log("registrenado id", id)
     const resultado = await del(`produtos/${id}`)
     console.log(resultado)
     const novaLista = itens.filter((item) => item.id !== resultado.id);
@@ -88,16 +87,13 @@ const ListarProdutos = () => {
   }
 
 
-
   useEffect(() => {
 
     if (loop) {
-      // setIsLoading(true)
       getAll(`Produtos?skip=${paginar}&take=${itensPorPagina}`).then(produtos => {
         setItens(produtos.data)
         setLoop(!loop)
         setIsLoading(false)
-
       })
     }
 
@@ -107,7 +103,7 @@ const ListarProdutos = () => {
 
   return (
     <>
-      <div className='row col-md-12 row-cols-sm-12'>
+      <div className='container-fluid row col-md-12 row-cols-sm-12'>
         <Titulo titulo={'Produtos cadastrados'} />
 
         {isLoading ?
@@ -116,7 +112,6 @@ const ListarProdutos = () => {
           />
           :
           <>
-
             <div>
               <div>
                 {mostraCaixaCadastrar &&
@@ -132,7 +127,6 @@ const ListarProdutos = () => {
                     item={item}
                     setMostraCaixaEditar={setMostraCaixaEditar}
                     handleAbrirImagemDestaque={handleAbrirImagemDestaque}
-
                   />
                 }
               </div>
@@ -148,7 +142,6 @@ const ListarProdutos = () => {
                     item={item}
                     setMostraCaixaEditar={setMostraCaixaEditar}
                     local={'produtos/salvarimagem'}
-
                   />
                 }
               </div>
@@ -159,7 +152,6 @@ const ListarProdutos = () => {
                   <button className='btn btn-outline-secondary border-0 btn-sm mb-2'
                     type='button'
                     onClick={handleCaixaCadastrar}
-
                   >
                     <FaRegPlusSquare size={18} className="me-2" />
                     Novo Produto
@@ -194,7 +186,6 @@ const ListarProdutos = () => {
                   <th> Valor</th>
                   <th> Valor estoque</th>
                   <th> Imagem destaque</th>
-                  <th> Ação</th>
                   <th></th>
                 </tr>
               </thead>
@@ -219,12 +210,14 @@ const ListarProdutos = () => {
                     </td>
                     <td>{items.quantidadeEstoque}</td>
                     <td>{items.descricao}</td>
-                    <td>{items.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-                    <td>{items.valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                    <td>{UtilService.formatCurrency(items.valor)}</td>
+                    <td>{UtilService.formatCurrency(items.valorTotal)}</td>
                     <td>
-                      <input type="checkbox" disabled checked={items.destacarImagem ? true : false} />
-
-
+                      <input
+                        type="checkbox"
+                        disabled
+                        checked={items.destacarImagem ? true : false}
+                      />
                     </td>
 
                     <td>
@@ -241,7 +234,6 @@ const ListarProdutos = () => {
                       />
                     </td>
 
-                    <td></td>
                     <>
                       <ModalExclusao
                         show={show}

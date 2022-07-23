@@ -27,7 +27,7 @@ const SearchByName = ({ localPesquisa, setItens, local, paginar, itensPorPagina 
         <>
             <input className='form-control'
                 type="text"
-                placeholder='Pesquisar'
+                placeholder='Pesquisar por nome'
                 value={pesquisa}
                 onChange={(e) => handleSearch(e)}
                 minLength='3'

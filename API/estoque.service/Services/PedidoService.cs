@@ -80,11 +80,11 @@ namespace estoque.service.Services
         }
 
         private async void EnviarEmail(
-            string emailUser, 
-            string userName, 
-            int pedidoId, 
-            double valorTotal, 
-            Enum tipoPagamento, 
+            string emailUser,
+            string userName,
+            int pedidoId,
+            double valorTotal,
+            Enum tipoPagamento,
             Enum statusPedido)
         {
             try
@@ -167,14 +167,14 @@ namespace estoque.service.Services
                         pedidoMapeado.StatusPedidos
                     );
 
-                await Task.Delay(60000);
-                await StatusPedido(pedidoMapeado,
-                    usuario.Email,
-                    usuario.Nome,
-                    pedidoMapeado.Id,
-                    pedidoMapeado.ValorTotal,
-                    pedidoMapeado.TiposPagamentos,
-                    pedidoMapeado.StatusPedidos);
+                // await Task.Delay(20000);
+                // await StatusPedido(pedidoMapeado,
+                //     usuario.Email,
+                //     usuario.Nome,
+                //     pedidoMapeado.Id,
+                //     pedidoMapeado.ValorTotal,
+                //     pedidoMapeado.TiposPagamentos,
+                //     pedidoMapeado.StatusPedidos);
 
                 return pedidoFinal;
 
@@ -298,7 +298,31 @@ namespace estoque.service.Services
             }
             catch (Exception ex)
             {
-                
+
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<PedidoDtoGetAll>> GetPedidosPorData(DateTime dataInicial, DateTime dataFinal)
+        {
+            try
+            {
+                if (dataInicial == null && dataFinal == null)
+                {
+                    var result = await _pedido.GetAll(0,1000);
+                    var pedidoMap = _mapper.Map<IEnumerable<PedidoDtoGetAll>>(result);
+                    return pedidoMap;
+                }else{
+
+                var resultado = await _pedido.GetPedidosPorData(dataInicial, dataFinal);
+                if (resultado == null) return null;
+                var pedidoMapeado = _mapper.Map<IEnumerable<PedidoDtoGetAll>>(resultado);
+                return pedidoMapeado;
+                }
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }

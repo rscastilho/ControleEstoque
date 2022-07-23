@@ -8,7 +8,14 @@
     row-gap: 2px;
     column-gap: 2px;
     text-decoration: none;
-    
+    cursor: pointer;
+  
+}
+
+.dashboard :hover{
+    background-color: rgb(220, 220, 220);
+    /* font-weight: bold; */
+    font-size: 1.1em;
 }
 
 .link, Link, a{

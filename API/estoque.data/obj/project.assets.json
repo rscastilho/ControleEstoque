@@ -5443,11 +5443,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\api\\estoque.data\\estoque.data.csproj",
+      "projectUniqueName": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.data\\estoque.data.csproj",
       "projectName": "estoque.data",
-      "projectPath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\api\\estoque.data\\estoque.data.csproj",
+      "projectPath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.data\\estoque.data.csproj",
       "packagesPath": "C:\\Users\\b00rsc\\.nuget\\packages\\",
-      "outputPath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\api\\estoque.data\\obj\\",
+      "outputPath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5468,8 +5468,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Treinamentos\\_FullStack\\ControleEstoque\\api\\estoque.domain\\estoque.domain.csproj": {
-              "projectPath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\api\\estoque.domain\\estoque.domain.csproj"
+            "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.domain\\estoque.domain.csproj": {
+              "projectPath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.domain\\estoque.domain.csproj"
             }
           }
         }

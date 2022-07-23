@@ -44,13 +44,13 @@ namespace estoque.service.Services
 
         }
 
- public async Task<string> GerarJwt(string email)
+        public async Task<string> GerarJwt(string email)
         {
 
             var resultado = await _usuario.GetByEmail(email);
             var perfilMapper = _mapper.Map<Usuario>(resultado);
             var perfil = await _perfil.CarregarPerfilPorId(perfilMapper.Id);
-            
+
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appsettings.Secret);
@@ -73,13 +73,13 @@ namespace estoque.service.Services
 
 
         }
-   
+
 
 
         public async Task<UsuarioDtoCreateResult> Logar(LoginDto login)
         {
             var resultado = await _usuario.GetByEmail(login.Email);
-            
+
 
             if (resultado == null)
             {
@@ -130,7 +130,7 @@ namespace estoque.service.Services
             Mensagens resultadoFinal = new Mensagens();
 
             var resultado = await _usuario.GetByEmail(login.Email);
-             if (resultado == null)
+            if (resultado == null)
             {
                 resultadoFinal.Mensagem = "Usuário não cadastrado";
                 return resultadoFinal;
@@ -157,15 +157,15 @@ namespace estoque.service.Services
                     }
                     else if (usuario.ErroSenha >= 5)
                     {
-                         usuario.Blocked = true;
+                        usuario.Blocked = true;
                         usuario.BlockeAt = DateTime.Now;
                         await _usuario.Atualizar(usuario);
                         resultadoFinal.Mensagem = ("Usuario bloqueado apos varias tentativas sem exito");
-                        
+
                     }
                     else
                     {
-                         usuario.ErroSenha++;
+                        usuario.ErroSenha++;
                         await _usuario.Atualizar(usuario);
                         resultadoFinal.Mensagem = ("Senha incorreta");
                         resultadoFinal.TokenUsuario = false;
@@ -173,7 +173,7 @@ namespace estoque.service.Services
                 }
                 else
                 {
-                     usuario.Blocked = true;
+                    usuario.Blocked = true;
                     usuario.BlockeAt = DateTime.Now;
                     await _usuario.Atualizar(usuario);
                     resultadoFinal.Mensagem = ("Usuario bloqueado!");

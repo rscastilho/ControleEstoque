@@ -40,7 +40,6 @@ const ListagemCategorias = () => {
   //deleta a categoria chamada no botao dentro do modal
   const deleteItem = async (id) => {
     const resultado = await WebApi.delete(`Categorias/${id}`)
-    console.log(resultado)
     const novaLista = itens.filter((item) => item.id !== resultado.id);
     setItens([...novaLista])
     setLoop(true)
@@ -58,7 +57,7 @@ const ListagemCategorias = () => {
   }, [loop, paginar, itensPorPagina])
 
 
-  //abre e fecha o componente cadasrtar 
+  //abre e fecha o componente cadastrar 
   const handleCaixaCadastrar = () => {
     setMostraCaixaEditar(false);
     setMostraCaixaCadastrar(!mostraCaixaCadastrar);
@@ -74,7 +73,7 @@ const ListagemCategorias = () => {
   }, [])
 
   return (
-    <div className='container'>
+    <div className='container-fluid'>
       <Titulo titulo={'Categorias cadastradas'} />
       {isLoading ?
         <Loading isLoading={isLoading} />

@@ -187,7 +187,6 @@ namespace estoque.service.Services
             }
             else
             {
-                // var deletar = _mapper.Map<Produto>(resultado);
                 var delete = await _produto.Deletar(resultado.Id);
                 resultadoFinal.Mensagem = $"Produto {resultado} deletado com sucesso!";
                 return resultadoFinal;
@@ -327,7 +326,7 @@ namespace estoque.service.Services
                         retornoEstoque.Objeto = produto));
                     }
                 }
-                return lista.OrderBy(x=> x.Situacao);
+                return lista.OrderBy(x => x.Situacao);
             }
             catch (Exception ex)
             {

@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 const Dashboard = () => {
 
   const cards = [
+    { 'descricao': 'Pedidos', "link": "/dashboard/pedidos" },
     { 'descricao': 'Produtos', "link": "/dashboard/produtos" },
-    { 'descricao': 'Fornecedores', "link": "/dashboard/statusestoque" },
+    { 'descricao': 'Fornecedores', "link": "/dashboard/fornecedores" },
     { 'descricao': 'Categorias', "link": "/statusestoque" },
     { 'descricao': 'Usuarios', "link": "/statusestoque" },
     { 'descricao': 'Carregamento dinamico tabelas', "link": "/testes" },
-    { 'descricao': 'Pedidos', "link": "/statusestoque" },
 
   ]
 
@@ -20,16 +20,16 @@ const Dashboard = () => {
       <div className={`${styles.dashboard}`}>
         {cards.map((card, key) => (
           <div key={key} className='card w-25 text-center shadow-sm'>
+            <Link
+              to={card.link}
+              className={`${styles.link}`}
+            >
             <div className='card-body p-4 alert-secondary m-1 '>
             <hr />
-              <Link
-                to={card.link}
-                className={`${styles.link}`}
-              >
                 {card.descricao}
-              </Link>
             <hr />
             </div>
+              </Link>
           </div>
         ))}
       </div>

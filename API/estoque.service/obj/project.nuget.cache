@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BlAVXDie+dv0jeRECRJ/FITq32QRa9kPWzAwrQOzeNjoSnibo/naS31yD5PEdsmPZwcbyjGLNdb8uNs8X7aaEA==",
+  "dgSpecHash": "pmSTnTGv65OcpSzYifmu1iva4EcRUVjyHNRqVrRsa8WDIcIc7A1TcU8IuSrrPxtU3Ya8iKsMVUmgtnsgtvyGuQ==",
   "success": true,
-  "projectFilePath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\api\\estoque.service\\estoque.service.csproj",
+  "projectFilePath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.service\\estoque.service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\b00rsc\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\b00rsc\\.nuget\\packages\\microsoft.aspnetcore.hosting\\2.2.7\\microsoft.aspnetcore.hosting.2.2.7.nupkg.sha512",

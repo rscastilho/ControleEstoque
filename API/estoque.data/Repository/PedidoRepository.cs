@@ -54,5 +54,18 @@ namespace estoque.data.Repository
                                             .ToListAsync();
             return resultado;
         }
+
+        public async Task<IEnumerable<Pedido>> GetPedidosPorData(DateTime? dataInicial, DateTime? dataFinal)
+        {
+            var resultado = await _context.Pedidos
+                                                .Where(x => x.CreateAt >= dataInicial && x.CreateAt <= dataFinal )
+                                                .Include(x=> x.ItensCarrinho)
+                                                .ThenInclude(x=> x.Produto)
+                                                .ToListAsync();
+            if(resultado == null) return null;
+            
+            return resultado;
+
+        }
     }
 }

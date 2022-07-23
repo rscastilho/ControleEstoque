@@ -67,21 +67,7 @@ namespace estoque.api.Controllers
             }
         }
 
-        [HttpGet("contarcategoria/categoriaNome")]
-        public async Task<IActionResult>ContarCategorias(string categoriaNome){
-            if(!ModelState.IsValid) return BadRequest ("Erro ao processar informações");
-            try
-            {
-                var resultado = await _categoria.ContarCategorias(categoriaNome);
-                return Ok(resultado);
-            }   
-            catch (Exception ex)
-            {
-                
-                throw ex;
-            }
-        }
-
+       
 
         [HttpPost]
         public async Task<IActionResult> PostCategoria(CategoriaDtoCreate categoria){

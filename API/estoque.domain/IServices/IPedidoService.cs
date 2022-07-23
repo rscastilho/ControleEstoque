@@ -18,6 +18,8 @@ namespace estoque.domain.IServices
 
         Task<int> ContadorPedidoByUserId(int userId);
 
+        Task<IEnumerable<PedidoDtoGetAll>> GetPedidosPorData(DateTime dataInicial, DateTime dataFinal);
+
         
 
 
