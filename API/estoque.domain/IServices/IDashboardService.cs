@@ -7,7 +7,8 @@ namespace estoque.domain.IServices
 {
     public interface IDashboardService
     {
-       Task<Object> Contador();
+        Task<Object> Contador();
+        Task<Object> ValoresPedidos();
 
         
     }

@@ -8,7 +8,8 @@ namespace estoque.domain.Interfaces
     public interface IDashboardRepository
     {
         Task<Object> Contador();
-        
+        Task<Object> ValoresPedidos();
+               
 
     }
 }

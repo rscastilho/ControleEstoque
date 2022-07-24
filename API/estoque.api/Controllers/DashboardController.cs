@@ -34,6 +34,20 @@ namespace estoque.api.Controllers
             }
         }
 
+        [HttpGet("valorespedidos")]
+        public async Task<IActionResult> ValoresPedidos(){
+            try
+            {
+                var resultado = await _dashboard.ValoresPedidos();
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
         
 
 

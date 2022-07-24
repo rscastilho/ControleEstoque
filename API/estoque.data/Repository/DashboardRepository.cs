@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using estoque.data.Context;
 using estoque.domain.Interfaces;
+using estoque.domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace estoque.data.Repository
@@ -16,6 +17,14 @@ namespace estoque.data.Repository
         public int fornecedores { get; set; }
         public int pedidos { get; set; }
         public int usuarios { get; set; }
+
+    }
+
+    public class ValoresPedidos
+    {
+        public List<int> PedidoId { get; set; }
+        public List<double> Valor { get; set; }
+
 
     }
     public class DashboardRepository : IDashboardRepository
@@ -64,6 +73,22 @@ namespace estoque.data.Repository
             }
         }
 
+        public async Task<object> ValoresPedidos()
+        {
+            try
+            {
 
+                ValoresPedidos valores = new ValoresPedidos();
+                valores.PedidoId = await _context.Pedidos.Select(x => x.Id).ToListAsync();
+                valores.Valor = await _context.Pedidos.Select(x => x.ValorTotal).ToListAsync();
+                return valores;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

@@ -14,8 +14,12 @@ const DashboardPedidos = () => {
       <Titulo titulo={"Dashboard Pedidos"} />
       <DashboardItens
         titulo={"Informações sobre pedidos"}
-        descricaoQuantidade={"Pedidos emitidos"}
+        descricaoQuantidade={"Pedidos processados"}
         linkListarPedidos={'/pedidos'}
+        descricaoValoresPedidos={'Pedidos por valores'}
+        linkValoresPedidos={'/dashboard/pedidos/valorespedidos'}
+
+
       />
       <hr />
       <BotaoVoltar

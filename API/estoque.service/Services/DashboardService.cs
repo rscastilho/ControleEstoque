@@ -34,5 +34,19 @@ namespace estoque.service.Services
                 throw ex;
             }
         }
+
+        public async Task<object> ValoresPedidos()
+        {
+            try
+            {
+                var resultado = await _dashboard.ValoresPedidos();
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
     }
 }

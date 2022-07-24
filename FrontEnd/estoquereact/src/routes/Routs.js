@@ -25,6 +25,7 @@ import StatusEstoque from '../pages/Dashboard/DashboardProdutos/DashboardStatusE
 import Produtos from '../pages/Dashboard/DashboardProdutos/DashboardProdutos';
 import DashboardFornecedores from './../pages/Dashboard/DashboardFornecedores/DashboardFornecedores';
 import DashboardPedidos from './../pages/Dashboard/DashboardPedidos/DashboardPedidos';
+import GraphValoresPedidos from '../pages/Dashboard/DashboardPedidos/GraphValoresPedidos/GraphValoresPedidos';
 
 
 const Routs = () => {
@@ -57,7 +58,9 @@ const Routs = () => {
         <Route path='/dashboard/statusestoque' element={authentication ? <StatusEstoque /> : <Navigate to='/login' />}/>
         <Route path='/dashboard/testes' element={authentication ? <TestComponent /> : <Navigate to='/login' />}/>
         <Route path='/dashboard/fornecedores' element={authentication ? <DashboardFornecedores /> : <Navigate to='/login' />}/>
+
         <Route path='/dashboard/pedidos' element={authentication ? <DashboardPedidos /> : <Navigate to='/login' />}/>
+        <Route path='/dashboard/pedidos/valorespedidos' element={authentication ? <GraphValoresPedidos/> : <Navigate to='/login' />}/>
 
      
 

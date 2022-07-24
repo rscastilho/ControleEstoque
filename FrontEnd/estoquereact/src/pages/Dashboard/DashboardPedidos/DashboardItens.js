@@ -4,7 +4,7 @@ import TituloDashboard from '../../../components/TituloDashboard/TituloDashboard
 import { getAll } from '../../../Services/crudApi'
 import styles from './DashboardItens.module.css'
 
-const DashboardItens = ({ titulo, descricaoQuantidade, linkListarPedidos}) => {
+const DashboardItens = ({ titulo, descricaoQuantidade, linkListarPedidos, descricaoValoresPedidos, linkValoresPedidos}) => {
     const [quantidade, setQuantidade]= useState(0);
 
     useEffect(()=>{
@@ -31,7 +31,10 @@ const DashboardItens = ({ titulo, descricaoQuantidade, linkListarPedidos}) => {
                         </Link>
                     </div>
                     <div className={`list-group-item p-4  ${styles.item}`}>
-                        Pedidos por usuario
+                        <Link to={linkValoresPedidos}>
+                        {descricaoValoresPedidos}
+                            
+                        </Link>
                     </div>
 
                 </div>
