@@ -1083,12 +1083,18 @@
           "estoque.domain": "1.0.0"
         },
         "runtime": {
-          "estoque.data.dll": {}
+          "estoque.data.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "estoque.domain/1.0.0": {
         "runtime": {
-          "estoque.domain.dll": {}
+          "estoque.domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

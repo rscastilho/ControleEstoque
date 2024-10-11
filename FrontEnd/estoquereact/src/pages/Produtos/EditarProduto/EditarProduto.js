@@ -201,6 +201,7 @@ const EditarProduto = (props) => {
                                 value={fornecedorId}
                             >
                                 <option selected > Selecione o fornecedor: </option>
+                                
                                 {fornecedores && fornecedores.map((itens) => (
                                     <>
                                         <option value={itens.id} key={itens.id}>

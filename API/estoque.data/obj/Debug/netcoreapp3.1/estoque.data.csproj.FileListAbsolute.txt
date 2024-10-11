@@ -13,3 +13,5 @@ D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp3.1\estoque.data.runtimeconfig.json
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\bin\Debug\netcoreapp3.1\estoque.data.runtimeconfig.dev.json
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.genruntimeconfig.cache
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.data\obj\Debug\netcoreapp3.1\estoque.data.sourcelink.json
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.data\obj\Debug\netcoreapp3.1\estoque..DED4E4DF.Up2Date

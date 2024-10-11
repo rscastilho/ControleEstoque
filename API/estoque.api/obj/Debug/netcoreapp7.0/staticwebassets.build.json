@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yv1bIhtUjnqv5a7eFCPr0pUvsUSkylyhDXiuSlT4TQo=",
+  "Source": "estoque.api",
+  "BasePath": "_content/estoque.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

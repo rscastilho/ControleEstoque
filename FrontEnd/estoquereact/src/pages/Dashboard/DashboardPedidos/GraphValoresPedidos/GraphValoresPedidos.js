@@ -61,7 +61,10 @@ const GraphValoresPedidos = () => {
             <Titulo titulo={"Valores por pedidos"} />
 
             {dados &&
+            <>
                 <Line options={options} data={data} width={'0px'}/>
+                {dados.quantidadePedido} - Pedidos encontrados
+            </>
             }
             <BotaoVoltar
                 local={"/dashboard/pedidos"}

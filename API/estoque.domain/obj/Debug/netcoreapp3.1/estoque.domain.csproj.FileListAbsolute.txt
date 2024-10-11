@@ -8,3 +8,4 @@ D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.domain\obj\Debug\netcorea
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.domain\obj\Debug\netcoreapp3.1\estoque.domain.dll
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.domain\obj\Debug\netcoreapp3.1\estoque.domain.pdb
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.domain\obj\Debug\netcoreapp3.1\estoque.domain.csproj.AssemblyReference.cache
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.domain\obj\Debug\netcoreapp3.1\estoque.domain.sourcelink.json

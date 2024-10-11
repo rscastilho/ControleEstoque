@@ -12,3 +12,5 @@ D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.service\bin\Debug\netcore
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.service\bin\Debug\netcoreapp3.1\estoque.domain.dll
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.service\bin\Debug\netcoreapp3.1\estoque.domain.pdb
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.service\bin\Debug\netcoreapp3.1\estoque.data.pdb
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.service\obj\Debug\netcoreapp3.1\estoque.service.sourcelink.json
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.service\obj\Debug\netcoreapp3.1\estoque..9440A74C.Up2Date

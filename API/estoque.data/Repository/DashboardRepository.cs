@@ -24,6 +24,7 @@ namespace estoque.data.Repository
     {
         public List<int> PedidoId { get; set; }
         public List<double> Valor { get; set; }
+        public int QuantidadePedido { get; set; }
 
 
     }
@@ -81,6 +82,8 @@ namespace estoque.data.Repository
                 ValoresPedidos valores = new ValoresPedidos();
                 valores.PedidoId = await _context.Pedidos.Select(x => x.Id).ToListAsync();
                 valores.Valor = await _context.Pedidos.Select(x => x.ValorTotal).ToListAsync();
+                valores.QuantidadePedido = await _context.Pedidos.Where(x => x.Deleted != true).CountAsync();
+
                 return valores;
 
             }

@@ -71,8 +71,6 @@ D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3.1\estoque.api.MvcApplicationPartsAssemblyInfo.cs
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3.1\estoque.api.MvcApplicationPartsAssemblyInfo.cache
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3.1\staticwebassets\estoque.api.StaticWebAssets.Manifest.cache
-D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3.1\staticwebassets\estoque.api.StaticWebAssets.xml
-D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3.1\scopedcss\bundle\estoque.api.styles.css
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3.1\estoque.api.RazorTargetAssemblyInfo.cache
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3.1\estoque.api.dll
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3.1\estoque.api.pdb
@@ -80,3 +78,10 @@ D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\obj\Debug\netcoreapp3
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Treinamentos\_FullStack\ControleEstoque\api\estoque.api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.api\obj\Debug\netcoreapp3.1\staticwebassets\estoque.api.StaticWebAssets.Pack.cache
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.api\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.estoque.api.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.api\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.estoque.api.props
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.api\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.estoque.api.props
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.api\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.estoque.api.props
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.api\obj\Debug\netcoreapp3.1\estoque.api.sourcelink.json
+D:\Treinamentos\_FullStack\ControleEstoque\API\estoque.api\obj\Debug\netcoreapp3.1\estoque..534FB019.Up2Date

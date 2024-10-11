@@ -34,7 +34,6 @@ const CadastrarProduto = (props) => {
 
     const handleSalvar = (e) => {
         e.preventDefault()
-        console.log(produto)
         post('produtos', produto).then(() => {
             props.setLoop(true)
             // handleLimpar()

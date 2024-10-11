@@ -19,8 +19,8 @@ const PedidosById = () => {
     const [take, setTake] = useState(5);
     const [skip, setSkip] = useState(0);
     const tableRef = useRef(null)
-    const [numeroBotoes, setNumeroBotoes] = useState('');
-    const [loop, setLoop]=useState(false);
+    const [setNumeroBotoes] = useState('');
+    const [setLoop]=useState(false);
 
     useMemo(() => {
         getById(`Pedidos/pedidosbyuserId/${id}?skip=${skip}&take=${take}`).then((resultado) => {

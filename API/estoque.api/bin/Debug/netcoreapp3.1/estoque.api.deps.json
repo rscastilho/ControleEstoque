@@ -1088,11 +1088,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.ComponentModel.Annotations/4.7.0": {
-        "compile": {
-          "ref/netstandard2.1/System.ComponentModel.Annotations.dll": {}
-        }
-      },
+      "System.ComponentModel.Annotations/4.7.0": {},
       "System.ComponentModel.Primitives/4.3.0": {
         "dependencies": {
           "System.ComponentModel": "4.3.0",
@@ -1609,7 +1605,10 @@
           "estoque.service": "1.0.0"
         },
         "runtime": {
-          "estoque.crosscutting.dll": {}
+          "estoque.crosscutting.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         },
         "compile": {
           "estoque.crosscutting.dll": {}
@@ -1622,7 +1621,10 @@
           "estoque.domain": "1.0.0"
         },
         "runtime": {
-          "estoque.data.dll": {}
+          "estoque.data.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         },
         "compile": {
           "estoque.data.dll": {}
@@ -1630,7 +1632,10 @@
       },
       "estoque.domain/1.0.0": {
         "runtime": {
-          "estoque.domain.dll": {}
+          "estoque.domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         },
         "compile": {
           "estoque.domain.dll": {}
@@ -1644,7 +1649,10 @@
           "estoque.domain": "1.0.0"
         },
         "runtime": {
-          "estoque.service.dll": {}
+          "estoque.service.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         },
         "compile": {
           "estoque.service.dll": {}

@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BC8821F5-6DA9-4B22-B411-3A5C64649241}|estoque.service\\estoque.service.csproj|d:\\treinamentos\\_fullstack\\controleestoque\\api\\estoque.service\\services\\categoriaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC8821F5-6DA9-4B22-B411-3A5C64649241}|estoque.service\\estoque.service.csproj|solutionrelative:estoque.service\\services\\categoriaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC8821F5-6DA9-4B22-B411-3A5C64649241}|estoque.service\\estoque.service.csproj|d:\\treinamentos\\_fullstack\\controleestoque\\api\\estoque.service\\estoque.service.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BC8821F5-6DA9-4B22-B411-3A5C64649241}|estoque.service\\estoque.service.csproj|solutionrelative:estoque.service\\estoque.service.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{519FC037-6DA1-4F53-9F8D-D890BE41FF52}|estoque.domain\\estoque.domain.csproj|d:\\treinamentos\\_fullstack\\controleestoque\\api\\estoque.domain\\estoque.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{519FC037-6DA1-4F53-9F8D-D890BE41FF52}|estoque.domain\\estoque.domain.csproj|solutionrelative:estoque.domain\\estoque.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EFB8D04-D76B-4E77-912F-26A0AA4CFC8A}|estoque.data\\estoque.data.csproj|d:\\treinamentos\\_fullstack\\controleestoque\\api\\estoque.data\\estoque.data.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3EFB8D04-D76B-4E77-912F-26A0AA4CFC8A}|estoque.data\\estoque.data.csproj|solutionrelative:estoque.data\\estoque.data.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C6E94D2-B852-4900-B533-550BA418FC69}|estoque.crosscutting\\estoque.crosscutting.csproj|d:\\treinamentos\\_fullstack\\controleestoque\\api\\estoque.crosscutting\\estoque.crosscutting.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0C6E94D2-B852-4900-B533-550BA418FC69}|estoque.crosscutting\\estoque.crosscutting.csproj|solutionrelative:estoque.crosscutting\\estoque.crosscutting.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26976CC3-4E73-4D1E-A170-A3BD1DDD200F}|estoque.api\\estoque.api.csproj|d:\\treinamentos\\_fullstack\\controleestoque\\api\\estoque.api\\estoque.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{26976CC3-4E73-4D1E-A170-A3BD1DDD200F}|estoque.api\\estoque.api.csproj|solutionrelative:estoque.api\\estoque.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CategoriaService.cs",
+              "DocumentMoniker": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.service\\Services\\CategoriaService.cs",
+              "RelativeDocumentMoniker": "estoque.service\\Services\\CategoriaService.cs",
+              "ToolTip": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.service\\Services\\CategoriaService.cs",
+              "RelativeToolTip": "estoque.service\\Services\\CategoriaService.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T18:53:33.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "estoque.service",
+              "DocumentMoniker": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.service\\estoque.service.csproj",
+              "RelativeDocumentMoniker": "estoque.service\\estoque.service.csproj",
+              "ToolTip": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.service\\estoque.service.csproj",
+              "RelativeToolTip": "estoque.service\\estoque.service.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-29T18:53:28.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "estoque.domain",
+              "DocumentMoniker": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.domain\\estoque.domain.csproj",
+              "RelativeDocumentMoniker": "estoque.domain\\estoque.domain.csproj",
+              "ToolTip": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.domain\\estoque.domain.csproj",
+              "RelativeToolTip": "estoque.domain\\estoque.domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-29T18:53:25.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "estoque.data",
+              "DocumentMoniker": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.data\\estoque.data.csproj",
+              "RelativeDocumentMoniker": "estoque.data\\estoque.data.csproj",
+              "ToolTip": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.data\\estoque.data.csproj",
+              "RelativeToolTip": "estoque.data\\estoque.data.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-29T18:53:13.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "estoque.crosscutting",
+              "DocumentMoniker": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.crosscutting\\estoque.crosscutting.csproj",
+              "RelativeDocumentMoniker": "estoque.crosscutting\\estoque.crosscutting.csproj",
+              "ToolTip": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.crosscutting\\estoque.crosscutting.csproj",
+              "RelativeToolTip": "estoque.crosscutting\\estoque.crosscutting.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-29T18:53:09.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "estoque.api",
+              "DocumentMoniker": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.api\\estoque.api.csproj",
+              "RelativeDocumentMoniker": "estoque.api\\estoque.api.csproj",
+              "ToolTip": "D:\\Treinamentos\\_FullStack\\ControleEstoque\\API\\estoque.api\\estoque.api.csproj",
+              "RelativeToolTip": "estoque.api\\estoque.api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-29T18:52:49.583Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
